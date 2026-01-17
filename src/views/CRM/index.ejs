@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Real Estate CRM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8f8fb;
+      --sidebar-bg: #ffffff;
+      --sidebar-border: #eeeeee;
+      --primary: #6f4ff6;
+      --text-main: #1f1f2e;
+      --text-muted: #9a9ab0;
+      --card-bg: #ffffff;
+      --card-border: #e7e7f2;
+      --pill-new: #e8f3ff;
+      --pill-new-text: #2b7cff;
+      --pill-contact: #fff4e5;
+      --pill-contact-text: #ff9800;
+      --pill-pending: #fffbe6;
+      --pill-pending-text: #ffc107;
+      --pill-confirmed: #e9fff3;
+      --pill-confirmed-text: #27ae60;
+      --pill-complete: #e9fff3;
+      --pill-complete-text: #27ae60;
+      --pill-booked: #f2e9ff;
+      --pill-booked-text: #8e44ad;
+      --pill-cancel: #ffe9e9;
+      --pill-cancel-text: #e53935;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+      --shadow-soft: 0 16px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #000;
+      color: var(--text-main);
+    }
+
+    .app {
+      display: flex;
+      min-height: 100vh;
+      background: #000;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      width: 230px;
+      background: var(--sidebar-bg);
+      border-right: 1px solid var(--sidebar-border);
+      padding: 22px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .sidebar-header h1 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 26px;
+    }
+
+    .nav-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .nav-item span.icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #eee;
+    }
+
+    .nav-item.active {
+      background: rgba(111, 79, 246, 0.08);
+      color: var(--primary);
+    }
+
+    .nav-item.active span.icon {
+      background: var(--primary);
+    }
+
+    .sidebar-footer {
+      margin-top: 18px;
+      border-top: 1px solid var(--sidebar-border);
+      padding-top: 16px;
+    }
+
+    .logout {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: #ff4b4b;
+      cursor: pointer;
+    }
+
+    .logout span.icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      background: #ffe5e5;
+    }
+
+    /* MAIN AREA */
+   .main {
+flex: 1;
+background: var(--bg);
+padding: 20px 26px;
+padding-left: 260px; /* reserve sidebar space */
+display: flex;
+flex-direction: column;
+overflow: hidden;
+
+}
+
+    /* TOP BAR */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .top-left {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .top-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #ccc;
+    }
+
+    .bell {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #e3e4ef;
+    }
+
+    /* FILTERS + TABS */
+    .filters-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .search-filters {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .input-shell {
+      position: relative;
+    }
+
+    .input-shell input,
+    .input-shell select {
+      border-radius: 999px;
+      border: 1px solid var(--card-border);
+      background: #fff;
+      height: 38px;
+      padding: 0 16px;
+      font-size: 12px;
+      color: var(--text-main);
+      min-width: 180px;
+    }
+
+    .tabs {
+      display: flex;
+      border-radius: 999px;
+      background: #f1f1fb;
+      padding: 4px;
+    }
+
+    .tab {
+      padding: 6px 18px;
+      font-size: 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .tab.active {
+      background: #fff;
+      color: var(--primary);
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.12);
+    }
+
+    /* BOARD WRAPPER */
+    .board-wrapper {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .board-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-right: 10px;
+    }
+
+    .board-title {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+ .create-stage-btn {
+border-radius: 999px;
+background: var(--primary);
+color: #fff;
+font-size: 13px;
+padding: 14px 26px;
+border: none;
+box-shadow: var(--shadow-soft);
+cursor: pointer;
+display: inline-flex;
+align-items: center;
+gap: 8px;
+}
+
+.create-stage-btn span.plus {
+width: 18px;
+height: 18px;
+border-radius: 999px;
+background: rgba(255, 255, 255, 0.2);
+display: inline-flex;
+align-items: center;
+justify-content: center;
+font-size: 16px;
+}
+
+    /* FIXED CREATE STAGE BUTTON */
+   /* place button like in the screenshot */
+.create-stage-bar {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;             /* distance from right edge */
+  z-index: 100;
+}
+
+
+    /* HIDE SCROLLBAR */
+    .board::-webkit-scrollbar,
+    .cards::-webkit-scrollbar {
+      display: none;
+    }
+
+    .board,
+    .cards {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* KANBAN BOARD */
+    .board {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scroll-behavior: smooth;
+    }
+
+    .stage {
+      min-width: 200px;
+      max-width: 240px;
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .stage-header {
+      background: #fff;
+      text-align: center;
+      padding: 10px 8px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-main);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+      flex-shrink: 0;
+    }
+
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+      overflow-y: auto;
+      padding-right: 4px;
+      max-height: calc(100vh - 400px);
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--card-border);
+      padding: 12px 14px;
+      font-size: 11px;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
+      flex-shrink: 0;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .card-name {
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .card-email {
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .card-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+      color: var(--text-muted);
+    }
+
+    .card-row span.label {
+      color: var(--text-muted);
+    }
+
+    .card-row span.value {
+      color: var(--text-main);
+    }
+
+    .badge {
+      border-radius: 999px;
+      font-size: 10px;
+      padding: 3px 8px;
+    }
+
+    .badge.new {
+      background: var(--pill-new);
+      color: var(--pill-new-text);
+    }
+
+    .badge.contact {
+      background: var(--pill-contact);
+      color: var(--pill-contact-text);
+    }
+
+    .badge.pending {
+      background: var(--pill-pending);
+      color: var(--pill-pending-text);
+    }
+
+    .badge.confirmed {
+      background: var(--pill-confirmed);
+      color: var(--pill-confirmed-text);
+    }
+
+    .badge.complete {
+      background: var(--pill-complete);
+      color: var(--pill-complete-text);
+    }
+
+    .badge.booked {
+      background: var(--pill-booked);
+      color: var(--pill-booked-text);
+    }
+
+    .badge.cancel {
+      background: var(--pill-cancel);
+      color: var(--pill-cancel-text);
+    }
+
+    .price {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .reason {
+      color: var(--text-muted);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .sidebar {
+        width: 200px;
+      }
+
+      .stage {
+        min-width: 180px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .app {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 16px;
+      }
+
+      .sidebar-header h1 {
+        margin-bottom: 0;
+      }
+
+      .nav-group {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 4px;
+      }
+
+      .nav-group::-webkit-scrollbar {
+        display: none;
+      }
+
+      .nav-group {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      .sidebar-footer {
+        display: none;
+      }
+
+      .main {
+        padding: 14px 16px;
+      }
+
+      .filters-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .board-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .stage {
+        min-width: 75%;
+      }
+
+      .cards {
+        max-height: calc(100vh - 450px);
+      }
+
+      .create-stage-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        padding: 16px;
+        border-top: 10px;
+        z-index: 100;
+        display: flex;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .input-shell input,
+      .input-shell select {
+        min-width: 140px;
+      }
+
+      .tabs {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .stage {
+        min-width: 85%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+   
+    <!-- Main -->
+    <main class="main">
+      <header class="top-bar">
+        <div class="top-left">CRM</div>
+        <div class="top-right">
+          <div class="bell"></div>
+          <div class="avatar"></div>
+        </div>
+      </header>
+
+      <section class="filters-row">
+        <div class="search-filters">
+          <div class="input-shell">
+            <input type="text" placeholder="Search by Property name" />
+          </div>
+          <div class="input-shell">
+            <select>
+              <option>All Leads</option>
+              <option>New Lead</option>
+               <option>Contacted</option>
+                <option>Site Vist Secheduled</option>
+                 <option>Approved for visit</option>
+            </select>
+          </div>
+          <div class="input-shell">
+            <select>
+              <option>Recent to Oldest</option>
+              <option>Oldest to Recent</option>
+            </select>
+          </div>
+        </div>
+        <div class="tabs">
+          <div class="tab active">Active Leads</div>
+          <div class="tab">Payment</div>
+        </div>
+      </section>
+
+      <section class="board-wrapper">
+        <div class="board-header">
+          <div class="board-title">Pipeline</div>
+        </div>
+
+        <div class="board">
+          <!-- New Lead -->
+          <div class="stage">
+            <div class="stage-header">New Lead</div>
+            <div class="cards">
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-name">Shivam Gawali</div>
+                  <span class="badge new">New</span>
+                </div>
+                <div class="card-email">shivamgawali@gmail.com</div>
+                <div class="card-row">
+                  <span class="label">Property Interested</span>
+                  <span class="value">Skyline Tower</span>
+                </div>
+                <div class="card-row">
+                  <span class="label">Requested Visit</span>
+                  <span class="value">22 July 2025, 10:00–12:00 pm</span>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-name">Shivam Gawali</div>
+                  <span class="badge new">New</span>
+                </div>
+                <div class="card-email">shivamgawali@gmail.com</div>
+                <div class="card-row">
+                  <span class="label">Property Interested</span>
+                  <span class="value">Skyline Tower</span>
+                </div>
+                <div class="card-row">
+                  <span class="label">Requested Visit</span>
+                  <span class="value">22 July 2025, 10:00–12:00 pm</span>
+                </div>
+              </div>
+              
+              <!-- Added more cards for demo -->
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-name">John Doe</div>
+                  <span class="badge new">New</span>
+                </div>
+                <div class="card-email">john@example.com</div>
+                <div class="card-row">
+                  <span class="label">Property Interested</span>
+                  <span class="value">Ocean View</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contacted -->
+          <div class="stage">
+            <div class="stage-header">Contacted</div>
+            <div class="cards">
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-name">Shivam Gawali</div>
+                  <span class="badge contact">Contacted</span>
+                </div>
+                <div class="card-email">shivamgawali@gmail.com</div>
+                <div class="card-row">
+                  <span class="label">Property Interested</span>
+                  <span class="value">Skyline Tower</span>
+                </div>
+                <div class="card-row">
+                  <span class="label">Requested Visit</span>
+                  <span class="value">22 July 2025, 10:00–12:00 pm</span>
+                </div>
+              </div>
+              
+              <!-- Added more cards for demo -->
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-name">Jane Smith</div>
+                  <span class="badge contact">Contacted</span>
+                </div>
+                <div class="card-email">jane@example.com</div>
+                <div class="card-row">
+                  <span class="label">Property Interested</span>
+                  <span class="value">Green Valley</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Site Visit Scheduled -->
+          <div class="stage">
+            <div class="stage-header">Site Visit Scheduled</div>
+            <div class="cards">
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-name">Shivam Gawali</div>
+                  <span class="badge pending">Pending</span>
+                </div>
+                <div class="card-email">shivamgawali@gmail.com</div>
+                <div class="card-row">
+                  <span class="label">Property Interested</span>
+                  <span class="value">Skyline Tower</span>
+                </div>
+                <div class="card-row">
+                  <span class="label">Visit Date & Time</span>
+                  <span class="value">22 July 2025, 10:00–12:00 pm</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Approved for Visit -->
+          <div class="stage">
+            <div class="stage-header">Approved for Visit</div>
+            <div class="cards">
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-name">Shivam Gawali</div>
+                  <span class="badge confirmed">Confirmed</span>
+                </div>
+                <div class="card-email">shivamgawali@gmail.com</div>
+                <div class="card-row">
+                  <span class="label">Property Interested</span>
+                  <span class="value">Skyline Tower</span>
+                </div>
+                <div class="card-row">
+                  <span class="label">Visit Date & Time</span>
+                  <span class="value">22 July 2025, 10:00–12:00 pm</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Visited -->
+          <div class="stage">
+            <div class="stage-header">Visited</div>
+            <div class="cards">
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-name">Shivam Gawali</div>
+                  <span class="badge complete">Complete</span>
+                </div>
+                <div class="card-email">shivamgawali@gmail.com</div>
+                <div class="card-row">
+                  <span class="label">Property</span>
+                  <span class="value">Skyline Tower</span>
+                </div>
+                <div class="card-row">
+                  <span class="label">Visit Date & Time</span>
+                  <span class="value">22 July 2025, 10:00–12:00 pm</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Deal Finalized -->
+          <div class="stage">
+            <div class="stage-header">Deal Finalized</div>
+            <div class="cards">
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-name">Shivam Gawali</div>
+                  <span class="badge booked">Booked</span>
+                </div>
+                <div class="card-email">shivamgawali@gmail.com</div>
+                <div class="card-row">
+                  <span class="label">Property</span>
+                  <span class="value">Skyline Tower</span>
+                </div>
+                <div class="card-row">
+                  <span class="label">Final Price</span>
+                  <span class="price">$840,000</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Closed / Rejected -->
+          <div class="stage">
+            <div class="stage-header">Closed / Rejected</div>
+            <div class="cards">
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-name">Shivam Gawali</div>
+                  <span class="badge cancel">Cancel</span>
+                </div>
+                <div class="card-email">shivamgawali@gmail.com</div>
+                <div class="card-row">
+                  <span class="label">Property Interested</span>
+                  <span class="value">Skyline Tower</span>
+                </div>
+                <div class="card-row">
+                  <span class="label">Reason</span>
+                  <span class="reason">Budget issue</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="create-stage-bar">
+          <button class="create-stage-btn">
+            <span class="plus">+</span>
+            Create Stage
+          </button>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
+

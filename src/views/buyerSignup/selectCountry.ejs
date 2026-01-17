@@ -1,0 +1,208 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real Estate – Verify Account</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/buyerSelectCountry.css">
+  </head>
+
+  <body>
+    <div class="page">
+      <div class="back-button">
+        <a href="">Go Back</a>
+      </div>
+
+      <div class="left">
+        <div class="brand">Real Estate</div>
+        <p class="tagline">
+          <b>Join a platform that connects buyers, agents, and developers.</b>
+          Simplify every step of the real estate journey with a single, modern
+          dashboard.
+        </p>
+      </div>
+
+      <div class="right">
+        <a href="#" class="back-link">Go Back</a>
+              <div class="card">
+          <h2>Select a Country</h2>
+          <p class="subtitle">
+            Choose the country where you want to explore properties. You can change it anytime later
+          </p>
+
+          <div class="country-list">
+            <div class="country-item selected" onclick="selectCountry(this)">
+              <div class="country-left">
+                <img src="https://flagcdn.com/w40/ae.png" alt="UAE" class="flag" />
+                <span class="country-name">United Arab Emirates</span>
+              </div>
+              <div class="check-icon"></div>
+            </div>
+
+            <div class="country-item" onclick="selectCountry(this)">
+              <div class="country-left">
+                <img src="https://flagcdn.com/w40/sg.png" alt="Singapore" class="flag" />
+                <span class="country-name">Singapore</span>
+              </div>
+              <div class="check-icon"></div>
+            </div>
+
+            <div class="country-item" onclick="selectCountry(this)">
+              <div class="country-left">
+                <img src="https://flagcdn.com/w40/us.png" alt="USA" class="flag" />
+                <span class="country-name">United States</span>
+              </div>
+              <div class="check-icon"></div>
+            </div>
+
+            <div class="country-item" onclick="selectCountry(this)">
+              <div class="country-left">
+                <img src="https://flagcdn.com/w40/gb.png" alt="UK" class="flag" />
+                <span class="country-name">United Kingdom</span>
+              </div>
+              <div class="check-icon"></div>
+            </div>
+          </div>
+
+          <button class="btn">Continue</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+    <script>
+      function selectCountry(element) {
+        // Remove selected class from all items
+        document.querySelectorAll('.country-item').forEach(item => {
+          item.classList.remove('selected');
+        });
+        
+        // Add selected class to clicked item
+        element.classList.add('selected');
+      }
+    </script> -->
+
+
+
+
+
+
+
+
+
+    <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real Estate – Verify Account</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/buyerSelectCountry.css" />
+  </head>
+
+  <body>
+    <div class="page">
+      <div class="back-button">
+        <a href="">Go Back</a>
+      </div>
+
+      <div class="left">
+        <div class="brand">Real Estate</div>
+        <p class="tagline">
+          <b>Join a platform that connects buyers, agents, and developers.</b>
+          Simplify every step of the real estate journey with a single, modern
+          dashboard.
+        </p>
+      </div>
+
+      <div class="right">
+        <a href="#" class="back-link">Go Back</a>
+
+        <div class="card">
+          <h2>Select a Country</h2>
+          <p class="subtitle">
+            Choose the country where you want to explore properties. You can change it anytime later
+          </p>
+
+          <!-- FLASH MESSAGES -->
+          <%- include('../flash/flash') %>
+
+          <!-- FORM START -->
+          <form action="/update-country" method="POST">
+
+            <!-- Hidden input to send selected country -->
+            <input type="hidden" name="country" id="selectedCountry" value="United Arab Emirates" />
+
+            <div class="country-list">
+
+              <div class="country-item selected" onclick="selectCountry(this, 'United Arab Emirates')">
+                <div class="country-left">
+                  <img src="https://flagcdn.com/w40/ae.png" alt="UAE" class="flag" />
+                  <span class="country-name">United Arab Emirates</span>
+                </div>
+                <div class="check-icon"></div>
+              </div>
+
+              <div class="country-item" onclick="selectCountry(this, 'Singapore')">
+                <div class="country-left">
+                  <img src="https://flagcdn.com/w40/sg.png" alt="Singapore" class="flag" />
+                  <span class="country-name">Singapore</span>
+                </div>
+                <div class="check-icon"></div>
+              </div>
+
+              <div class="country-item" onclick="selectCountry(this, 'United States')">
+                <div class="country-left">
+                  <img src="https://flagcdn.com/w40/us.png" alt="USA" class="flag" />
+                  <span class="country-name">United States</span>
+                </div>
+                <div class="check-icon"></div>
+              </div>
+
+              <div class="country-item" onclick="selectCountry(this, 'United Kingdom')">
+                <div class="country-left">
+                  <img src="https://flagcdn.com/w40/gb.png" alt="UK" class="flag" />
+                  <span class="country-name">United Kingdom</span>
+                </div>
+                <div class="check-icon"></div>
+              </div>
+
+            </div>
+
+            <button type="submit" class="btn">Continue</button>
+
+          </form>
+          <!-- FORM END -->
+
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function selectCountry(element, country) {
+        document.querySelectorAll('.country-item').forEach(item => {
+          item.classList.remove('selected');
+        });
+
+        element.classList.add('selected');
+
+        document.getElementById("selectedCountry").value = country;
+      }
+    </script>
+  </body>
+</html>

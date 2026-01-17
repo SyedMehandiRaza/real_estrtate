@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Create Stage Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f3f4f6;
+      padding: 1rem;
+    }
+
+    .form-card {
+      position: relative;           /* important for close icon */
+      width: 100%;
+      max-width: 420px;
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.75rem 1.5rem 1.5rem;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.18);
+    }
+
+    /* cross icon */
+    .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      border: none;
+      background: #f3f4f6;
+      color: #6b7280;
+      font-size: 1.1rem;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
+      background: #e5e7eb;
+    }
+
+    .form-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 1.25rem;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .label-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.25rem;
+      font-size: 0.82rem;
+      color: #6b7280;
+    }
+
+    .label-row span:first-child {
+      font-weight: 500;
+      color: #374151;
+    }
+
+    .label-row span.optional {
+      font-size: 0.78rem;
+      color: #9ca3af;
+    }
+
+    input[type="text"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.65rem 0.75rem;
+      border-radius: 10px;
+      border: 1px solid #e5e7eb;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      background: #f9fafb;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #7c3aed;
+      box-shadow: 0 0 0 1px rgba(124, 58, 237, 0.2);
+      background: #ffffff;
+    }
+
+    .color-row {
+      position: relative;
+    }
+
+    .color-row::after {
+      content: "🎨";
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.95rem;
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    select {
+      background-image: linear-gradient(45deg, transparent 50%, #9ca3af 50%),
+        linear-gradient(135deg, #9ca3af 50%, transparent 50%);
+      background-position: calc(100% - 12px) 55%, calc(100% - 7px) 55%;
+      background-size: 5px 5px, 5px 5px;
+      background-repeat: no-repeat;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+
+    .form-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+
+    .btn {
+      padding: 0.7rem 1.4rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-outline {
+      background: #f9fafb;
+      color: #4b5563;
+      border: 1px solid #e5e7eb;
+    }
+
+    .btn-primary {
+      background: #7c3aed;
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: #6d28d9;
+    }
+
+    .btn-outline:hover {
+      background: #e5e7eb;
+    }
+
+    @media (max-width: 480px) {
+      .form-card {
+        padding: 1.3rem 1.1rem 1.1rem;
+      }
+
+      .form-title {
+        font-size: 1.05rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <form class="form-card">
+    <!-- visual cross icon; without JS it is just decorative -->
+    <button type="button" class="close-btn">&times;</button>
+
+    <h2 class="form-title">Create Stage</h2>
+
+    <div class="form-group">
+      <div class="label-row">
+        <span>Stage Name</span>
+      </div>
+      <input type="text" placeholder="Enter Stage Name" required />
+    </div>
+
+    <div class="form-group">
+      <div class="label-row">
+        <span>Stage Color</span>
+        <span class="optional">Optional</span>
+      </div>
+      <div class="color-row">
+        <input type="text" placeholder="Select" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="label-row">
+        <span>Stage Order</span>
+        <span class="optional">Optional</span>
+      </div>
+      <select>
+        <option value="">Select</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <div class="label-row">
+        <span>Description</span>
+        <span class="optional">Optional</span>
+      </div>
+      <textarea placeholder="Describe"></textarea>
+    </div>
+
+    <div class="form-footer">
+      <button type="reset" class="btn btn-outline">Cancel</button>
+      <button type="submit" class="btn btn-primary">Create Stage</button>
+    </div>
+  </form>
+</body>
+</html>

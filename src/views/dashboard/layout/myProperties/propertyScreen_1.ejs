@@ -1,0 +1,133 @@
+    <div class="layout">
+      <main class="main">
+        <!-- TOP HEADER -->
+        <header class="top-header">
+          <div class="top-title">My Properties</div>
+          <div class="top-right">
+            <div class="avatar"></div>
+          </div>
+        </header>
+
+        <!-- SEARCH STRIP -->
+
+        <section class="search-strip">
+          <form action="/property" method="GET">
+            <div class="search-box">
+              <input
+                class="search-input"
+                type="text"
+                name="keyword"
+                placeholder="Search property"
+                value="<%= keyword %>"
+              />
+              <button class="search-btn" type="submit">Search</button>
+            </div>
+          </form>
+
+          <a href="/add" class="add-btn">
+            <span class="plus">+</span>
+            <span>Add New Property</span>
+          </a>
+        </section>
+
+        <section class="cards-grid">
+          <% if (properties.length === 0) { %>
+          <p>No properties found.</p>
+          <% } %> <% properties.forEach(property => { %>
+          <article class="property-card <%= property.cardClass || '' %>">
+            <div class="card-header">
+              <img
+                class="card-image"
+                src="<%= property.thumbnail || 'https://via.placeholder.com/300' %>"
+                alt="<%= property.title %>"
+              />
+
+              <div class="badge-row">
+                <span
+                  class="status-badge <%= property.constructionStatusClass %>"
+                >
+                  <%= property.constructionStatus || 'Ready to move' %>
+                </span>
+                <span class="status-badge <%= property.purposeClass %>">
+                  <%= property.purpose || 'For Rent' %>
+                </span>
+              </div>
+
+              <div class="card-actions">
+                <button class="icon-btn edit-btn" title="Edit">&#9998;</button>
+                <button class="icon-btn delete-btn" title="Delete">
+                  &#128465;
+                </button>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <h3 class="property-title"><%= property.title %></h3>
+              <div class="property-location"><%= property.address %></div>
+
+              <div class="property-main-row">
+                <div class="property-price">
+                  $<%= property.price.toLocaleString() %>
+                </div>
+                <% if(property.unitsRent != null) { %>
+                <div class="property-units">
+                  Units Rent: <%= property.unitsRent %> / <%=
+                  property.totalUnits %>
+                </div>
+                <% } else if(property.unitsSold != null) { %>
+                <div class="property-units">
+                  Units Sold: <%= property.unitsSold %> / <%=
+                  property.totalUnits %>
+                </div>
+                <% } %>
+              </div>
+
+              <% if(property.progressPercent != null) { %>
+              <div class="progress-wrapper">
+                <div class="progress-label">
+                  <span>Construction</span>
+                  <span><%= property.progressPercent %>% complete</span>
+                </div>
+                <div class="progress-bar-bg">
+                  <div
+                    class="progress-bar-fill"
+                    style="width: <%= property.progressPercent %>%"
+                  ></div>
+                </div>
+              </div>
+              <% } %>
+
+              <div class="stats-row">
+                <div class="stat-item">
+                  <span class="stat-number"
+                    ><%= property.enquiries || 0 %></span
+                  >
+                  <span>Enquiries</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number"><%= property.visits || 0 %></span>
+                  <span>Visit</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number"><%= property.bookings || 0 %></span>
+                  <span>Booking</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <% if(property.unitsSold != null) { %>
+              <button class="btn-secondary">Add Update</button>
+              <% } %>
+              <!-- <a href="/properties/<%= property.id %>" class="btn-primary">View Detail</a> -->
+              <a href="/propertydetail/<%= property.id %>">
+                <button class="btn-primary w-100">View Detail</button>
+              </a>
+              
+            </div>
+          </article>
+          <% }) %>
+        </section>
+      </main>
+    </div>
+

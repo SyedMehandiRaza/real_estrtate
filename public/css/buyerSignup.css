@@ -1,0 +1,535 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  background: radial-gradient(
+    circle at top left,
+    #283bff 0,
+    #020617 45%,
+    #000 100%
+  );
+  color: #f9fafb;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page {
+  width: 100%;
+  max-width: 1800px;
+  padding: 32px;
+  display: flex;
+  justify-content: space-between;
+  gap: 148px;
+}
+
+/* Left section */
+.left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0px 8px 24px 0;
+}
+.brand {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.right {
+  position: relative;
+}
+
+.back-link {
+  position: absolute;
+  top: 16px;
+  left: -10%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #e5e7eb;
+  text-decoration: none;
+  cursor: pointer;
+}
+.back-link::before {
+  content: "←";
+  font-size: 14px;
+}
+
+.tagline {
+  max-width: 360px;
+  margin-top: auto;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #e5e7eb;
+}
+
+.tagline b {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+/* Right card */
+.card {
+  flex: 1;
+  background: #f9fafb;
+  color: #111827;
+  border-radius: 24px;
+  padding: 32px 36px 28px;
+}
+.card h2 {
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+.card p.subtitle {
+  font-size: 12px;
+  color: #6b7280ea;
+  margin-bottom: 18px;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 28px 0 32px;
+  font-size: 14px;
+}
+
+.tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #9b9b9b;
+  font-weight: 400;
+  text-align: center;
+  padding: 16px 0;
+  position: relative;
+}
+
+.tab-center {
+  flex: 0 0 auto;
+  padding: 0;
+  min-width: 190px;
+}
+
+.tab-center.active {
+  color: #8d4dff;
+  background: linear-gradient(180deg, #ffffff 0%, #f7f1ff 50%, #e9dcff 100%);
+}
+
+.tab-center.active::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -18px;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 56px;
+  background: linear-gradient(180deg, #ffffff 0%, #f7f1ff 50%, #e9dcff 100%);
+  border-radius: 4px;
+  box-shadow: 0 14px 26px rgba(160, 120, 255, 0.35);
+  z-index: -1;
+}
+
+.tab-center.active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -3px;
+  transform: translateX(-50%);
+  width: 182px;
+  height: 2px;
+  background: #c7afff;
+}
+
+/* Form */
+.form-group {
+  margin-bottom: 12px;
+  font-size: 12px;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 4px;
+  color: #4b5563;
+}
+.input {
+  width: 100%;
+  padding: 13px 11px;
+  border-radius: 10px;
+  border: 1px solid rgba(128, 128, 128, 0.426);
+  font-size: 12px;
+  outline: none;
+  transition: border 0.15s, box-shadow 0.15s;
+  background: #f9fafb;
+}
+
+.btn-primary {
+  width: 100%;
+  margin-top: 10px;
+  padding: 11px 0;
+  border: none;
+  border-radius: 10px;
+  background: #7c3aed;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  background: #6d28d9;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 14px 0;
+  font-size: 11px;
+  color: #9ca3af;
+}
+.divider span {
+  flex: 1;
+  height: 1px;
+  background: #e5e7eb;
+}
+
+.oauth-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.oauth-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 0;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  font-size: 11px;
+  color: #374151;
+  cursor: pointer;
+}
+.oauth-icon {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  background: #e5e7eb;
+}
+
+.login-text {
+  text-align: center;
+  font-size: 11px;
+  color: #6b7280;
+}
+.login-text a {
+  color: #7c3aed;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Large Tablet/iPad Pro (900px - 1200px) */
+@media (max-width: 1200px) and (min-width: 901px) {
+  .page {
+    gap: 80px;
+    padding: 32px;
+  }
+
+  .back-link {
+    left: -8%;
+  }
+}
+
+/* Tablet/iPad (768px - 900px) */
+@media (max-width: 900px) and (min-width: 768px) {
+  body {
+    align-items: flex-start;
+    padding: 20px 0;
+  }
+
+  .page {
+    flex-direction: column;
+    gap: 0;
+    padding: 32px;
+  }
+
+  .left {
+    padding-right: 0;
+    min-height: auto;
+    margin-bottom: 40px;
+  }
+
+  .brand {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .tagline {
+    max-width: 100%;
+    font-size: 15px;
+  }
+
+  .tagline b {
+    font-size: 18px;
+  }
+
+  .right {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .back-link {
+    position: static;
+    transform: none;
+    margin-bottom: 24px;
+    display: flex;
+  }
+
+  .card {
+    padding: 32px 36px;
+  }
+
+  .card h2 {
+    font-size: 22px;
+  }
+}
+/* Large Tablet/iPad Pro (900px - 1200px) */
+@media (max-width: 1200px) and (min-width: 901px) {
+  .page {
+    gap: 80px;
+    padding: 32px;
+  }
+
+  .back-link {
+    left: -8%;
+  }
+}
+
+/* Tablet/iPad (768px - 900px) */
+@media (max-width: 900px) and (min-width: 768px) {
+  body {
+    align-items: flex-start;
+    padding: 20px 0;
+  }
+
+  .page {
+    flex-direction: column;
+    gap: 0;
+    padding: 32px;
+    position: relative;
+  }
+
+  .left {
+    padding-right: 0;
+    min-height: auto;
+    margin-bottom: 40px;
+  }
+
+  .brand {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .tagline {
+    max-width: 100%;
+    font-size: 15px;
+  }
+
+  .tagline b {
+    font-size: 18px;
+  }
+
+  .right {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .back-link {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    transform: none;
+    z-index: 40;
+  }
+
+  .card {
+    padding: 32px 36px;
+  }
+
+  .card h2 {
+    font-size: 22px;
+  }
+}
+
+/* Mobile & Small Tablet (below 768px) */
+@media (max-width: 767px) {
+  body {
+    align-items: flex-start;
+  }
+
+  .page {
+    flex-direction: column;
+    gap: 32px;
+    padding: 20px;
+    position: relative;
+  }
+
+  .left {
+    padding-right: 0;
+    min-height: auto;
+    padding-top: 32px;
+  }
+
+  .brand {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .tagline {
+    max-width: 100%;
+    font-size: 14px;
+  }
+
+  .tagline b {
+    font-size: 16px;
+  }
+
+  .back-link {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    transform: none;
+    z-index: 40;
+  }
+
+  .card {
+    padding: 28px 24px;
+  }
+
+  .card h2 {
+    font-size: 20px;
+  }
+}
+
+/* Small Mobile (below 640px) */
+@media (max-width: 640px) {
+  .page {
+    padding: 16px;
+    gap: 24px;
+    padding-top: 52px;
+  }
+
+  .back-link {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    transform: none;
+    z-index: 40;
+  }
+
+  .card {
+    padding: 24px 20px;
+    border-radius: 20px;
+  }
+
+  .card h2 {
+    font-size: 18px;
+  }
+
+  .card p.subtitle {
+    font-size: 11px;
+  }
+
+  .tabs {
+    font-size: 12px;
+    margin: 20px 0 24px;
+  }
+
+  .tab {
+    padding: 12px 0;
+    font-size: 12px;
+  }
+
+  .tab-center {
+    min-width: 120px;
+  }
+
+  .tab-center.active::before {
+    width: 120px;
+    height: 48px;
+    top: -14px;
+  }
+
+  .tab-center.active::after {
+    width: 122px;
+  }
+
+  .oauth-row {
+    flex-direction: column;
+  }
+
+  .oauth-btn {
+    width: 100%;
+    padding: 11px 0;
+  }
+
+  .form-group {
+    font-size: 11px;
+  }
+
+  .input {
+    padding: 12px 10px;
+    font-size: 11px;
+  }
+}
+
+/* Extra Small Mobile (below 380px) */
+@media (max-width: 380px) {
+  .page {
+    padding: 12px;
+    padding-top: 48px;
+  }
+
+  .card {
+    padding: 20px 16px;
+  }
+
+  .brand {
+    font-size: 18px;
+  }
+
+  .tagline {
+    font-size: 13px;
+  }
+
+  .tagline b {
+    font-size: 15px;
+  }
+
+  .tab-center {
+    min-width: 100px;
+  }
+
+  .tab-center.active::before {
+    width: 100px;
+    height: 44px;
+  }
+
+  .tab-center.active::after {
+    width: 102px;
+  }
+}

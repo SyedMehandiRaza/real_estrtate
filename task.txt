@@ -1,0 +1,1 @@
+pass mail html code through ejs template

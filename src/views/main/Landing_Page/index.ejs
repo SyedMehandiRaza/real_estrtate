@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate - Find Your Dream Home</title>
+    <link rel="stylesheet" href="css/landing.css">
+    
+
+</head>
+<body class="bg-theme">
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">REAL ESTATE</h1>
+            <h2 class="hero-subtitle-main">Find A House That Suits You</h2>
+            <p class="hero-subtitle">Discover premium properties, trusted agents, and hassle-free<br>buying & renting.</p>
+            
+            <!-- Search Container -->
+            <div class="search-container">
+              <div class="search-field buy-field">
+                  <select id="purpose">
+                    <option value="buy">Buy</option>
+                    <option value="rent">Rent</option>
+                    <option value="sell">Sell</option>
+                  </select>
+                </div>
+
+                <div class="search-field">
+                  <input type="text" id="keyword" placeholder="Search Keyword">
+                </div>
+
+                <div class="search-field">
+                  <select id="type">
+                    <option value="">Type</option>
+                    <option value="apartment">Apartment</option>
+                    <option value="house">House</option>
+                    <option value="villa">Villa</option>
+                    <option value="commercial">Commercial</option>
+                  </select>
+                </div>
+
+                <div class="search-field">
+                  <select id="city">
+                    <option value="">All Cities</option>
+                    <option value="mumbai">Mumbai</option>
+                    <option value="delhi">Delhi</option>
+                    <option value="bangalore">Bangalore</option>
+                    <option value="pune">Pune</option>
+                  </select>
+                </div>
+
+                <button class="search-btn" id="searchBtn">Search</button>
+
+                <!-- <div class="search-field buy-field">
+                    <select>
+                        <option value="buy">Buy</option>
+                        <option value="rent">Rent</option>
+                        <option value="sell">Sell</option>
+                    </select>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <div class="search-field">
+                    <span class="search-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </span>
+                    <input type="text" placeholder="Search Keyword">
+                </div>
+                
+                <div class="divider"></div>
+                
+                <div class="search-field">
+                    <select>
+                        <option value="">Type</option>
+                        <option value="apartment">Apartment</option>
+                        <option value="house">House</option>
+                        <option value="villa">Villa</option>
+                        <option value="commercial">Commercial</option>
+                    </select>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <div class="search-field">
+                    <select>
+                        <option value="">All Cities</option>
+                        <option value="mumbai">Mumbai</option>
+                        <option value="delhi">Delhi</option>
+                        <option value="bangalore">Bangalore</option>
+                        <option value="pune">Pune</option>
+                    </select>
+                </div>
+                
+                <button class="search-btn">
+                    Search
+                    <span class="search-btn-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </span>
+                </button> -->
+            </div>
+        </div>
+    </section>
+
+    <section class="properties-section">
+        <div class="section-header">
+            <div class="header-left">
+                <h2 class="section-title">
+                    Discover The Most<br>Recent Properties
+                    <span class="arrow-decoration"><img src="/assets/Vector.png"></span>
+                </h2>
+            </div>
+            <div class="header-right">
+                <p class="section-description">
+                    Explore our handpicked selection of newly launched properties thoughtfully designed to suit every lifestyle.
+                </p>
+                <button class="properties-btn">
+                    Properties
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <div class="properties-grid">
+
+  <% if (properties && properties.length) { %>
+    <% properties.forEach(property => { %>
+
+      <div class="property-card">
+        <div class="card-image-container">
+          <img 
+            src="<%= property.thumbnail || '/assets/house-placeholder.webp' %>" 
+            alt="<%= property.title %>" 
+            class="card-image"
+          >
+
+          <div class="card-badges">
+            <span class="badge featured">Featured</span>
+            <span class="badge">For Sale</span>
+          </div>
+
+          <div class="card-nav">
+            <button class="nav-btn">‹</button>
+            <button class="nav-btn">›</button>
+          </div>
+        </div>
+
+        <div class="card-content">
+          <h3 class="property-title"><%= property.title %></h3>
+
+          <div class="property-location">
+            <svg class="spec-icon" viewBox="0 0 24 24">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+
+            <span style="color: lightskyblue; font-weight: bold;">
+              <%= property.address %>
+            </span>
+          </div>
+
+          <p class="property-type">
+            <%= property.constructionStatus %>
+          </p>
+
+          <div class="property-details">
+            <div class="property-price">
+              ₹<%= Number(property.price).toLocaleString("en-IN") %>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <span class="added-date">
+              Added: <%= new Date(property.createdAt).toDateString() %>
+            </span>
+
+            <a href="/properties/<%= property.id %>" class="view-detail-btn">
+              View detail
+            </a>
+            <!-- <a href="/properties/<%= property.id %>" class="view-detail-btn">
+                View detail
+            </a> -->
+
+          </div>
+        </div>
+      </div>
+
+    <% }) %>
+  <% } else { %>
+    <p style="color:white;">No properties found</p>
+  <% } %>
+
+</div>
+   
+    </section>
+
+     <section class="upcoming-section">
+    <!-- Section Header -->
+    <div class="upcoming-header">
+      <div class="upcoming-header-left">
+        <h2>
+          Discover Our
+         </h2>
+          <div>
+            <h2> Upcoming Properties
+                 <img src="Vector (2).png" alt="arrow" class="arrow-decoration">
+                 </h2>
+          </div>
+    
+       
+      </div>
+      <div class="upcoming-header-right">
+        <p class="upcoming-description">
+          Stay one step ahead with early access to our soon-to-launch developments, offering you the perfect blend of comfort, style, and investment potential.
+        </p>
+        <button class="upcoming-explore-btn">
+          Explore
+          <span class="upcoming-btn-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Properties Slider -->
+    <div class="upcoming-properties-slider">
+      <div class="upcoming-slider-container">
+        <!-- Property Card 1 -->
+        <div class="upcoming-property-card">
+          <div class="upcoming-card-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Luxury Apartment" class="upcoming-card-image">
+            <div class="upcoming-image-nav">
+              <button class="upcoming-nav-arrow">‹</button>
+              <button class="upcoming-nav-arrow">›</button>
+            </div>
+          </div>
+          <div class="upcoming-card-content">
+            <h3 class="upcoming-property-title">Luxury 3BHK Apartment</h3>
+            <div class="upcoming-property-location">
+              <svg class="upcoming-location-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              Bandra, Mumbai
+            </div>
+            <div class="upcoming-property-date">
+              <svg class="upcoming-calendar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              31-12-2025
+            </div>
+          </div>
+        </div>
+
+        <!-- Property Card 2 -->
+        <div class="upcoming-property-card">
+          <div class="upcoming-card-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Luxury Apartment" class="upcoming-card-image">
+            <div class="upcoming-image-nav">
+              <button class="upcoming-nav-arrow">‹</button>
+              <button class="upcoming-nav-arrow">›</button>
+            </div>
+          </div>
+          <div class="upcoming-card-content">
+            <h3 class="upcoming-property-title">Luxury 3BHK Apartment</h3>
+            <div class="upcoming-property-location">
+              <svg class="upcoming-location-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              Bandra, Mumbai
+            </div>
+            <div class="upcoming-property-date">
+              <svg class="upcoming-calendar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              31-12-2025
+            </div>
+          </div>
+        </div>
+
+        <!-- Property Card 3 -->
+        <div class="upcoming-property-card">
+          <div class="upcoming-card-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Luxury Apartment" class="upcoming-card-image">
+            <div class="upcoming-image-nav">
+              <button class="upcoming-nav-arrow">‹</button>
+              <button class="upcoming-nav-arrow">›</button>
+            </div>
+          </div>
+          <div class="upcoming-card-content">
+            <h3 class="upcoming-property-title">Luxury 3BHK Apartment</h3>
+            <div class="upcoming-property-location">
+              <svg class="upcoming-location-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              Bandra, Mumbai
+            </div>
+            <div class="upcoming-property-date">
+              <svg class="upcoming-calendar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              31-12-2025
+            </div>
+          </div>
+        </div>
+
+        <!-- Property Card 4 -->
+        <div class="upcoming-property-card">
+          <div class="upcoming-card-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Luxury Apartment" class="upcoming-card-image">
+            <div class="upcoming-image-nav">
+              <button class="upcoming-nav-arrow">‹</button>
+              <button class="upcoming-nav-arrow">›</button>
+            </div>
+          </div>
+          <div class="upcoming-card-content">
+            <h3 class="upcoming-property-title">Luxury 3BHK Apartment</h3>
+            <div class="upcoming-property-location">
+              <svg class="upcoming-location-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              Bandra, Mumbai
+            </div>
+            <div class="upcoming-property-date">
+              <svg class="upcoming-calendar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              31-12-2025
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ <section class="trusted-section">
+        <!-- Header --><div class="trusted-wrapper">
+        <div class="trusted-header">
+            <div class="trusted-header-left">
+                <div>
+                      <h2>
+                    Trusted By Thousands
+                    <br>  of people
+                </h2>
+               
+                </div>
+            
+
+
+                <div>
+                     <img src="Vector (2).png" class="trusted-arrow" style="color: white;">
+                </div>
+            </div>
+
+            <div class="trusted-header-right">
+                <p>
+                    Over the years, we've helped thousands of families, investors, and professionals 
+                    find the perfect property — earning trust through transparency, quality, 
+                    and reliability.
+                </p>
+            </div>
+        </div>
+
+        <!-- 4 Cards -->
+        <div class="trusted-grid">
+            <!-- Card 1 -->
+            <div class="trusted-card">
+                <div class="trusted-icon">
+                    <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        <path d="M9 22V12H15V22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3>5,000+ Properties Sold</h3>
+                <p>Homes, apartments, and villas sold successfully.</p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="trusted-card">
+                <div class="trusted-icon">
+                    <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        <circle cx="9" cy="7" r="4" stroke="white" stroke-width="2" fill="none"/>
+                        <path d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        <path d="M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    </svg>
+                </div>
+                <h3>500+ Trusted Agents</h3>
+                <p>Expert agents helping people every day.</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="trusted-card">
+                <div class="trusted-icon">
+                    <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" fill="none"/>
+                        <path d="M8 14C8 14 9.5 16 12 16C14.5 16 16 14 16 14" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
+                        <circle cx="9" cy="9" r="1" fill="white"/>
+                        <circle cx="15" cy="9" r="1" fill="white"/>
+                    </svg>
+                </div>
+                <h3>10,000+ Happy Clients</h3>
+                <p>Families who found their dream homes with us.</p>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="trusted-card">
+                <div class="trusted-icon">
+                    <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L15 8L22 9L17 14L18 21L12 18L6 21L7 14L2 9L9 8L12 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    </svg>
+                </div>
+                <h3>Across 50+ Cities</h3>
+                <p>Expanding trust nationwide.</p>
+            </div>
+        </div>
+         </div>
+    </section>
+
+
+    <section class="re-solutions-section">
+        <div class="re-container">
+            <div class="re-header">
+                <h1>Solutions for Every<br>Real Estate Partner</h1>
+                <p>
+                    We provide tailored tools and insights for every real estate role —
+                    from property owners to developers — helping each achieve success
+                    with ease.
+                </p>
+            </div>
+
+            <div class="re-cards">
+                <!-- Buyers & Tenants -->
+                <div class="re-card">
+                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=800" alt="Buyer with tablet">
+                    <h3>For Buyers & Tenants</h3>
+                    <p>
+                        Find your perfect home or rental with ease — explore verified
+                        listings, transparent pricing, and trusted agents.
+                    </p>
+                    <!-- <button class="re-cta-btn">
+                        Explore Properties <span>→</span>
+                    </button> -->
+                       <button class="re-explore-btn">
+          Explore Properties
+          <span class="re-btn-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </button>
+                </div>
+
+                <!-- Agents -->
+                <div class="re-card">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800" alt="Real estate agents">
+                    <h3>For Agents</h3>
+                    <p>
+                        Showcase verified listings, connect with buyers instantly, and close
+                        deals faster using our AI-powered tools.
+                    </p>
+                     <button class="re-explore-btn">
+ Joiin as Agent
+          <span class="re-btn-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </button>
+                </div>
+
+                <!-- Developers -->
+                <div class="re-card">
+                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=800" alt="Construction workers">
+                    <h3>For Developers</h3>
+                    <p>
+                        Promote your upcoming projects, manage leads, and boost visibility
+                        with dedicated project pages and analytics.
+                    </p>
+                    <button class="re-explore-btn">
+         Showcase Your Projects
+          <span class="re-btn-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </button>
+                </div>
+
+                <!-- Facility Management -->
+                <div class="re-card">
+                    <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=800" alt="Team meeting">
+                    <h3>For Facility Management</h3>
+                    <p>
+                        Streamline building operations, handle service requests, and
+                        maintain property value through digital management tools.
+                    </p>
+                   <button class="re-explore-btn">
+              Get Started
+          <span class="re-btn-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </button>   
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+  <section class="testimonial-section">
+        <div class="ts-container">
+            <div class="ts-header">
+                <h2>
+                    What Our Client Says
+                    <span class="ts-arrow-icon">
+                        <img src="Vector (2).png">
+                    </span>
+                </h2>
+                <p class="ts-renters">
+                    Hear from homebuyers, renters, and investors who trusted us with their journey.
+                </p>
+            </div>
+
+            <div class="ts-testimonials-wrapper">
+                <button class="ts-nav-button ts-prev">
+                    <svg viewBox="0 0 24 24">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+
+                <div class="ts-testimonials-container">
+                    <div class="ts-testimonial-card">
+                        <div class="ts-stars">
+                            <span class="ts-star">⭐</span>
+                            <span class="ts-star">⭐</span>
+                            <span class="ts-star">⭐</span>
+                            <span class="ts-star">⭐</span>
+                            <span class="ts-star">⭐</span>
+                        </div>
+                        <p class="ts-testimonial-text">
+                            "We found our dream 3BHK apartment so quickly! The team guided us through every step and made it a smooth experience."
+                        </p>
+                        <div class="ts-author">
+                            <div class="ts-author-image">
+                                <img src="https://i.pravatar.cc/150?img=12" alt="Eddie Hudson">
+                            </div>
+                            <div class="ts-author-info">
+                                <h4>Eddie Hudson</h4>
+                                <p>Mumbai</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ts-testimonial-card">
+                        <div class="ts-stars">
+                            <span class="ts-star">⭐</span>
+                            <span class="ts-star">⭐</span>
+                            <span class="ts-star">⭐</span>
+                            <span class="ts-star">⭐</span>
+                            <span class="ts-star">⭐</span>
+                        </div>
+                        <p class="ts-testimonial-text">
+                            "We found our dream 3BHK apartment so quickly! The team guided us through every step and made it a smooth experience."
+                        </p>
+                        <div class="ts-author">
+                            <div class="ts-author-image">
+                                <img src="https://i.pravatar.cc/150?img=12" alt="Eddie Hudson">
+                            </div>
+                            <div class="ts-author-info">
+                                <h4>Eddie Hudson</h4>
+                                <p>Mumbai</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ts-testimonial-card">
+                        <div class="ts-stars">
+                            <span class="ts-star">⭐</span>
+                            <span class="ts-star">⭐</span>
+                            <span class="ts-star">⭐</span>
+                            <span class="ts-star">⭐</span>
+                            <span class="ts-star">⭐</span>
+                        </div>
+                        <p class="ts-testimonial-text">
+                            "We found our dream 3BHK apartment so quickly! The team guided us through every step and made it a smooth experience."
+                        </p>
+                        <div class="ts-author">
+                            <div class="ts-author-image">
+                                <img src="https://i.pravatar.cc/150?img=12" alt="Eddie Hudson">
+                            </div>
+                            <div class="ts-author-info">
+                                <h4>Eddie Hudson</h4>
+                                <p>Mumbai</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="ts-nav-button ts-next">
+                    <svg viewBox="0 0 24 24">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="real-estate-explorer">
+    <div class="main-wrapper">
+        <div class="top-section">
+            <div class="left-content">
+                <div>
+                      <h2>
+                    Explore Properties<br>by Cities
+                   
+                </h2>
+                </div>
+                   <div class="decorative-arrow">
+                      <img src="Vector (2).png" alt="arrow">
+                    </div>
+            </div>
+            <div class="right-content">
+                <p class="info-text">
+                    Stay one step ahead with early access to our soon-to-launch developments, offering you the perfect blend of comfort, style, and investment potential.
+                </p>
+                <div>
+                        <button class="upcoming-explore-btn">
+          Explore
+          <span class="upcoming-btn-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </button>
+                </div>
+               
+            </div>
+        </div>
+
+        <div class="city-cards-grid">
+            <div class="city-item">
+                <div class="city-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1567157577867-05ccb1388e66?w=400&h=300&fit=crop" alt="Mumbai">
+                </div>
+                <div class="city-meta">
+                    <div class="city-text">
+                        <h3>Mumbai</h3>
+                        <p>175 properties</p>
+                    </div>
+                    <div class="circle-arrow">→</div>
+                </div>
+            </div>
+
+            <div class="city-item">
+                <div class="city-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1596436889106-be35e843f974?w=400&h=300&fit=crop" alt="Pune">
+                </div>
+                <div class="city-meta">
+                    <div class="city-text">
+                        <h3>Pune</h3>
+                        <p>175 properties</p>
+                    </div>
+                    <div class="circle-arrow">→</div>
+                </div>
+            </div>
+
+            <div class="city-item">
+                <div class="city-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=400&h=300&fit=crop" alt="Bhopal">
+                </div>
+                <div class="city-meta">
+                    <div class="city-text">
+                        <h3>Bhopal</h3>
+                        <p>175 properties</p>
+                    </div>
+                    <div class="circle-arrow">→</div>
+                </div>
+            </div>
+
+            <div class="city-item">
+                <div class="city-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=400&h=300&fit=crop" alt="New Delhi">
+                </div>
+                <div class="city-meta">
+                    <div class="city-text">
+                        <h3>New Delhi</h3>
+                        <p>175 properties</p>
+                    </div>
+                    <div class="circle-arrow">→</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+     <section class="agent-section">
+        <div class="main-wrapper">
+            <div class="top-section">
+                <div class="heading-area">
+                    <div>
+                              <h1>
+                        Meet Our Expert
+                        
+                    </h1>
+                    </div>
+                      <div class="agent-decorative-arrow">
+                      
+                      <h1>
+                        
+                        Agent
+                        <div style="width: 120px;">
+                        </div>
+                        <img src="Vector (2).png" alt="arrow">
+                      </h1>
+                    </div>
+                </div>
+                <div class="client-feedback">
+                    Hear from homebuyers, renters, and investors who trusted us with their journey.
+                </div>
+            </div>
+
+            <div class="slider-wrapper">
+                <button class="nav-button btn-prev" onclick="moveToPrev()">‹</button>
+                
+                <div class="slider-overflow">
+                    <div class="slider-track" id="sliderTrack">
+                        <!-- Profile Card 1 -->
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" alt="Eddie Hudson" class="profile-image">
+                                <div class="profile-details">
+                                    <h2>
+                                        Eddie Hudson
+                                        <span class="badge-verified">Verified</span>
+                                    </h2>
+                                    <p class="profile-city">Mumbai</p>
+                                </div>
+                            </div>
+                            <p class="profile-bio">
+                                With 8+ years of experience in luxury real estate, Eddie has helped hundreds of clients find their dream homes in Mumbai.
+                            </p>
+                            <div class="images-grid">
+                                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=300&h=300&fit=crop" alt="Property 1" class="grid-image">
+                                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=300&h=300&fit=crop" alt="Property 2" class="grid-image">
+                                <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=300&h=300&fit=crop" alt="Property 3" class="grid-image">
+                                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=300&h=300&fit=crop" alt="Property 4" class="grid-image">
+                            </div>
+                            <div class="card-bottom">
+                                <button class="btn-detail">View detail</button>
+                                <span class="listing-count">4 Listed Property</span>
+                            </div>
+                        </div>
+
+                        <!-- Profile Card 2 -->
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop" alt="Monique Wintheiser" class="profile-image">
+                                <div class="profile-details">
+                                    <h2>
+                                        Monique Wintheiser
+                                        <span class="badge-verified">Verified</span>
+                                    </h2>
+                                    <p class="profile-city">Mumbai</p>
+                                </div>
+                            </div>
+                            <p class="profile-bio">
+                                With 8+ years of experience in luxury real estate, Monique has helped hundreds of clients find their dream homes in Mumbai.
+                            </p>
+                            <div class="images-grid">
+                                <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=300&h=300&fit=crop" alt="Property 1" class="grid-image">
+                                <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=300&h=300&fit=crop" alt="Property 2" class="grid-image">
+                                <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=300&h=300&fit=crop" alt="Property 3" class="grid-image">
+                                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=300&h=300&fit=crop" alt="Property 4" class="grid-image">
+                            </div>
+                            <div class="card-bottom">
+                                <button class="btn-detail">View detail</button>
+                                <span class="listing-count">4 Listed Property</span>
+                            </div>
+                        </div>
+
+                        <!-- Profile Card 3 -->
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop" alt="John Smith" class="profile-image">
+                                <div class="profile-details">
+                                    <h2>
+                                        John Smith
+                                        <span class="badge-verified">Verified</span>
+                                    </h2>
+                                    <p class="profile-city">Mumbai</p>
+                                </div>
+                            </div>
+                            <p class="profile-bio">
+                                With 8+ years of experience in luxury real estate, John has helped hundreds of clients find their dream homes in Mumbai.
+                            </p>
+                            <div class="images-grid">
+                                <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=300&h=300&fit=crop" alt="Property 1" class="grid-image">
+                                <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=300&h=300&fit=crop" alt="Property 2" class="grid-image">
+                                <img src="https://images.unsplash.com/photo-1600566753151-384129cf4e3e?w=300&h=300&fit=crop" alt="Property 3" class="grid-image">
+                                <img src="https://images.unsplash.com/photo-1600563438938-a9a27216b4f5?w=300&h=300&fit=crop" alt="Property 4" class="grid-image">
+                            </div>
+                            <div class="card-bottom">
+                                <button class="btn-detail">View detail</button>
+                                <span class="listing-count">4 Listed Property</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="nav-button btn-next" onclick="moveToNext()">›</button>
+            </div>
+
+            <div class="pagination-dots">
+                <span class="pagination-dot is-active" onclick="jumpToSlide(0)"></span>
+                <span class="pagination-dot" onclick="jumpToSlide(1)"></span>
+                <span class="pagination-dot" onclick="jumpToSlide(2)"></span>
+            </div>
+        </div>
+    </section>
+    <section class="estate-partner-area">
+        <div class="main-container">
+            <div class="top-section-wrapper">
+                <div class="title-with-arrow">
+                    <h2>Our Real Estate<br>Partner</h2>
+                    <div class="curved-arrow-icon">
+                     <img src="Vector (2).png">
+                    </div>
+                </div>
+                <div class="tagline-text-area">
+                    <p>Empowering growth through trusted collaborations and shared vision.</p>
+                </div>
+            </div>
+
+            <div class="company-logos-grid">
+                <div class="brand-logo-box">
+                    <svg width="80" height="60" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="25" y="15" width="30" height="35" fill="#FFB800"/>
+                        <rect x="20" y="20" width="40" height="5" fill="#333"/>
+                        <circle cx="40" cy="35" r="8" fill="#333"/>
+                        <text x="40" y="56" font-size="8" fill="#333" text-anchor="middle" font-weight="600">CONSTRUCTION</text>
+                    </svg>
+                </div>
+                <div class="brand-logo-box">
+                    <svg width="80" height="60" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M40 10L60 30H55V50H45V35H35V50H25V30H20L40 10Z" fill="#4A90E2"/>
+                        <text x="40" y="56" font-size="7" fill="#4A90E2" text-anchor="middle" font-weight="600">Home Sweet</text>
+                    </svg>
+                </div>
+                <div class="brand-logo-box">
+                    <svg width="80" height="60" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M30 25L40 15L50 25L45 25V35L50 40L40 50L30 40L35 35V25L30 25Z" fill="#5B4B7D"/>
+                        <path d="M40 15L50 25M40 15L30 25" stroke="#5B4B7D" stroke-width="2"/>
+                        <text x="40" y="56" font-size="7" fill="#5B4B7D" text-anchor="middle" font-weight="600">Builder Logo</text>
+                    </svg>
+                </div>
+                <div class="brand-logo-box">
+                    <svg width="80" height="60" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="25" y="35" width="10" height="15" fill="#FFB800"/>
+                        <rect x="35" y="25" width="10" height="25" fill="#FFB800"/>
+                        <rect x="45" y="15" width="10" height="35" fill="#FFB800"/>
+                        <text x="40" y="56" font-size="7" fill="#FFB800" text-anchor="middle" font-weight="600">REAL ESTATE</text>
+                    </svg>
+                </div>
+                <div class="brand-logo-box">
+                    <svg width="80" height="60" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="32" y="15" width="16" height="30" fill="#4A90E2"/>
+                        <rect x="28" y="20" width="4" height="20" fill="#4A90E2"/>
+                        <rect x="48" y="20" width="4" height="20" fill="#4A90E2"/>
+                        <rect x="35" y="25" width="3" height="3" fill="#fff"/>
+                        <rect x="42" y="25" width="3" height="3" fill="#fff"/>
+                        <rect x="35" y="32" width="3" height="3" fill="#fff"/>
+                        <rect x="42" y="32" width="3" height="3" fill="#fff"/>
+                        <text x="40" y="56" font-size="7" fill="#4A90E2" text-anchor="middle" font-weight="600">RealService</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <section class="cta-section">
+
+        <div class="cta-container">
+            
+            <div class="cta-content">
+                <h2 class="cta-heading">
+                    Ready to Move Into Your Dream Home?
+                </h2>
+                <p class="cta-description">
+                    Get expert guidance and explore premium properties tailored for you.
+                </p>
+                <a href="#" class="cta-button">
+                    Schedule a Free Consultation
+                    <span class="button-icon">
+                        <svg class="arrow-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+
+            <div class="cta-image-wrapper">
+                <img src="2150799739 1.png" alt="Modern Dream Home" class="home-image">
+            </div>
+        </div>
+    </section>
+
+     <div class="realestate-contact-wrapper">
+    <div class="realestate-contact-container">
+
+      <!-- LEFT SECTION -->
+      <div class="realestate-contact-left">
+        <div class="realestate-head">
+          <h1>Get In Touch<br>With Us</h1>
+          <div class="realestate-arrow-wrapper">
+            <img src="Vector (2).png" class="realestate-contact-arrow" alt="Arrow" />
+          </div>
+        </div>
+
+        <div class="realestate-contact-image-box">
+          <div class="realestate-shape-bg">
+            <img src="Rectangle 23.png" alt="Shape">
+          </div>
+          <img src="2151064891 1.png" class="realestate-contact-man-img" alt="Contact Person">
+        </div>
+      </div>
+
+      <!-- RIGHT SECTION -->
+      <div class="realestate-contact-right">
+        <p class="realestate-contact-right-text">
+          We're just a message away — whether you're buying, selling, or developing,
+          we'll help you make the right move.
+        </p>
+
+        <div class="realestate-contact-form-card">
+          <form class="realestate-contact-form">
+
+            <div class="realestate-form-row">
+              <div class="realestate-field">
+                <label>Name *</label>
+                <input type="text" placeholder="Enter" required>
+              </div>
+
+              <div class="realestate-field">
+                <label>Email *</label>
+                <input type="email" placeholder="Enter" required>
+              </div>
+            </div>
+
+            <div class="realestate-form-row">
+              <div class="realestate-field">
+                <label>Phone Number *</label>
+                <input type="tel" placeholder="Enter" required>
+              </div>
+
+              <div class="realestate-field">
+                <label>Property Interest *</label>
+                <select required>
+                  <option>Select</option>
+                  <option>Buying</option>
+                  <option>Selling</option>
+                  <option>Renting</option>
+                  <option>Developing</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="realestate-form-row full">
+              <div class="realestate-field">
+                <label>Location</label>
+                <input type="text" placeholder="Enter">
+              </div>
+            </div>
+
+            <div class="realestate-form-row full">
+              <div class="realestate-field">
+                <label>Message</label>
+                <textarea placeholder="Tell us more about your requirements.."></textarea>
+              </div>
+            </div>
+
+            <div class="realestate-terms">
+              <input type="checkbox" required>
+              <label>By clicking, you agree to our <a href="#">Terms & Conditions</a>.</label>
+            </div>
+
+            <button type="submit" class="realestate-submit-btn">
+              Submit
+              <span class="arrow">➜</span>
+            </button>
+
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+   
+    </div>
+    <script>
+        // Smooth scroll for down arrow
+        document.querySelector('.fab.down-arrow').addEventListener('click', function() {
+            window.scrollBy({
+                top: window.innerHeight,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+
+
+<script>
+    const container = document.querySelector(".ts-testimonials-container");
+    const cards = document.querySelectorAll(".ts-testimonial-card");
+    const prevBtn = document.querySelector(".ts-prev");
+    const nextBtn = document.querySelector(".ts-next");
+
+    let index = 0;
+    const totalCards = cards.length;
+    const cardWidth = cards[0].offsetWidth + 30; // card width + gap
+
+    function updateSlider() {
+        container.style.transform = `translateX(-${index * cardWidth}px)`;
+        container.style.transition = "0.4s ease";
+    }
+
+    nextBtn.addEventListener("click", () => {
+        if (index < totalCards - 1) {
+            index++;
+        } else {
+            index = 0; // loop back to start
+        }
+        updateSlider();
+    });
+
+    prevBtn.addEventListener("click", () => {
+        if (index > 0) {
+            index--;
+        } else {
+            index = totalCards - 1; // go to last slide
+        }
+        updateSlider();
+    });
+
+    // Optional: Auto Slide
+    setInterval(() => {
+        index = (index + 1) % totalCards;
+        updateSlider();
+    }, 4000);
+</script>
+
+      <script>
+        // Add click handlers for navigation buttons
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                console.log('Navigation clicked');
+            });
+        });
+
+        // Add click handlers for view detail buttons
+        document.querySelectorAll('.view-detail-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                console.log('View detail clicked');
+            });
+        });
+    </script>
+
+       <script>
+        // Smooth horizontal scroll for slider
+        const sliderContainer = document.querySelector('.slider-container');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        sliderContainer.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - sliderContainer.offsetLeft;
+            scrollLeft = sliderContainer.scrollLeft;
+        });
+
+        sliderContainer.addEventListener('mouseleave', () => {
+            isDown = false;
+        });
+
+        sliderContainer.addEventListener('mouseup', () => {
+            isDown = false;
+        });
+
+        sliderContainer.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - sliderContainer.offsetLeft;
+            const walk = (x - startX) * 2;
+            sliderContainer.scrollLeft = scrollLeft - walk;
+        });
+
+        // Navigation arrows functionality
+        document.querySelectorAll('.nav-arrow').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                console.log('Image navigation clicked');
+            });
+        });
+    </script>
+
+     <script>
+        let activeSlide = 0;
+        const track = document.getElementById('sliderTrack');
+        const dots = document.querySelectorAll('.pagination-dot');
+        const slideCount = 3;
+
+        function refreshSlider() {
+            const cardWidth = document.querySelector('.profile-card').offsetWidth + 30;
+            track.style.transform = `translateX(-${activeSlide * cardWidth}px)`;
+            
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('is-active', idx === activeSlide);
+            });
+        }
+
+        function moveToNext() {
+            activeSlide = (activeSlide + 1) % slideCount;
+            refreshSlider();
+        }
+
+        function moveToPrev() {
+            activeSlide = (activeSlide - 1 + slideCount) % slideCount;
+            refreshSlider();
+        }
+
+        function jumpToSlide(idx) {
+            activeSlide = idx;
+            refreshSlider();
+        }
+
+        window.addEventListener('resize', refreshSlider);
+    </script>
+
+
+
+
+    <!-- search filter implementation js code  -->
+    <script>
+      document.getElementById("searchBtn").addEventListener("click", async () => {
+        const city = document.getElementById("city").value;
+        const type = document.getElementById("type").value;
+        const purpose = document.getElementById("purpose").value;
+        const keyword = document.getElementById("keyword").value;
+
+        const params = new URLSearchParams();
+
+        if (city) params.append("city", city);
+        if (type) params.append("type", type);
+        if (purpose) params.append("purpose", purpose);
+        if (keyword) params.append("keyword", keyword);
+
+        try {
+          const res = await fetch(`/search?${params.toString()}`);
+          const data = await res.json();
+
+          console.log("Search Results:", data);
+          showResults(data);
+        } catch (error) {
+          console.error("Search error:", error);
+        }
+      });
+
+      function showResults(properties) {
+  const grid = document.querySelector(".properties-grid");
+  grid.innerHTML = "";
+
+  if (!Array.isArray(properties) || properties.length === 0) {
+    grid.innerHTML = `<p style="color:white;">No properties found</p>`;
+    return;
+  }
+
+  properties.forEach(p => {
+    const thumbnail = p.media?.find(m => m.type === "IMAGE")?.url 
+      || "/assets/house-placeholder.webp";
+
+    grid.innerHTML += `
+      <div class="property-card">
+        <div class="card-image-container">
+          <img src="${thumbnail}" alt="${p.title}" class="card-image">
+
+          <div class="card-badges">
+            <span class="badge featured">Featured</span>
+            <span class="badge">For Sale</span>
+          </div>
+
+          <div class="card-nav">
+            <button class="nav-btn">‹</button>
+            <button class="nav-btn">›</button>
+          </div>
+        </div>
+
+        <div class="card-content">
+          <h3 class="property-title">${p.title}</h3>
+
+          <div class="property-location">
+            <svg class="spec-icon" viewBox="0 0 24 24">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+
+            <span style="color: lightskyblue; font-weight: bold;">
+              ${p.address}
+            </span>
+          </div>
+
+          <p class="property-type">${p.constructionStatus}</p>
+
+          <div class="property-details">
+            <div class="property-price">
+              ₹${Number(p.price).toLocaleString("en-IN")}
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <span class="added-date">
+              Added: ${new Date(p.createdAt).toDateString()}
+            </span>
+
+            <a href="/properties/${p.id}" class="view-detail-btn">
+              View detail
+            </a>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+}
+
+</script>
+
+</body>
+</html>

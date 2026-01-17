@@ -1,0 +1,247 @@
+
+<main class="main">
+  <div class="top-bar">
+    <div class="page-title">My Properties Detail</div>
+    <div class="top-right">
+      <button class="bell-btn"></button>
+      <div class="avatar"></div>
+    </div>
+  </div>
+
+  <!-- header -->
+  <section class="property-header">
+    <div class="property-header-img-wrap">
+      <img
+        src="<%= images.length ? images[0] : 'https://via.placeholder.com/900x500' %>"
+        alt="<%= property.title %>"
+        class="property-header-img"
+      />
+
+      <div class="property-slider-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+      <div class="property-slider-count">2/12</div>
+    </div>
+
+    <div class="property-details">
+      <div>        
+        <h2 class="property-title"><%= property.title %></h2>
+        <!-- <h2 class="property-title">Skyline Heights – Tower</h2> -->
+         <div class="property-location">
+          <span class="location-icon">📍</span>
+          <%= property.address %>
+        </div>
+        <!-- <div class="property-location">
+          <span class="location-icon">📍</span>
+          Bandra West, Mumbai
+        </div> -->
+
+        <table class="property-info-table">
+          <tr>
+            <td>Type:</td>
+            <td><%= property.propertyType %></td>
+          </tr>
+          <tr>
+            <td>Total Units:</td>
+            <td><%= property.totalUnits || "-" %></td>
+          </tr>
+          <tr>
+            <td>Leads:</td>
+            <td><%= property.leads || "-"  %></td>
+          </tr>
+          <tr>
+            <td>Booking:</td>
+            <td><%= property.bookings || "-"  %></td>
+          </tr>
+          <tr>
+            <td>Listed on:</td>
+            <td><%= property.yearBuilt %></td>
+          </tr>
+          <tr>
+            <td>Price Range:</td>
+            <td>₹ <%= property.price %></td>
+          </tr>
+          <tr>
+            <td>Status:</td>
+            <td><span class="property-status"><%= property.status %></span></td>
+          </tr>
+        </table>
+        <!-- <table class="property-info-table">
+          <tr>
+            <td>Type:</td>
+            <td>2-3BHK Apartment</td>
+          </tr>
+          <tr>
+            <td>Total Units:</td>
+            <td>120</td>
+          </tr>
+          <tr>
+            <td>Leads:</td>
+            <td>48</td>
+          </tr>
+          <tr>
+            <td>Booking:</td>
+            <td>12</td>
+          </tr>
+          <tr>
+            <td>Listed on:</td>
+            <td>22 Oct 2025</td>
+          </tr>
+          <tr>
+            <td>Price Range:</td>
+            <td>$840k - $1.4M</td>
+          </tr>
+          <tr>
+            <td>Status:</td>
+            <td><span class="property-status">Ready to move</span></td>
+          </tr>
+        </table> -->
+      </div>
+
+      <div class="property-actions">
+        <button class="property-btn edit">Edit</button>
+        <button class="property-btn delete">Delete</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- stats -->
+  <div class="stats-wrapper">
+    <div class="stat-card">
+      <p class="stat-title">Total Units</p>
+      <p class="stat-value">32</p>
+      <p class="stat-sub">Units listed</p>
+    </div>
+    <div class="stat-card">
+      <p class="stat-title">Total Earnings</p>
+      <p class="stat-value">$8.45M</p>
+      <p class="stat-sub">
+        <span class="green">+$89,000</span> growth this month
+      </p>
+    </div>
+    <div class="stat-card">
+      <p class="stat-title">Active Leads</p>
+      <p class="stat-value">42</p>
+      <p class="stat-sub">
+        <span class="green">+580,000</span> growth this month
+      </p>
+    </div>
+    <div class="stat-card">
+      <p class="stat-title">Visit</p>
+      <p class="stat-value">1.7k</p>
+      <p class="stat-sub">1 project nearing completion</p>
+    </div>
+  </div>
+
+  <!-- tabs -->
+  <div class="tabs-row">
+    <div class="tab active">Overview</div>
+    <div class="tab">Configuration</div>
+    <div class="tab">CRM</div>
+    <div class="tab">Documents</div>
+    <div class="tab">Facility</div>
+    <div class="tab">Buyers</div>
+    <div class="tab">Marketing</div>
+  </div>
+
+  <!-- main content -->
+  <section class="content-grid">
+    <div>
+      <div class="card">
+        <div class="card-title">Property Description</div>
+        <p class="text-muted">
+          <%= property.description %>
+          <!-- Experience modern living in this spacious 3BHK apartment located in
+          the heart of the city. Designed for comfort and convenience, this
+          property blends elegant interiors with premium amenities for an
+          unparalleled lifestyle. -->
+        </p>
+        <span class="show-more">Show more</span>
+      </div>
+      <!-- <div class="card">
+          <div class="card-title">Amenities &amp; Features</div>
+            <div class="amenities-grid">
+              <% if (property?.amenities) { %>
+                <% property.amenities.split(',').forEach(function(amenity) { %>
+                  <% if (amenity.trim()) { %>
+                    <div><%= amenity.trim() %></div>
+                  <% } %>
+                <% }) %>
+              <% } %>
+            </div>
+        </div> -->
+
+      <div class="card">
+        <div class="card-title">Amenities &amp; Features</div>
+
+        <div class="amenities-grid">
+          <% 
+            const amenitiesList = property?.amenities
+              ? property.amenities.split(',').map(a => a.trim()).filter(Boolean)
+              : [];
+          %>
+
+          <% if (amenitiesList.length > 0) { %>
+            <% amenitiesList.forEach(function(amenity) { %>
+              <div><%= amenity %></div>
+            <% }) %>
+          <% } else { %>
+            <!-- Default static amenities -->
+            <div>Spacious Living Room</div>
+            <div>Modular Kitchen</div>
+            <div>Premium Flooring</div>
+            <div>Balcony with City View</div>
+            <div>Swimming Pool</div>
+            <div>Gym / Fitness Center</div>
+            <div>Clubhouse</div>
+            <div>Children’s Play Area</div>
+          <% } %>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <div class="card-title">Gallery</div>
+        <div class="gallery-grid">
+        <% images.forEach(img => { %>
+          <div class="gallery-item">
+            <img src="<%= img %>" alt="Property image" />
+          </div>
+        <% }) %>
+      </div>
+
+        <div class="view-all">View all →</div>
+      </div>
+    </div>
+
+    <aside>
+      <div class="card">
+        <div class="card-title">Map</div>
+        <div class="map-box"></div>
+
+        <div class="card-title" style="margin-top: 0">Address</div>
+        <div class="address-list">
+          <div class="address-row">
+            <span>Address</span><span><%= property.address %></span>
+          </div>
+          <div class="address-row">
+            <span>Area</span><span><%= property.area %></span>
+          </div>
+          <div class="address-row">
+            <span>City/State</span><span><%= property.city %>,<%= property.state %></span>
+          </div>
+          <div class="address-row">
+            <span>Zipcode</span><span><%= property.zipCode %></span>
+          </div>
+          <div class="address-row">
+            <span>Country</span><span><%= property.country %></span>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </section>
+</main>

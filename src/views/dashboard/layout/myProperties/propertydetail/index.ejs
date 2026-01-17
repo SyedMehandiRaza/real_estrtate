@@ -1,0 +1,165 @@
+<main class="main-area">
+  <!-- TOP BAR -->
+  <header class="top-bar">
+    <div class="top-left">
+      <span class="back-arrow"><</span>
+      <span class="top-title">Add Property</span>
+    </div>
+    <div class="top-right">
+      <span class="bell-icon">🔔</span>
+      <div class="avatar"></div>
+    </div>
+  </header>
+
+  <!-- STEP BAR WITH LINES -->
+  <section class="steps-bar">
+    <div class="step-block active">
+      <div class="corner-wrap">
+        <span class="step-circle">1</span>
+      </div>
+      <span class="step-text">Basic Information</span>
+    </div>
+
+    <div class="step-line"></div>
+
+    <div class="step-block active">
+      <div class="circle-wrap">
+        <span class="step-circle">2</span>
+      </div>
+      <span class="step-text">Property Details</span>
+    </div>
+
+    <div class="step-line"></div>
+
+    <div class="step-block">
+      <div class="circle-wrap">
+        <span class="step-circle">3</span>
+      </div>
+      <span class="step-text">Configuration Setup</span>
+    </div>
+
+    <div class="step-line"></div>
+
+    <div class="step-block">
+      <div class="circle-wrap">
+        <span class="step-circle">4</span>
+      </div>
+      <span class="step-text">Upload Media</span>
+    </div>
+
+    <div class="step-line"></div>
+
+    <div class="step-block">
+      <div class="corner-wrap">
+        <span class="step-circle">5</span>
+      </div>
+      <span class="step-text">Documents</span>
+    </div>
+
+    <div class="step-line"></div>
+
+    <div class="step-block">
+      <div class="circle-wrap">
+        <span class="step-circle">6</span>
+      </div>
+      <span class="step-text">Review & Submit</span>
+    </div>
+  </section>
+
+  <!-- WHITE CARD -->
+  <section class="content-area">
+    <div class="card">
+      <h2 style="font-size: 15px">Property Details</h2>
+
+      <form class="property-form" method="POST" action="/add_detail">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Total Area</label>
+            <input type="text" name="area" placeholder="Enter Property Name" />
+          </div>
+          <div class="form-group">
+            <label>Total Units</label>
+            <input type="text" name="noOfUnit" placeholder="Enter" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>No. of Towers / Blocks</label>
+            <input type="text" name="noOfTower" placeholder="Enter" />
+          </div>
+          <div class="form-group">
+            <label>No. of Floors</label>
+            <input type="text"  name="noOfFloor" placeholder="Enter" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Starting Price</label>
+            <input type="text"  name="price" placeholder="Enter" />
+          </div>
+          <div class="form-group">
+            <label>Year Build</label>
+            <input type="text" name="yearBuilt" placeholder="Enter" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Developer / Builder Name</label>
+            <input type="text" name="builderName" placeholder="Enter" />
+          </div>
+          <div class="form-group">
+            <label>Property Description</label>
+            <textarea
+              placeholder="Enter"
+              name="description"
+              rows="1"
+              style="
+                resize: vertical;
+                padding: 11px 13px;
+                border-radius: 8px;
+                border: 1px solid #e4e5ef;
+                background: #fafbff;
+                font-size: 0.78rem;
+                outline: none;
+                width: 100%;
+                font-family: inherit;
+                min-height: 45px;
+              "
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group full">
+            <label>Amenities</label>
+            <input type="text" name="amenities" placeholder="Enter" />
+          </div>
+        </div>
+
+        <div class="actions" style="display: flex; gap: 10px">
+          <button
+            onclick="window.location.href='/add'"
+            type="button"
+            class="back-btn"
+            style="
+              padding: 11px 34px;
+              background: #fff;
+              color: #a259ff;
+              border: 2px solid #a259ff;
+              border-radius: 10px;
+              font-size: 1rem;
+              font-weight: 600;
+              cursor: pointer;
+            "
+          >
+            ← Back
+          </button>
+          <button type="submit" class="next-btn">Next →</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>

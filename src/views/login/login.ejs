@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real Estate – Sign Up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/login.css">
+    
+  </head>
+  <body>
+    <div class="page">
+      <div class="back-button">
+           <a href="#" class="">Back to home</a>
+      </div>
+      <div class="left">
+        <div>
+          <div class="brand">Real Estate</div>
+        </div>
+        <p class="tagline">
+          <b>Join a platform that connects buyers, agents, and developers.</b>
+          Simplify every step of the real estate journey with a single, modern
+          dashboard.
+        </p>
+      </div>
+      <div class="right">
+        <a href="#" class="back-link">Back to home</a>
+        <div class="card">
+           
+          <h2>Welcome Back!</h2>
+          <p class="subtitle">
+            Access your account to explore, manage, and grow your real estate connections.
+          </p>
+
+          <form action="/login" method="POST">
+            <div class="form-group">
+              <label>Email / Phone</label>
+              <input
+                type="text"
+                name="email"
+                class="input"
+                placeholder="Enter Email or Phone"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Password</label>
+              <input
+                type="password"
+                name="password"
+                class="input"
+                placeholder="Enter Password"
+                required
+              />
+            </div>
+
+             <div class="forgot">
+              <a>Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="btn-primary">Log In</button>
+
+          </form>
+
+
+          <!-- <div class="form-group">
+            <label>Email / Phone Number</label>
+            <input type="text" class="input" placeholder="Enter Email / Phone number" />
+          </div>
+
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="input" placeholder="Enter Password" />
+          </div>
+
+          <div class="forgot">
+            <a>Forgot Password?</a>
+          </div>
+
+          <button class="btn-primary">Log In</button> -->
+
+          <div class="divider"><span></span> or <span></span></div>
+
+          <div class="oauth-row">
+            <div class="oauth-btn">
+              <img src="https://img.icons8.com/color/48/google-logo.png" width="14" />
+              Continue with Google
+            </div>
+
+            <div class="oauth-btn">
+              <img src="https://img.icons8.com/ios-filled/50/mac-os.png" width="14" />
+              Continue with Apple
+            </div>
+          </div>
+
+          <p class="login-text">
+            Don’t have an account? <a href="#">Sign Up</a>
+          </p>
+       
+      </div>
+    </div>
+  </body>
+</html>

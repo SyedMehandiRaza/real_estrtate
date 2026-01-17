@@ -1,0 +1,252 @@
+<main class="main-area">
+  <!-- TOP BAR -->
+  <header class="top-bar">
+    <div class="top-left">
+      <span class="back-arrow"><</span>
+      <span class="top-title">Add Property</span>
+    </div>
+    <div class="top-right">
+      <span class="bell-icon">🔔</span>
+      <div class="avatar"></div>
+    </div>
+  </header>
+
+  <!-- STEP BAR WITH LINES -->
+  <section class="steps-bar">
+    <div class="step-block active">
+      <div class="corner-wrap">
+        <span class="step-circle">1</span>
+      </div>
+      <span class="step-text">Basic Information</span>
+    </div>
+
+    <div class="step-line"></div>
+
+    <div class="step-block active">
+      <div class="corner-wrap">
+        <span class="step-circle">2</span>
+      </div>
+      <span class="step-text">Property Details</span>
+    </div>
+
+    <div class="step-line"></div>
+
+    <div class="step-block active">
+      <div class="corner-wrap">
+        <span class="step-circle">3</span>
+      </div>
+      <span class="step-text">Configuration Setup</span>
+    </div>
+
+    <div class="step-line"></div>
+
+    <div class="step-block active">
+      <div class="corner-wrap">
+        <span class="step-circle">4</span>
+      </div>
+      <span class="step-text">Upload Media</span>
+    </div>
+
+    <div class="step-line"></div>
+
+    <div class="step-block active">
+      <div class="circle-wrap">
+        <span class="step-circle">5</span>
+      </div>
+      <span class="step-text">Documents</span>
+    </div>
+
+    <div class="step-line"></div>
+
+    <div class="step-block">
+      <div class="circle-wrap">
+        <span class="step-circle">6</span>
+      </div>
+      <span class="step-text">Review & Submit</span>
+    </div>
+  </section>
+  <!-- <section class="steps-bar">
+      <div class="step-block">
+        <div class="circle-wrap">
+          <span class="step-circle">1</span>
+        </div>
+        <span class="step-text">Basic Information</span>
+      </div>
+
+      <div class="step-line"></div>
+
+      <div class="step-block">
+        <div class="circle-wrap">
+          <span class="step-circle">2</span>
+        </div>
+        <span class="step-text">Property Details</span>
+      </div>
+
+      <div class="step-line"></div>
+
+      <div class="step-block">
+        <div class="circle-wrap">
+          <span class="step-circle">3</span>
+        </div>
+        <span class="step-text">Configuration Setup</span>
+      </div>
+
+      <div class="step-line"></div>
+
+      <div class="step-block">
+        <div class="circle-wrap">
+          <span class="step-circle">4</span>
+        </div>
+        <span class="step-text">Upload Media</span>
+      </div>
+
+      <div class="step-line"></div>
+
+      <div class="step-block active">
+        <div class="corner-wrap">
+          <span class="step-circle">5</span>
+        </div>
+        <span class="step-text">Documents</span>
+      </div>
+
+      <div class="step-line"></div>
+
+      <div class="step-block">
+        <div class="circle-wrap">
+          <span class="step-circle">6</span>
+        </div>
+        <span class="step-text">Review & Submit</span>
+      </div>
+    </section> -->
+
+  <!-- WHITE CARD -->
+  <section class="content-area">
+    <div class="card">
+      <h2 class="card-title">Document</h2>
+
+      <form action="/add_prop_submit">
+        <div class="document-grid">
+          <!-- RERA Certificate -->
+          <div class="document-section">
+            <div class="section-label">RERA Certificate</div>
+            <div
+              class="upload-box"
+              onclick="document.getElementById('reraInput').click()"
+            >
+              <div class="upload-text">Drag & drop OR click to browse</div>
+              <div class="upload-subtext">
+                Supported formats: PDF, JPG, PNG<br />
+                Max size: 10 MB
+              </div>
+            </div>
+            <input
+              type="file"
+              id="reraInput"
+              accept=".pdf,.jpg,.jpeg,.png"
+              style="display: none"
+            />
+
+            <div class="uploaded-file">
+              <div class="file-icon"></div>
+              <div class="file-info">
+                <div class="file-name">Rera_Certificate.pdf</div>
+                <div class="file-size">Size: 4.54 mb</div>
+              </div>
+              <button class="remove-file-btn">×</button>
+            </div>
+          </div>
+
+          <!-- Floor Plan -->
+          <div class="document-section">
+            <div class="section-label">Floor Plan</div>
+            <div
+              class="upload-box"
+              onclick="document.getElementById('floorPlanInput').click()"
+            >
+              <div class="upload-text">Drag & drop OR click to browse</div>
+              <div class="upload-subtext">
+                Supported formats: mp4<br />
+                Max size: 40 MB
+              </div>
+            </div>
+            <input
+              type="file"
+              id="floorPlanInput"
+              accept=".pdf,.jpg,.jpeg,.png"
+              style="display: none"
+            />
+          </div>
+
+          <!-- Legal NOC -->
+          <div class="document-section">
+            <div class="section-label">Legal NOC</div>
+            <div
+              class="upload-box"
+              onclick="document.getElementById('legalNocInput').click()"
+            >
+              <div class="upload-text">Drag & drop OR click to browse</div>
+              <div class="upload-subtext">
+                Supported formats: PDF, JPG, PNG<br />
+                Max size: 10 MB
+              </div>
+            </div>
+            <input
+              type="file"
+              id="legalNocInput"
+              accept=".pdf,.jpg,.jpeg,.png"
+              style="display: none"
+            />
+          </div>
+
+          <!-- Ownership Proof -->
+          <div class="document-section">
+            <div class="section-label">Ownership Proof</div>
+            <div
+              class="upload-box"
+              onclick="document.getElementById('ownershipInput').click()"
+            >
+              <div class="upload-text">Drag & drop OR click to browse</div>
+              <div class="upload-subtext">
+                Supported formats: mp4<br />
+                Max size: 40 MB
+              </div>
+            </div>
+            <input
+              type="file"
+              id="ownershipInput"
+              accept=".pdf,.jpg,.jpeg,.png"
+              style="display: none"
+            />
+          </div>
+
+          <!-- Other (optional) -->
+          <div class="document-section full-width">
+            <div class="section-label">Other (optional)</div>
+            <div
+              class="upload-box"
+              onclick="document.getElementById('otherInput').click()"
+            >
+              <div class="upload-text">Drag & drop OR click to browse</div>
+              <div class="upload-subtext">
+                Supported formats: PDF, JPG, PNG<br />
+                Max size: 10 MB
+              </div>
+            </div>
+            <input
+              type="file"
+              id="otherInput"
+              accept=".pdf,.jpg,.jpeg,.png"
+              style="display: none"
+            />
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions">
+          <button class="btn btn-back">← Back</button>
+          <button class="btn btn-next" type="submit">Next →</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>

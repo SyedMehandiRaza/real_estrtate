@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- <title>Luxury 3BHK Apartment</title> -->
+   <title><%= property.title %></title>
+  <link rel="stylesheet" href="/css/prodDetail.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="pr-de-header">
+        <div class="pr-de-header-container">
+            <div class="pr-de-logo">Real Estate</div>
+            <div class="pr-de-test">
+                <nav>
+                <ul class="pr-de-nav-menu" id="navMenu">
+                    <li><a href="#home" class="pr-de-active">Home</a></li>
+                    <li><a href="#property">Property</a></li>
+                    <li><a href="#agents">Agents</a></li>
+                    <li><a href="#developer">Developer</a></li>
+                    <li><a href="#facility">Facility management</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </nav>
+
+            <div class="pr-de-header-actions">
+                <div class="pr-de-phone-number">
+                    <svg class="pr-de-phone-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                    </svg>
+                    <span>+91 123-456-7895</span>
+                </div>
+                
+                 <a href="#login" class="pr-de-btn pr-de-btn-login">
+        Log in
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/>
+            </svg>
+        </div>
+    </a>
+
+    <a href="#signup" class="pr-de-btn pr-de-btn-signup">
+        Sign up
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/>
+            </svg>
+        </div>
+    </a>
+
+                <div class="pr-de-menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            </div>
+          
+        </div>
+    </header>
+  
+  <!-- <div class="pr-de-breadcrumb">
+    Home › Property › <span>Luxury 3BHK Apartment</span>
+  </div> -->
+  <div class="pr-de-breadcrumb">
+    Home › Property › <span><%= property.title %></span>
+  </div>
+
+<div class="pr-de-wrapper-whole">
+  <div>
+    <div class="pr-de-container">
+
+  <!-- Header -->
+  <div class="pr-de-crousel-header">
+    <div>
+      <h1>
+        Luxury 3BHK Apartment
+        <span class="pr-de-badge pr-de-featured">FEATURED</span>
+        <span class="pr-de-badge pr-de-sale">FOR SALE</span>
+      </h1>
+      <!-- <p class="pr-de-location">📍 Bandra, Mumbai</p> -->
+       <p class="pr-de-location"><%= property.address %></p>
+    </div>
+    <!-- <div class="pr-de-price">$840,000</div> -->
+    <div class="pr-de-price">₹<%= property.price %></div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="pr-de-content">
+
+   <div class="pr-de-carousel">
+
+  <div class="pr-de-main" id="slides"></div>
+
+  <div class="pr-de-thumbs" style="background-color: transparent;">
+
+    <div class="pr-de-thumb-wrapper">
+      <div class="pr-de-thumb-track" id="thumbs"></div>
+    </div>
+
+   <button class="pr-de-thumb-arrow" onclick="scrollThumbs()">›</button>
+
+  </div>
+
+</div>
+
+  </div>
+
+</div>
+<div class="pr-de-content-wrpperfinal">
+   <div class="pr-de-container-two">
+        <h2 class="pr-de-overview-title">Overview</h2>
+        
+        <div class="pr-de-content-grid">
+            <div class="pr-de-property-grid">
+                <div class="pr-de-property-item">
+                    <div class="pr-de-property-main">
+                        <!-- <span class="pr-de-property-value">Apartment</span> -->
+                         <span class="pr-de-property-value"><%= property.propertyType %></span>
+                    </div>
+                    <div class="pr-de-property-label">
+                        Property Type
+                    </div>
+                </div>
+
+                <div class="pr-de-property-item">
+                    <div class="pr-de-property-main">
+                        <svg class="pr-de-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                        <!-- <span class="pr-de-property-value">3</span> -->
+                         <span class="pr-de-property-value"><%= property.bedrooms %></span>
+                    </div>
+                    <div class="pr-de-property-label">
+                        Bedroom
+                    </div>
+                </div>
+
+                <div class="pr-de-property-item">
+                    <div class="pr-de-property-main">
+                        <svg class="pr-de-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M12 1v6m0 6v6m6-12h-6m-6 0h6"/>
+                        </svg>
+                        <!-- <span class="pr-de-property-value">2</span> -->
+                        <span class="pr-de-property-value"><%= property.bathrooms %></span>
+                    </div>
+                    <div class="pr-de-property-label">
+                        Bathroom
+                    </div>
+                </div>
+
+                <div class="pr-de-property-item">
+                    <div class="pr-de-property-main">
+                        <svg class="pr-de-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="5" y="11" width="14" height="10" rx="1"/>
+                            <path d="M10 11V8a2 2 0 014 0v3"/>
+                            <circle cx="12" cy="16" r="1"/>
+                        </svg>
+                        <!-- <span class="pr-de-property-value">1</span> -->
+                        <span class="pr-de-property-value"><%= property.garage %></span>
+                    </div>
+                    <div class="pr-de-property-label">
+                        Garage
+                    </div>
+                </div>
+
+                <div class="pr-de-property-item">
+                    <div class="pr-de-property-main">
+                        <svg class="pr-de-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                        <!-- <span class="pr-de-property-value">2024</span> -->
+                        <span class="pr-de-property-value"><%= property.yearBuilt %></span>
+                    </div>
+                    <div class="pr-de-property-label">
+                        Year Built
+                    </div>
+                </div>
+
+                <div class="pr-de-property-item">
+                    <div class="pr-de-property-main">
+                        <svg class="pr-de-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10h-3m-2 0h-3m-2 0H8m-2 0H3"/>
+                            <path d="M21 14h-3m-2 0h-3m-2 0H8m-2 0H3"/>
+                            <path d="M3 6h18"/>
+                            <path d="M3 18h18"/>
+                        </svg>
+                        <!-- <span class="pr-de-property-value">1860 Sq.ft</span> -->
+                         <span class="pr-de-property-value"><%= property.area %> Sq.ft</span>
+                    </div>
+                    <div class="pr-de-property-label">
+                        Area
+                    </div>
+                </div>
+            </div>
+
+            <div class="pr-de-map-container">
+                <div class="pr-de-map-placeholder">
+                    <div class="pr-de-map-overlay">
+                        <div class="pr-de-map-road pr-de-road-1"></div>
+                        <div class="pr-de-map-road pr-de-road-2"></div>
+                        <div class="pr-de-map-road pr-de-road-3"></div>
+                        <div class="pr-de-map-road pr-de-road-4"></div>
+                    </div>
+                    <div class="pr-de-map-circle"></div>
+                    <div class="pr-de-map-marker"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pr-de-description-card">
+        <h2 class="pr-de-description-title">Property Description</h2>
+        
+        <div class="pr-de-description-content">
+            <p class="pr-de-description-paragraph">
+                Experience modern living in this spacious 3BHK apartment located in the heart of Andheri, Mumbai. 
+                Designed for comfort and convenience, this property blends elegant interiors with premium amenities.
+            </p>
+            
+            <p class="pr-de-description-paragraph">
+                The apartment features well-ventilated rooms, modular kitchen fittings, and elegant flooring. Each 
+                bedroom offers ample natural light and attached bathrooms with premium fixtures.
+            </p>
+            
+            <p class="pr-de-description-paragraph">
+                Enjoy access to a clubhouse, gym, swimming pool, landscaped gardens, and 24/7 security — offering 
+                a complete lifestyle for families.
+            </p>
+        </div>
+    </div>
+
+     <div class="pr-de-address-card">
+        <h2 class="pr-de-address-title">Address</h2>
+        
+        <div class="pr-de-address-grid">
+            <div class="pr-de-address-row">
+                <span class="pr-de-address-label">Address:</span>
+                <span class="pr-de-address-value"><%= property.addressLine %></span>
+            </div>
+
+            <div class="pr-de-address-row">
+                <span class="pr-de-address-label">City:</span>
+                <span class="pr-de-address-value"><%= property.city %></span>
+            </div>
+
+            <div class="pr-de-address-row">
+                <span class="pr-de-address-label">State/county:</span>
+                <span class="pr-de-address-value"><%= property.state %></span>
+            </div>
+
+            <div class="pr-de-address-row">
+                <span class="pr-de-address-label">Zip/Postal Code:</span>
+                <span class="pr-de-address-value"><%= property.zipCode %></span>
+            </div>
+
+            <div class="pr-de-address-row">
+                <span class="pr-de-address-label">Area:</span>
+                <span class="pr-de-address-value"><%= property.locationArea %></span>
+            </div>
+
+            <div class="pr-de-address-row">
+                <span class="pr-de-address-label">Country:</span>
+                <span class="pr-de-address-value"><%= property.country %></span>
+            </div>
+        </div>
+    </div>
+
+     <div class="pr-de-amenities-wrapper">
+        <h1>Amenities & Features</h1>
+        <div class="pr-de-separator-line"></div>
+        
+        <div class="pr-de-features-layout">
+            <div class="pr-de-feature-section">
+                <h2>Property Amenities</h2>
+                <ul>
+                    <li>Spacious Living Room</li>
+                    <li>Modular Kitchen</li>
+                    <li>Premium Flooring</li>
+                    <li>Balcony with City View</li>
+                    <li>Air Conditioning / Ventilation</li>
+                </ul>
+            </div>
+
+            <div class="pr-de-feature-section">
+                <h2>Lifestyle & Leisure</h2>
+                <ul>
+                    <li>Swimming Pool</li>
+                    <li>Gym / Fitness Center</li>
+                    <li>Clubhouse</li>
+                    <li>Children's Play Area</li>
+                    <li>Garden / Jogging Track</li>
+                </ul>
+            </div>
+
+            <div class="pr-de-feature-section">
+                <h2>Security & Convenience</h2>
+                <ul>
+                    <li>24/7 Security</li>
+                    <li>Covered Parking</li>
+                    <li>Gated Community</li>
+                    <li>Intercom Facility</li>
+                    <li>Maintenance Staff</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+      <div class="pr-de-video-card-container">
+        <h1 class="pr-de-video-title">Video</h1>
+        <div class="pr-de-title-divider"></div>
+        
+        <div class="pr-de-video-wrapper">
+            <% const firstVideo = media.find(m => m.type === "VIDEO"); %>
+
+            <% if (firstVideo) { %>
+            <video controls class="pr-de-video-thumbnail">
+                <source src="<%= firstVideo.url %>" type="video/mp4">
+            </video>
+            <% } %>
+
+
+            <!-- <img 
+                src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1200&h=600&fit=crop" 
+                alt="Modern living room interior" 
+                class="pr-de-video-thumbnail"
+            > -->
+            <div class="pr-de-play-button-overlay">
+                <div class="pr-de-play-icon"></div>
+            </div>
+        </div>
+    </div>
+
+     <div class="pr-de-tour-card-wrapper">
+        <h1 class="pr-de-tour-heading">360<span class="pr-de-degree-symbol">°</span> Virtual Tour</h1>
+        <div class="pr-de-heading-separator"></div>
+        
+        <div class="pr-de-image-container">
+            <img 
+                src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&h=700&fit=crop" 
+                alt="Luxury living room with gray sofa and modern decor" 
+                class="pr-de-tour-image"
+            >
+        </div>
+    </div>
+
+     <div class="pr-de-agent-info-container">
+        <h1 class="pr-de-main-header">Agent / Developer Information</h1>
+        <div class="pr-de-header-line"></div>
+
+        <div class="pr-de-profile-section">
+            <div class="pr-de-profile-content">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" alt="Eddie Hudson" class="pr-de-profile-avatar">
+                <div class="pr-de-profile-details">
+                    <h2>Eddie Hudson <span class="pr-de-profile-role">- Real Estate Consultant</span></h2>
+                    <p class="pr-de-profile-company">DreamBuild Realty Pvt. Ltd.</p>
+                </div>
+            </div>
+            <button class="pr-de-view-listing-btn">
+                View Listing
+                <span class="pr-de-arrow-icon-two">→</span>
+            </button>
+        </div>
+
+        <div class="pr-de-contact-info-grid">
+            <div class="pr-de-contact-item">
+            <span class="pr-de-contact-icon">
+             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M21 16.42V19.9561C21 20.4811 20.5941 20.9167 20.0705 20.9537C19.6331 20.9846 19.2763 21 19 21C10.1634 21 3 13.8366 3 5C3 4.72371 3.01545 4.36687 3.04635 3.9295C3.08337 3.40588 3.51894 3 4.04386 3H7.5801C7.83678 3 8.05176 3.19442 8.07753 3.4498C8.10067 3.67907 8.12218 3.86314 8.14207 4.00202C8.34435 5.41472 8.75753 6.75936 9.3487 8.00303C9.44359 8.20265 9.38171 8.44159 9.20185 8.57006L7.04355 10.1118C8.35752 13.1811 10.8189 15.6425 13.8882 16.9565L15.4271 14.8019C15.5572 14.6199 15.799 14.5573 16.001 14.6532C17.2446 15.2439 18.5891 15.6566 20.0016 15.8584C20.1396 15.8782 20.3225 15.8995 20.5502 15.9225C20.8056 15.9483 21 16.1633 21 16.42Z"></path></svg>
+            </span>
+              
+                <div class="pr-de-contact-details">
+                    <h3>+91 7485961245</h3>
+                    <p class="pr-de-contact-label">Phone number</p>
+                </div>
+            </div>
+            <div class="pr-de-contact-item">
+                <span class="pr-de-contact-icon">✉️</span>
+                <div class="pr-de-contact-details">
+                    <h3>Shivamgawali@gmail.com</h3>
+                    <p class="pr-de-contact-label">Email Address</p>
+                </div>
+            </div>
+            <div class="pr-de-contact-item">
+                <span class="pr-de-contact-icon" style="transform: rotate(80deg);">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="rgba(255,255,255,1)"><path d="M2.89945 2.29983L21.7052 8.56842C21.9672 8.65574 22.1088 8.93891 22.0215 9.20088C21.975 9.3404 21.8694 9.45238 21.7328 9.507L13.0002 13.0001L8.57501 21.8504C8.45151 22.0974 8.15118 22.1975 7.90419 22.074C7.77883 22.0113 7.68553 21.8989 7.64703 21.7641L2.26058 2.91153C2.18472 2.64601 2.33846 2.36927 2.60398 2.29341C2.70087 2.26573 2.80386 2.26796 2.89945 2.29983Z"></path></svg>
+                </span>
+                <div class="pr-de-contact-details">
+                    <h3>174 Arera Colony, Mumbai</h3>
+                    <p class="pr-de-contact-label">office Location</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="pr-de-bio-section">
+          <div style="display: flex; justify-content:space-between;">
+             <div>
+           <h3 class="pr-de-section-title">Short Bio</h3>
+          </div>
+            
+             <div class="pr-de-action-buttons">
+                <button class="pr-de-action-btn">
+                    Call
+                    <div class="pr-de-icon-circle pr-de-call-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="rgba(255,255,255,1)">
+                            <path d="M21 16.42V19.9561C21 20.4811 20.5941 20.9167 20.0705 20.9537C19.6331 20.9846 19.2763 21 19 21C10.1634 21 3 13.8366 3 5C3 4.72371 3.01545 4.36687 3.04635 3.9295C3.08337 3.40588 3.51894 3 4.04386 3H7.5801C7.83678 3 8.05176 3.19442 8.07753 3.4498C8.10067 3.67907 8.12218 3.86314 8.14207 4.00202C8.34435 5.41472 8.75753 6.75936 9.3487 8.00303C9.44359 8.20265 9.38171 8.44159 9.20185 8.57006L7.04355 10.1118C8.35752 13.1811 10.8189 15.6425 13.8882 16.9565L15.4271 14.8019C15.5572 14.6199 15.799 14.5573 16.001 14.6532C17.2446 15.2439 18.5891 15.6566 20.0016 15.8584C20.1396 15.8782 20.3225 15.8995 20.5502 15.9225C20.8056 15.9483 21 16.1633 21 16.42Z"></path>
+                        </svg>
+                    </div>
+                </button>
+                <button class="pr-de-action-btn">
+                    Whatsapp
+                    <div class="pr-de-icon-circle pr-de-whatsapp-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="rgba(255,255,255,1)">
+                            <path d="M12.001 2C17.5238 2 22.001 6.47715 22.001 12C22.001 17.5228 17.5238 22 12.001 22C10.1671 22 8.44851 21.5064 6.97086 20.6447L2.00516 22L3.35712 17.0315C2.49494 15.5536 2.00098 13.8345 2.00098 12C2.00098 6.47715 6.47813 2 12.001 2ZM8.59339 7.30019L8.39232 7.30833C8.26293 7.31742 8.13607 7.34902 8.02057 7.40811C7.93392 7.45244 7.85348 7.51651 7.72709 7.63586C7.60774 7.74855 7.53857 7.84697 7.46569 7.94186C7.09599 8.4232 6.89729 9.01405 6.90098 9.62098C6.90299 10.1116 7.03043 10.5884 7.23169 11.0336C7.63982 11.9364 8.31288 12.8908 9.20194 13.7759C9.4155 13.9885 9.62473 14.2034 9.85034 14.402C10.9538 15.3736 12.2688 16.0742 13.6907 16.4482C13.6907 16.4482 14.2507 16.5342 14.2589 16.5347C14.4444 16.5447 14.6296 16.5313 14.8153 16.5218C15.1066 16.5068 15.391 16.428 15.6484 16.2909C15.8139 16.2028 15.8922 16.159 16.0311 16.0714C16.0311 16.0714 16.0737 16.0426 16.1559 15.9814C16.2909 15.8808 16.3743 15.81 16.4866 15.6934C16.5694 15.6074 16.6406 15.5058 16.6956 15.3913C16.7738 15.2281 16.8525 14.9166 16.8838 14.6579C16.9077 14.4603 16.9005 14.3523 16.8979 14.2854C16.8936 14.1778 16.8047 14.0671 16.7073 14.0201L16.1258 13.7587C16.1258 13.7587 15.2563 13.3803 14.7245 13.1377C14.6691 13.1124 14.6085 13.1007 14.5476 13.097C14.4142 13.0888 14.2647 13.1236 14.1696 13.2238C14.1646 13.2218 14.0984 13.279 13.3749 14.1555C13.335 14.2032 13.2415 14.3069 13.0798 14.2972C13.0554 14.2955 13.0311 14.292 13.0074 14.2858C12.9419 14.2685 12.8781 14.2457 12.8157 14.2193C12.692 14.1668 12.6486 14.1469 12.5641 14.1105C11.9868 13.8583 11.457 13.5209 10.9887 13.108C10.8631 12.9974 10.7463 12.8783 10.6259 12.7616C10.2057 12.3543 9.86169 11.9211 9.60577 11.4938C9.5918 11.4705 9.57027 11.4368 9.54708 11.3991C9.50521 11.331 9.45903 11.25 9.44455 11.1944C9.40738 11.0473 9.50599 10.9291 9.50599 10.9291C9.50599 10.9291 9.74939 10.663 9.86248 10.5183C9.97128 10.379 10.0652 10.2428 10.125 10.1457C10.2428 9.95633 10.2801 9.76062 10.2182 9.60963C9.93764 8.92565 9.64818 8.24536 9.34986 7.56894C9.29098 7.43545 9.11585 7.33846 8.95659 7.32007C8.90265 7.31384 8.84875 7.30758 8.79459 7.30402C8.66053 7.29748 8.5262 7.29892 8.39232 7.30833L8.59339 7.30019Z"></path>
+                        </svg>
+                    </div>
+                </button>
+            </div>
+          </div>
+         
+            <p class="pr-de-bio-text">With 8+ years of experience in luxury real estate, Eddie has helped hundreds of clients find their dream homes in Mumbai</p>
+          
+        </div>
+
+        <div class="pr-de-social-section">
+            <h3 class="pr-de-section-title">Social Media Links</h3>
+            <div class="pr-de-social-icons">
+                <a href="#" class="pr-de-social-icon">f</a>
+                <a href="#" class="pr-de-social-icon">💬</a>
+                <a href="#" class="pr-de-social-icon">📷</a>
+                <a href="#" class="pr-de-social-icon">✉️</a>
+                <a href="#" class="pr-de-social-icon">🐦</a>
+                <a href="#" class="pr-de-social-icon">✈️</a>
+                <a href="#" class="pr-de-social-icon">in</a>
+            </div>
+        </div>
+
+        <div class="pr-de-review-box">
+            <h3 class="pr-de-section-title">Rating & Review</h3>
+            <div class="pr-de-rating-display" id="stars">
+                <span class="pr-de-star pr-de-filled" data-rating="1">★</span>
+                <span class="pr-de-star pr-de-filled" data-rating="2">★</span>
+                <span class="pr-de-star pr-de-filled" data-rating="3">★</span>
+                <span class="pr-de-star pr-de-filled" data-rating="4">★</span>
+                <span class="pr-de-star pr-de-empty" data-rating="5">★</span>
+            </div>
+            <textarea class="pr-de-review-input" placeholder="Write something" maxlength="10000" id="reviewText"></textarea>
+            <div class="pr-de-character-count"><span id="charCount">0</span>/10000</div>
+           <button class="pr-de-submit-btn">
+                Send
+                <div class="pr-de-arrow-circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="rgba(255,255,255,1)">
+                        <path d="M1.99974 12.9999L1.9996 11L15.5858 11V5.58582L22 12L15.5858 18.4142V13L1.99974 12.9999Z"></path>
+                    </svg>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <div class="pr-de-wrapper-main">
+        <div class="pr-de-title-area">
+            <h1 class="pr-de-heading-primary">Similar Property<br>Listing</h1>
+            <div class="pr-de-sketch-arrow">
+               <img src="/assets/Vector.png">
+            </div>
+        </div>
+
+        <div class="pr-de-scroll-container">
+            <button class="pr-de-backward-btn pr-de-hidden" id="prevBtn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                    <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/>
+                </svg>
+            </button>
+
+            <div class="pr-de-slider-track" id="sliderTrack">
+                <div class="pr-de-property-card">
+                    <div class="pr-de-property-image">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=400" alt="Property">
+                        <div class="pr-de-property-badges">
+                            <span class="pr-de-badge pr-de-badge-featured">Featured</span>
+                            <span class="pr-de-badge pr-de-badge-sale">For Sale</span>
+                        </div>
+                        <div class="pr-de-image-counter">2/4</div>
+                    </div>
+                    <div class="pr-de-property-details">
+                        <h3 class="pr-de-property-title">Luxury 3BHK Apartment</h3>
+                        <div class="pr-de-property-location">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            Bandra, Mumbai
+                        </div>
+                        <div class="pr-de-property-features">
+                            <div class="pr-de-feature">🛏️ 3</div>
+                            <div class="pr-de-feature">🛁 2</div>
+                            <div class="pr-de-feature">📏 1860 sq.ft.</div>
+                        </div>
+                        <div class="pr-de-property-footer">
+                            <div class="pr-de-property-price">$840,000</div>
+                            <button class="pr-de-button-container">
+                                <span class="pr-de-button-text">View detail</span>
+                                <div class="pr-de-icon-circle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="white">
+                                        <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/>
+                                    </svg>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pr-de-property-card">
+                    <div class="pr-de-property-image">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400" alt="Property">
+                        <div class="pr-de-property-badges">
+                            <span class="pr-de-badge pr-de-badge-featured">Featured</span>
+                        </div>
+                        <div class="pr-de-image-counter">3/5</div>
+                    </div>
+                    <div class="pr-de-property-details">
+                        <h3 class="pr-de-property-title">Modern 2BHK Flat</h3>
+                        <div class="pr-de-property-location">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            Andheri, Mumbai
+                        </div>
+                        <div class="pr-de-property-features">
+                            <div class="pr-de-feature">🛏️ 2</div>
+                            <div class="pr-de-feature">🛁 2</div>
+                            <div class="pr-de-feature">📏 1200 sq.ft.</div>
+                        </div>
+                        <div class="pr-de-property-footer">
+                            <div class="pr-de-property-price">$620,000</div>
+                            <button class="pr-de-button-container">
+                                <span class="pr-de-button-text">View detail</span>
+                                <div class="pr-de-icon-circle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="white">
+                                        <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/>
+                                    </svg>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pr-de-property-card">
+                    <div class="pr-de-property-image">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400" alt="Property">
+                        <div class="pr-de-property-badges">
+                            <span class="pr-de-badge pr-de-badge-sale">For Sale</span>
+                        </div>
+                        <div class="pr-de-image-counter">1/3</div>
+                    </div>
+                    <div class="pr-de-property-details">
+                        <h3 class="pr-de-property-title">Spacious 4BHK Villa</h3>
+                        <div class="pr-de-property-location">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            Juhu, Mumbai
+                        </div>
+                        <div class="pr-de-property-features">
+                            <div class="pr-de-feature">🛏️ 4</div>
+                            <div class="pr-de-feature">🛁 3</div>
+                            <div class="pr-de-feature">📏 2400 sq.ft.</div>
+                        </div>
+                        <div class="pr-de-property-footer">
+                            <div class="pr-de-property-price">$1,200,000</div>
+                            <button class="pr-de-button-container">
+                                <span class="pr-de-button-text">View detail</span>
+                                <div class="pr-de-icon-circle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="white">
+                                        <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/>
+                                    </svg>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pr-de-property-card">
+                    <div class="pr-de-property-image">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400" alt="Property">
+                        <div class="pr-de-property-badges">
+                            <span class="pr-de-badge pr-de-badge-featured">Featured</span>
+                            <span class="pr-de-badge pr-de-badge-sale">For Sale</span>
+                        </div>
+                        <div class="pr-de-image-counter">4/6</div>
+                    </div>
+                    <div class="pr-de-property-details">
+                        <h3 class="pr-de-property-title">Elegant Studio Apartment</h3>
+                        <div class="pr-de-property-location">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            Powai, Mumbai
+                        </div>
+                        <div class="pr-de-property-features">
+                            <div class="pr-de-feature">🛏️ 1</div>
+                            <div class="pr-de-feature">🛁 1</div>
+                            <div class="pr-de-feature">📏 650 sq.ft.</div>
+                        </div>
+                        <div class="pr-de-property-footer">
+                            <div class="pr-de-property-price">$380,000</div>
+                            <button class="pr-de-button-container">
+                                <span class="pr-de-button-text">View detail</span>
+                                <div class="pr-de-icon-circle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="white">
+                                        <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/>
+                                    </svg>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="pr-de-forward-btn" id="nextBtn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="pr-de-nav-dots" id="navDots"></div>
+    </div>
+  </div>
+  <!-- Right Section -->
+    <div class="pr-de-form-section">
+      <div class="pr-de-agent-card">
+
+        <div class="pr-de-agent">
+          <img src="https://i.pravatar.cc/100" alt="Agent" />
+          <div>
+            <h3>Eddie Hudson</h3>
+            <p>Mumbai</p>
+          </div>
+        </div>
+
+        <form onsubmit="return false;">
+          <input type="text" placeholder="Name" />
+          <input type="text" placeholder="Phone" />
+          <input type="email" placeholder="Email" />
+          <textarea placeholder="Hello i am also interested in this Luxury 3BHK apartment"></textarea>
+
+          <select>
+            <option>Select</option>
+            <option>Buy</option>
+            <option>Rent</option>
+          </select>
+
+          <p class="pr-de-terms">
+            By submitting the form I agree <a href="#">Terms of use</a>
+          </p>
+            <div>
+        <button class="pr-de-send-btn">
+            Send Message
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="rgba(255,255,255,1)">
+                    <path d="M1.99974 12.9999L1.9996 11L15.5858 11V5.58582L22 12L15.5858 18.4142V13L1.99974 12.9999Z"></path>
+                </svg>
+            </div>
+        </button>
+    </div>
+        
+
+          <div class="pr-de-actions">
+        <button type="button" class="pr-de-whatsapp">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7.25361 18.4944L7.97834 18.917C9.18909 19.623 10.5651 20 12.001 20C16.4193 20 20.001 16.4183 20.001 12C20.001 7.58172 16.4193 4 12.001 4C7.5827 4 4.00098 7.58172 4.00098 12C4.00098 13.4363 4.37821 14.8128 5.08466 16.0238L5.50704 16.7478L4.85355 19.1494L7.25361 18.4944ZM2.00516 22L3.35712 17.0315C2.49494 15.5536 2.00098 13.8345 2.00098 12C2.00098 6.47715 6.47813 2 12.001 2C17.5238 2 22.001 6.47715 22.001 12C22.001 17.5228 17.5238 22 12.001 22C10.1671 22 8.44851 21.5064 6.97086 20.6447L2.00516 22ZM8.39232 7.30833C8.5262 7.29892 8.66053 7.29748 8.79459 7.30402C8.84875 7.30758 8.90265 7.31384 8.95659 7.32007C9.11585 7.33846 9.29098 7.43545 9.34986 7.56894C9.64818 8.24536 9.93764 8.92565 10.2182 9.60963C10.2801 9.76062 10.2428 9.95633 10.125 10.1457C10.0652 10.2428 9.97128 10.379 9.86248 10.5183C9.74939 10.663 9.50599 10.9291 9.50599 10.9291C9.50599 10.9291 9.40738 11.0473 9.44455 11.1944C9.45903 11.25 9.50521 11.331 9.54708 11.3991C9.57027 11.4368 9.5918 11.4705 9.60577 11.4938C9.86169 11.9211 10.2057 12.3543 10.6259 12.7616C10.7463 12.8783 10.8631 12.9974 10.9887 13.108C11.457 13.5209 11.9868 13.8583 12.559 14.1082L12.5641 14.1105C12.6486 14.1469 12.692 14.1668 12.8157 14.2193C12.8781 14.2457 12.9419 14.2685 13.0074 14.2858C13.0311 14.292 13.0554 14.2955 13.0798 14.2972C13.2415 14.3069 13.335 14.2032 13.3749 14.1555C14.0984 13.279 14.1646 13.2218 14.1696 13.2222V13.2238C14.2647 13.1236 14.4142 13.0888 14.5476 13.097C14.6085 13.1007 14.6691 13.1124 14.7245 13.1377C15.2563 13.3803 16.1258 13.7587 16.1258 13.7587L16.7073 14.0201C16.8047 14.0671 16.8936 14.1778 16.8979 14.2854C16.9005 14.3523 16.9077 14.4603 16.8838 14.6579C16.8525 14.9166 16.7738 15.2281 16.6956 15.3913C16.6406 15.5058 16.5694 15.6074 16.4866 15.6934C16.3743 15.81 16.2909 15.8808 16.1559 15.9814C16.0737 16.0426 16.0311 16.0714 16.0311 16.0714C15.8922 16.159 15.8139 16.2028 15.6484 16.2909C15.391 16.428 15.1066 16.5068 14.8153 16.5218C14.6296 16.5313 14.4444 16.5447 14.2589 16.5347C14.2507 16.5342 13.6907 16.4482 13.6907 16.4482C12.2688 16.0742 10.9538 15.3736 9.85034 14.402C9.62473 14.2034 9.4155 13.9885 9.20194 13.7759C8.31288 12.8908 7.63982 11.9364 7.23169 11.0336C7.03043 10.5884 6.90299 10.1116 6.90098 9.62098C6.89729 9.01405 7.09599 8.4232 7.46569 7.94186C7.53857 7.84697 7.60774 7.74855 7.72709 7.63586C7.85348 7.51651 7.93392 7.45244 8.02057 7.40811C8.13607 7.34902 8.26293 7.31742 8.39232 7.30833Z"></path>
+            </svg>
+            WhatsApp
+        </button>
+
+        <button type="button" class="pr-de-call">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9.36556 10.6821C10.302 12.3288 11.6712 13.698 13.3179 14.6344L14.2024 13.3961C14.4965 12.9845 15.0516 12.8573 15.4956 13.0998C16.9024 13.8683 18.4571 14.3353 20.0789 14.4637C20.599 14.5049 21 14.9389 21 15.4606V19.9234C21 20.4361 20.6122 20.8657 20.1022 20.9181C19.5723 20.9726 19.0377 21 18.5 21C9.93959 21 3 14.0604 3 5.5C3 4.96227 3.02742 4.42771 3.08189 3.89776C3.1343 3.38775 3.56394 3 4.07665 3H8.53942C9.0611 3 9.49513 3.40104 9.5363 3.92109C9.66467 5.54288 10.1317 7.09764 10.9002 8.50444C11.1427 8.9484 11.0155 9.50354 10.6039 9.79757L9.36556 10.6821ZM6.84425 10.0252L8.7442 8.66809C8.20547 7.50514 7.83628 6.27183 7.64727 5H5.00907C5.00303 5.16632 5 5.333 5 5.5C5 12.9558 11.0442 19 18.5 19C18.667 19 18.8337 18.997 19 18.9909V16.3527C17.7282 16.1637 16.4949 15.7945 15.3319 15.2558L13.9748 17.1558C13.4258 16.9425 12.8956 16.6915 12.3874 16.4061L12.3293 16.373C10.3697 15.2587 8.74134 13.6303 7.627 11.6707L7.59394 11.6126C7.30849 11.1044 7.05754 10.5742 6.84425 10.0252Z"></path>
+            </svg>
+            Call
+        </button>
+    </div>
+        </form>
+
+      </div>
+    </div>
+</div>
+
+ <footer class="pr-de-footer-wrapper">
+        <div class="pr-de-footer-content">
+            <div class="pr-de-footer-grid">
+                <div class="pr-de-footer-column">
+                    <h3>Discover</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Properties</a></li>
+                        <li><a href="#">Agents</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="pr-de-footer-column">
+                    <h3>Contact</h3>
+                    <div class="pr-de-contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 21C15.5 17.4 19 14.1764 19 10.2C19 6.22355 15.866 3 12 3C8.13401 3 5 6.22355 5 10.2C5 14.1764 8.5 17.4 12 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 12C13.1046 12 14 11.1046 14 10C14 8.89543 13.1046 8 12 8C10.8954 8 10 8.89543 10 10C10 11.1046 10.8954 12 12 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>41110 Pleasant Street</span>
+                    </div>
+                    <div class="pr-de-contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 5C3 3.89543 3.89543 3 5 3H8.27924C8.70967 3 9.09181 3.27543 9.22792 3.68377L10.7257 8.17721C10.8831 8.64932 10.6694 9.16531 10.2243 9.38787L7.96701 10.5165C9.06925 12.9612 11.0388 14.9308 13.4835 16.033L14.6121 13.7757C14.8347 13.3306 15.3507 13.1169 15.8228 13.2743L20.3162 14.7721C20.7246 14.9082 21 15.2903 21 15.7208V19C21 20.1046 20.1046 21 19 21H18C9.71573 21 3 14.2843 3 6V5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>878-800-5249</span>
+                    </div>
+                    <div class="pr-de-contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 8L10.89 13.26C11.2187 13.4793 11.6049 13.5963 12 13.5963C12.3951 13.5963 12.7813 13.4793 13.11 13.26L21 8M5 19H19C20.1046 19 21 18.1046 21 17V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V17C3 18.1046 3.89543 19 5 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>Marlene71@hotmail.com</span>
+                    </div>
+                </div>
+
+                <div class="pr-de-footer-column pr-de-newsletter-section">
+                    <h3>Newsletter</h3>
+                    <form id="newsletterForm">
+                        <div class="pr-de-newsletter-input-wrapper">
+                            <input type="email" placeholder="Enter your Email" required>
+                        </div>
+                        <button type="submit" class="pr-de-newsletter-button">
+                            Submit
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </form>
+                    <p class="pr-de-newsletter-text">Join Our Real Estate Community</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="pr-de-footer-bottom">
+            <div class="pr-de-footer-bottom-content">
+                <div class="pr-de-brand-name">Real Estate</div>
+                <div class="pr-de-copyright-text">© 2025 RealEstateCo</div>
+                <div class="pr-de-social-links">
+                    <a href="#" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Telegram">
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Twitter">
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+<script>
+/* ================= API ================= */
+
+// async function fetchImages(){
+//   return [
+//     "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9",
+//     "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
+//     "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+//     "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4",
+//     "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3",
+//     "https://images.unsplash.com/photo-1600210492493-0946911123ea",
+//     "https://images.unsplash.com/photo-1600573472550-8090b5e0745e",
+//     ...Array(15).fill("https://images.unsplash.com/photo-1600596542815-ffad4c1539a9")
+//   ];
+// }
+
+/* ================= LOGIC ================= */
+
+let index = 0;
+let offset = 0;
+const media = <%- JSON.stringify(media) %>;
+// const propert = <%= property %>
+// console.log("property ki detail",property)
+
+const slideBox = document.getElementById("slides");
+const thumbBox = document.getElementById("thumbs");
+
+
+// async function initCarousel(){
+
+//   slideBox.innerHTML = `
+//     ${images.map((img,i)=>`
+//       <div class="pr-de-slide ${i===0?'pr-de-active':''}">
+//         <img src="${img}" alt="Property image ${i+1}">
+//       </div>
+//     `).join("")}
+
+//     <button class="pr-de-arrow pr-de-left" onclick="prev()">‹</button>
+//     <button class="pr-de-arrow pr-de-right" onclick="next()">›</button>
+
+//     <div class="pr-de-counter">
+//       <span id="cur">1</span> / ${images.length}
+//     </div>
+//   `;
+
+//   thumbBox.innerHTML = images.map((img,i)=>`
+//     <div class="pr-de-thumb ${i===0?'pr-de-active':''}" onclick="go(${i})">
+//       <img src="${img}" alt="Thumbnail ${i+1}">
+//     </div>
+//   `).join("");
+// }
+
+async function initCarousel() {
+
+  slideBox.innerHTML = `
+    ${media.map((item, i) => `
+      <div class="pr-de-slide ${i === 0 ? 'pr-de-active' : ''}">
+        ${
+          item.type === "VIDEO"
+            ? `
+              <video 
+                src="${item.url}" 
+                controls 
+                class="pr-de-video-slide"
+              ></video>
+            `
+            : `
+              <img 
+                src="${item.url}" 
+                alt="Property media ${i + 1}"
+              >
+            `
+        }
+      </div>
+    `).join("")}
+
+    <button class="pr-de-arrow pr-de-left" onclick="prev()">‹</button>
+    <button class="pr-de-arrow pr-de-right" onclick="next()">›</button>
+
+    <div class="pr-de-counter">
+      <span id="cur">1</span> / ${media.length}
+    </div>
+  `;
+
+  thumbBox.innerHTML = media.map((item, i) => `
+    <div class="pr-de-thumb ${i === 0 ? 'pr-de-active' : ''}" onclick="go(${i})">
+      ${
+        item.type === "VIDEO"
+          ? `
+            <div class="pr-de-video-thumb">
+              <video src="${item.url}" muted></video>
+              <span class="pr-de-play-icon">▶</span>
+            </div>
+          `
+          : `
+            <img src="${item.url}" alt="Thumbnail ${i + 1}">
+          `
+      }
+    </div>
+  `).join("");
+}
+
+function update() {
+  document.querySelectorAll(".pr-de-slide").forEach(slide => {
+    slide.classList.remove("pr-de-active");
+
+    const video = slide.querySelector("video");
+    if (video) {
+      video.pause();
+      video.currentTime = 0;
+    }
+  });
+
+  document.querySelectorAll(".pr-de-thumb")
+    .forEach(t => t.classList.remove("pr-de-active"));
+
+  document.querySelectorAll(".pr-de-slide")[index]
+    .classList.add("pr-de-active");
+
+  document.querySelectorAll(".pr-de-thumb")[index]
+    .classList.add("pr-de-active");
+
+  document.getElementById("cur").textContent = index + 1;
+
+//   document.querySelectorAll(".pr-de-slide").forEach(s=>s.classList.remove("pr-de-active"));
+//   document.querySelectorAll(".pr-de-thumb").forEach(t=>t.classList.remove("pr-de-active"));
+
+//   document.querySelectorAll(".pr-de-slide")[index].classList.add("pr-de-active");
+//   document.querySelectorAll(".pr-de-thumb")[index].classList.add("pr-de-active");
+
+//   document.getElementById("cur").textContent = index + 1;
+  scrollActiveThumb();
+}
+
+const activeVideo = document
+  .querySelector(".pr-de-slide.pr-de-active video");
+
+if (activeVideo) {
+  activeVideo.play();
+}
+
+
+
+// function update(){
+//   document.querySelectorAll(".pr-de-slide").forEach(s=>s.classList.remove("pr-de-active"));
+//   document.querySelectorAll(".pr-de-thumb").forEach(t=>t.classList.remove("pr-de-active"));
+
+//   document.querySelectorAll(".pr-de-slide")[index].classList.add("pr-de-active");
+//   document.querySelectorAll(".pr-de-thumb")[index].classList.add("pr-de-active");
+
+//   document.getElementById("cur").textContent = index + 1;
+//   scrollActiveThumb();
+// }
+
+function next(){
+  index = (index + 1) % images.length;
+  update();
+}
+
+function prev(){
+  index = (index - 1 + images.length) % images.length;
+  update();
+}
+
+function go(i){
+  index = i;
+  update();
+}
+
+/* 🔥 THUMB SCROLL */
+function scrollThumbs() {
+  const wrapper = document.querySelector(".pr-de-thumb-wrapper");
+  const wrapperWidth = wrapper.offsetWidth;
+  const trackWidth = thumbBox.scrollWidth;
+  const scrollStep = 180;
+
+  const maxOffset = wrapperWidth - trackWidth;
+
+  offset -= scrollStep;
+
+  // 🔁 LOOP BACK TO START
+  if (offset < maxOffset) {
+    offset = 0;        // reset scroll
+    index = 0;         // reset image
+    update();
+  }
+
+  thumbBox.style.transform = `translateX(${offset}px)`;
+}
+
+/* 🔥 AUTO CENTER ACTIVE THUMB */
+function scrollActiveThumb(){
+  const active = document.querySelector(".pr-de-thumb.pr-de-active");
+  active?.scrollIntoView({
+    behavior:"smooth",
+    inline:"center",
+    block:"nearest"
+  });
+}
+
+initCarousel();
+</script>
+
+
+    <script>
+        // Mobile menu toggle functionality
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('pr-de-active');
+            navMenu.classList.toggle('pr-de-active');
+        });
+
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll('.pr-de-nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('pr-de-active');
+                navMenu.classList.remove('pr-de-active');
+            });
+        });
+
+        // Set active link based on current page
+        const currentPage = window.location.hash || '#home';
+        navLinks.forEach(link => {
+            link.classList.remove('pr-de-active');
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('pr-de-active');
+            }
+        });
+    </script>
+
+    
+    <script>
+        const trackElement = document.getElementById('sliderTrack');
+        const dotElements = document.querySelectorAll('.pr-de-dot-item');
+        
+        function moveNext() {
+            trackElement.scrollBy({
+                left: 410,
+                behavior: 'smooth'
+            });
+        }
+
+        trackElement.addEventListener('scroll', () => {
+            const scrollRatio = (trackElement.scrollLeft / (trackElement.scrollWidth - trackElement.clientWidth));
+            const currentIndex = Math.round(scrollRatio * (dotElements.length - 1));
+            
+            dotElements.forEach((dot, idx) => {
+                if (idx === currentIndex) {
+                    dot.classList.add('pr-de-current');
+                } else {
+                    dot.classList.remove('pr-de-current');
+                }
+            });
+        });
+
+        dotElements.forEach((dot, idx) => {
+            dot.addEventListener('click', () => {
+                const scrollValue = (trackElement.scrollWidth - trackElement.clientWidth) * (idx / (dotElements.length - 1));
+                trackElement.scrollTo({
+                    left: scrollValue,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+      <script>
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for subscribing to our newsletter!');
+        });
+    </script>
+    <script>
+        
+    </script>
+     <script>
+function stopFormBeforeFooter() {
+  const agentCard = document.querySelector('.pr-de-agent-card');
+  const footer = document.querySelector('.pr-de-footer-wrapper');
+  const similarListing = document.querySelector('.pr-de-wrapper-main');
+  const wrapperWhole = document.querySelector('.pr-de-wrapper-whole');
+  const priceTag = document.querySelector('.pr-de-price');
+  
+  if (!agentCard || !wrapperWhole || !priceTag) return;
+
+  function checkPosition() {
+    // Mobile check
+    if (window.innerWidth <= 1024) {
+       agentCard.style.position = '';
+       agentCard.style.top = '';
+       agentCard.style.right = '';
+       return;
+    }
+
+    const cardHeight = agentCard.offsetHeight;
+    const bottomMargin = 10; // Margin between form and the boundary
+    const scrollY = window.scrollY;
+    
+    // Calculate minimum top position based on price tag
+    const priceRect = priceTag.getBoundingClientRect();
+    const priceBottom = priceRect.bottom;
+    
+    const header = document.querySelector('.pr-de-header'); 
+    const headerHeight = header ? header.offsetHeight : 20;
+    
+    // The form should start below the price tag with a small gap
+    const gapBelowPrice = 20;
+    const minFixedTop = Math.max(headerHeight + 20, priceBottom + gapBelowPrice);
+    
+    // Priority: Stop at footer
+    let stopBoundary = null;
+    
+    // Check footer
+    if (footer) {
+        const footerRect = footer.getBoundingClientRect();
+        const footerDocTop = footerRect.top + scrollY;
+        const formBottomIfFixed = scrollY + minFixedTop + cardHeight + bottomMargin;
+        
+        if (formBottomIfFixed >= footerDocTop) {
+            stopBoundary = {
+                element: footer,
+                docTop: footerDocTop
+            };
+        }
+    }
+
+    if (stopBoundary) {
+      // Switch to absolute positioning - form stops here
+      const wrapperRect = wrapperWhole.getBoundingClientRect();
+      const wrapperDocTop = wrapperRect.top + scrollY;
+      
+      // Calculate absolute top position to stop before the boundary
+      const absoluteTop = stopBoundary.docTop - wrapperDocTop - cardHeight - bottomMargin;
+      
+      agentCard.style.position = 'absolute';
+      agentCard.style.top = absoluteTop + 'px';
+      agentCard.style.right = '60px'; 
+    } else {
+      // Keep fixed - form scrolls with page
+      agentCard.style.position = 'fixed';
+      agentCard.style.top = minFixedTop + 'px';
+      agentCard.style.right = '60px';
+    }
+  }
+  
+  window.addEventListener('scroll', checkPosition);
+  window.addEventListener('resize', checkPosition);
+  checkPosition();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', stopFormBeforeFooter);
+} else {
+  stopFormBeforeFooter();
+}
+</script>
+
+ <script>
+        const sliderTrack = document.getElementById('sliderTrack');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const navDots = document.getElementById('navDots');
+        const cards = document.querySelectorAll('.pr-de-property-card');
+        
+        let currentIndex = 0;
+        const totalCards = cards.length;
+        
+        // Create navigation dots
+        for (let i = 0; i < totalCards; i++) {
+            const dot = document.createElement('button');
+            dot.classList.add('pr-de-dot-item');
+            if (i === 0) dot.classList.add('pr-de-current');
+            dot.addEventListener('click', () => goToSlide(i));
+            navDots.appendChild(dot);
+        }
+        
+        const dots = document.querySelectorAll('.pr-de-dot-item');
+        
+        function getCardsPerView() {
+            const containerWidth = document.querySelector('.pr-de-scroll-container').offsetWidth - 120;
+            const cardWidth = 350;
+            const gap = 30;
+            return Math.floor((containerWidth + gap) / (cardWidth + gap));
+        }
+        
+        function updateCarousel() {
+            const cardWidth = 350;
+            const gap = 30;
+            const offset = currentIndex * (cardWidth + gap);
+            sliderTrack.style.transform = `translateX(-${offset}px)`;
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('pr-de-current', index === currentIndex);
+            });
+            
+            // Calculate max index based on visible cards
+            const cardsPerView = getCardsPerView();
+            const maxIndex = Math.max(0, totalCards - cardsPerView);
+            
+            // Hide/Show buttons based on position
+            if (currentIndex === 0) {
+                prevBtn.classList.add('pr-de-hidden');
+            } else {
+                prevBtn.classList.remove('pr-de-hidden');
+            }
+            
+            if (currentIndex >= maxIndex) {
+                nextBtn.classList.add('pr-de-hidden');
+            } else {
+                nextBtn.classList.remove('pr-de-hidden');
+            }
+        }
+        
+        function goToSlide(index) {
+            const cardsPerView = getCardsPerView();
+            const maxIndex = Math.max(0, totalCards - cardsPerView);
+            currentIndex = Math.min(index, maxIndex);
+            updateCarousel();
+        }
+        
+        nextBtn.addEventListener('click', () => {
+            const cardsPerView = getCardsPerView();
+            const maxIndex = Math.max(0, totalCards - cardsPerView);
+            if (currentIndex < maxIndex) {
+                currentIndex++;
+                updateCarousel();
+            }
+        });
+        
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        });
+        
+        // Handle window resize
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                const cardsPerView = getCardsPerView();
+                const maxIndex = Math.max(0, totalCards - cardsPerView);
+                currentIndex = Math.min(currentIndex, maxIndex);
+                updateCarousel();
+            }, 100);
+        });
+        
+        // Initialize
+        updateCarousel();
+    </script>
+
+
+
+
+</body>
+</html>

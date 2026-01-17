@@ -1,0 +1,194 @@
+<body>
+  <div class="dashboard-wrapper">
+    <header class="topbar">
+      <h1>Dashboard</h1>
+      <div class="search-user">
+        <input type="text" placeholder="Search property or lead" />
+        <div class="user-avatar"></div>
+      </div>
+    </header>
+
+    <section class="welcome-card">
+      <div class="welcome-text">
+        <p class="welcome-title">Welcome back, <span><%= user.name %></span></p>
+        <p class="welcome-sub">
+          Here’s what’s happening with your properties today.
+        </p>
+        <a href="/property">
+          <button class="primary-btn" >View All Properties</button>
+        </a>
+      </div>
+      <div class="welcome-illustration"></div>
+    </section>
+
+    <section class="stats-cards">
+      <div class="stat-card">
+        <p class="stat-label">Total Properties</p>
+        <p class="stat-value">15</p>
+        <p class="stat-sub">2 property added this month</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Active Leads</p>
+        <p class="stat-value">24</p>
+        <p class="stat-sub">5 new enquiries this week</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Total Earnings</p>
+        <p class="stat-value">$480,000.00</p>
+        <p class="stat-sub green">+$80,000 growth this month</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Ongoing Properties</p>
+        <p class="stat-value">6</p>
+        <p class="stat-sub">1 project nearing completion</p>
+      </div>
+    </section>
+
+    <section class="grid-two">
+      <div class="card">
+        <div class="card-header">
+          <h2>Ongoing Projects</h2>
+          <button class="icon-btn">✎</button>
+        </div>
+        <div class="project-item">
+          <div class="project-thumb"></div>
+          <div class="project-info">
+            <p class="project-name">Skyline Tower</p>
+            <p class="project-address">
+              689 Richard Road, Lake Nathan 48698-3792
+            </p>
+          </div>
+          <div class="project-progress">
+            <p>65% Complete</p>
+          </div>
+          <button class="secondary-btn">Add Update</button>
+        </div>
+        <div class="project-item">
+          <div class="project-thumb"></div>
+          <div class="project-info">
+            <p class="project-name">Skyline Tower</p>
+            <p class="project-address">
+              689 Richard Road, Lake Nathan 48698-3792
+            </p>
+          </div>
+          <div class="project-progress">
+            <p>40% Complete</p>
+          </div>
+          <button class="secondary-btn">Add Update</button>
+        </div>
+        <div class="project-item">
+          <div class="project-thumb"></div>
+          <div class="project-info">
+            <p class="project-name">Skyline Tower</p>
+            <p class="project-address">
+              689 Richard Road, Lake Nathan 48698-3792
+            </p>
+          </div>
+          <div class="project-progress">
+            <p>32% Complete</p>
+          </div>
+          <button class="secondary-btn">Add Update</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>Total Revenue</h2>
+          <div class="chip-group">
+            <button class="chip active">Week</button>
+            <button class="chip">Month</button>
+            <button class="chip">Year</button>
+          </div>
+        </div>
+        <div class="chart-placeholder">
+          <div class="bar bar1"></div>
+          <div class="bar bar2"></div>
+          <div class="bar bar3 highlight"></div>
+          <div class="bar bar4"></div>
+          <div class="bar bar5"></div>
+          <div class="bar bar6"></div>
+        </div>
+        <div class="chart-labels">
+          <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span
+          ><span>May</span><span>Jun</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid-two bottom-grid">
+      <div class="card">
+        <div class="card-header">
+          <h2>Leads Snapshot (CRM Widget)</h2>
+        </div>
+        <div class="table-header">
+          <span>Lead Name</span>
+          <span>Property</span>
+          <span>Status</span>
+          <span>Action</span>
+        </div>
+        <div class="table-row">
+          <span>Arjun Mehta</span>
+          <span>Ocean View</span>
+          <span class="pill pill-yellow">Interested</span>
+          <button class="link-btn">View</button>
+        </div>
+        <div class="table-row">
+          <span>Arjun Mehta</span>
+          <span>Ocean View</span>
+          <span class="pill pill-yellow">Interested</span>
+          <button class="link-btn">View</button>
+        </div>
+        <div class="table-row">
+          <span>Arjun Mehta</span>
+          <span>Ocean View</span>
+          <span class="pill pill-yellow">Interested</span>
+          <button class="link-btn">View</button>
+        </div>
+        <div class="table-row">
+          <span>Arjun Mehta</span>
+          <span>Ocean View</span>
+          <span class="pill pill-green">Complete</span>
+          <button class="link-btn">View</button>
+        </div>
+        <div class="table-row">
+          <span>Priya Das</span>
+          <span>Skyline Tower</span>
+          <span class="pill pill-orange">Follow-up</span>
+          <button class="link-btn">Assign</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>Facility Summary</h2>
+        </div>
+        <div class="facility-item">
+          <div>
+            <p class="facility-name">Skyline Tower</p>
+            <p class="facility-sub">
+              Managed by UrbanCare Facilities Pvt. Ltd.
+            </p>
+            <p class="facility-sub small">Last Update: 5 days ago</p>
+          </div>
+          <div class="facility-right">
+            <span class="pill pill-green">Active</span>
+            <p class="facility-count">18/24 Task Complete</p>
+          </div>
+        </div>
+        <div class="facility-item">
+          <div>
+            <p class="facility-name">Skyline Tower</p>
+            <p class="facility-sub">
+              Managed by UrbanCare Facilities Pvt. Ltd.
+            </p>
+            <p class="facility-sub small">Last Update: 5 days ago</p>
+          </div>
+          <div class="facility-right">
+            <span class="pill pill-green">Active</span>
+            <p class="facility-count">16/24 Task Complete</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>

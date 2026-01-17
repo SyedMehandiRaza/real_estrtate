@@ -1,0 +1,131 @@
+
+  <main class="main-area">
+    
+    <header class="top-bar">
+      <div class="top-left">
+        <span class="back-arrow"><</span>
+        <span class="top-title">Add Property</span>
+      </div>
+      <div class="top-right">
+        <span class="bell-icon">🔔</span>
+        <div class="avatar"></div>
+      </div>
+    </header>
+
+    <section class="steps-bar">
+      <div class="step-block  active">
+        <div class="corner-wrap">
+          <span class="step-circle">1</span>
+        </div>
+        <span class="step-text">Basic Information</span>
+      </div>
+
+      <div class="step-line"></div>
+
+      <div class="step-block  active">
+        <div class="corner-wrap">
+          <span class="step-circle">2</span>
+        </div>
+        <span class="step-text">Property Details</span>
+      </div>
+
+      <div class="step-line"></div>
+
+      <div class="step-block active">
+        <div class="circle-wrap">
+          <span class="step-circle">3</span>
+        </div>
+        <span class="step-text">Configuration Setup</span>
+      </div>
+
+      <div class="step-line"></div>
+
+      <div class="step-block">
+        <div class="circle-wrap">
+          <span class="step-circle">4</span>
+        </div>
+        <span class="step-text">Upload Media</span>
+      </div>
+
+      <div class="step-line"></div>
+
+      <div class="step-block">
+        <div class="corner-wrap">
+          <span class="step-circle">5</span>
+        </div>
+        <span class="step-text">Documents</span>
+      </div>
+
+      <div class="step-line"></div>
+
+      <div class="step-block">
+        <div class="circle-wrap">
+          <span class="step-circle">6</span>
+        </div>
+        <span class="step-text">Review & Submit</span>
+      </div>
+    </section>
+
+    <section class="content-area">
+      <div class="card">
+        <h2 style="font-size: 15px;">Configuration Setup</h2>
+
+        <form 
+          class="property-form"
+          method="POST"
+          action="/add_config"
+          enctype="multipart/form-data"
+        >
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Configuration Name</label>
+              <input type="text" name="configName" placeholder="Enter Configuration Name" />
+            </div>
+            <div class="form-group">
+              <label>Area (sq.ft)</label>
+              <input type="text" name="configArea" placeholder="Enter" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Total Units</label>
+              <input type="text" name="totalUnits"  placeholder="Enter" />
+            </div>
+            <div class="form-group">
+              <label>Available Units</label>
+              <input type="text" name="availableUnits" placeholder="Enter" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Price</label>
+              <input type="text" name="price" placeholder="Enter" />
+            </div>
+            <div class="form-group">
+              <label>Floor Plan Upload</label>
+              <div class="file-upload" onclick="document.getElementById('floorPlanInput').click()">
+                <div class="upload-content">
+                  <div class="upload-text">Drag & drop OR click to browse</div>
+                  <div class="upload-subtext">Supported formats: PDF, JPG, PNG</div>
+                  <div class="upload-subtext">Max size: 10 MB</div>
+                </div>
+                <input type="file" id="floorPlanInput" name="floorPlan" style="display:none;" accept=".pdf,.jpg,.jpeg,.png">
+              </div>
+            </div>
+          </div>
+
+          <div class="add-config-row">
+            <button type="button" class="add-config-btn">+ Add Another Configuration</button>
+          </div>
+
+          <div class="actions" style="display:flex; gap: 11px;">
+            <button type="button" onclick="window.location.href='/add_detail'" class="back-btn" style="padding:11px 34px; font-size:0.89rem;font-weight:600;cursor:pointer;border-color: #8a8ea1; border-radius: 10px; color:#8a8ea1 ;">← Back</button>
+            <button type="submit" class="next-btn">Next →</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>

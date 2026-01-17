@@ -1,0 +1,81 @@
+<script>
+  const imageInput = document.getElementById("imageInput");
+  const previewGrid = document.querySelector(".images-section .preview-grid");
+
+  imageInput.addEventListener("change", () => {
+    previewGrid.innerHTML = "";
+
+    Array.from(imageInput.files).forEach(file => {
+      const reader = new FileReader();
+      reader.onload = e => {
+        const div = document.createElement("div");
+        div.className = "preview-item";
+        div.innerHTML = `
+          <img src="${e.target.result}" />
+          <button class="remove-btn">✕</button>
+        `;
+        previewGrid.appendChild(div);
+      };
+      reader.readAsDataURL(file);
+    });
+  });
+</script>
+
+
+<script>
+  // File upload handlers
+  const fileInputs = ['reraInput', 'floorPlanInput', 'legalNocInput', 'ownershipInput', 'otherInput'];
+  
+  fileInputs.forEach(inputId => {
+    document.getElementById(inputId).addEventListener('change', function(e) {
+      if (e.target.files.length > 0) {
+        console.log(`File selected for ${inputId}:`, e.target.files[0].name);
+      }
+    });
+  });
+
+  // Remove file button
+  document.querySelectorAll('.remove-file-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      this.closest('.uploaded-file').remove();
+    });
+  });
+
+  // Navigation handlers
+  document.querySelector('.btn-back').addEventListener('click', function() {
+    console.log('Going back to Upload Media');
+  });
+
+  document.querySelector('.btn-next').addEventListener('click', function() {
+    console.log('Proceeding to Review & Submit');
+  });
+</script>
+<script>
+  document.getElementById('imageInput').addEventListener('change', function(e) {
+    console.log('Images selected:', e.target.files);
+  });
+
+  document.getElementById('videoInput').addEventListener('change', function(e) {
+    console.log('Video selected:', e.target.files);
+  });
+
+  // Remove button handlers
+  document.querySelectorAll('.remove-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      this.closest('.preview-item').remove();
+    });
+  });
+
+  // Navigation handlers
+  document.querySelector('.btn-back').addEventListener('click', function() {
+    console.log('Going back to Configuration Setup');
+  });
+
+  document.querySelector('.btn-next').addEventListener('click', function() {
+    console.log('Proceeding to Documents');
+  });
+</script>
+</body>
+</html>

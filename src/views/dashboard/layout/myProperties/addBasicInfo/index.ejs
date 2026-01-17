@@ -1,0 +1,221 @@
+<main class="main-area">
+  <header class="top-bar">
+    <div class="top-left">
+      <span class="back-arrow"><</span>
+      <span class="top-title">Add Property</span>
+    </div>
+    <div class="top-right">
+      <span class="bell-icon">🔔</span>
+      <div class="avatar"></div>
+    </div>
+  </header>
+
+  
+  <section class="steps-bar">
+    <div class="step-block active">
+      <div class="circle-wrap">
+        <span class="step-circle">1</span>
+      </div>
+      <span class="step-text">Basic Information</span>
+    </div>
+
+    <div class="step-line"></div>
+
+    <div class="step-block">
+      <div class="circle-wrap">
+        <span class="step-circle">2</span>
+      </div>
+      <span class="step-text">Property Details</span>
+    </div>
+
+    <div class="step-line"></div>
+
+    <div class="step-block">
+      <div class="circle-wrap">
+        <span class="step-circle">3</span>
+      </div>
+      <span class="step-text">Configuration Setup</span>
+    </div>
+
+    <div class="step-line"></div>
+
+    <div class="step-block">
+      <div class="circle-wrap">
+        <span class="step-circle">4</span>
+      </div>
+      <span class="step-text">Upload Media</span>
+    </div>
+
+    <div class="step-line"></div>
+
+    <div class="step-block">
+      <div class="corner-wrap">
+        <span class="step-circle">5</span>
+      </div>
+      <span class="step-text">Documents</span>
+    </div>
+
+    <div class="step-line"></div>
+
+    <div class="step-block">
+      <div class="circle-wrap">
+        <span class="step-circle">6</span>
+      </div>
+      <span class="step-text">Review & Submit</span>
+    </div>
+  </section>
+  
+  <section class="content-area">
+    <div class="card">
+      <h2 style="font-size: 15px">Basic Information</h2>
+
+      <form class="property-form" method="POST" action="/add">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Property Name</label>
+            <input type="text" name="title" placeholder="Enter Property Name" />
+          </div>
+          <div class="form-group">
+            <label>Property Type</label>
+            <select name="type">
+              <option value="APARTMENT">APARTMENT</option>
+              <option value="VILLA">VILLA</option>
+              <option value="HOUSE">HOUSE</option>
+              <option value="PLOT">PLOT</option>
+              <option value="BUNGLOW">BUNGLOW</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Listing Purpose</label>
+            <select name="purpose">
+              <option>Select</option>
+              <option value="rent">Rent</option>
+              <option value="buy">Buy</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Listing Category</label>
+            <select>
+              <option value="PROJECT">Project</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Property Status</label>
+            <select name="status">
+              <option value="ACTIVE">ACTIVE</option>
+              <option value="INACTIVE">INACTIVE</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>City</label>
+            <select name="city">
+              <option value="city">Select</option>
+              <option value="">Select State</option>
+              <option value="Andhra Pradesh">Andhra Pradesh</option>
+              <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+              <option value="Assam">Assam</option>
+              <option value="Bihar">Bihar</option>
+              <option value="Chhattisgarh">Chhattisgarh</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Goa">Goa</option>
+              <option value="Gujarat">Gujarat</option>
+              <option value="Haryana">Haryana</option>
+              <option value="Himachal Pradesh">Himachal Pradesh</option>
+              <option value="Jharkhand">Jharkhand</option>
+              <option value="Karnataka">Karnataka</option>
+              <option value="Kerala">Kerala</option>
+              <option value="Madhya Pradesh">Madhya Pradesh</option>
+              <option value="Maharashtra">Maharashtra</option>
+              <option value="Odisha">Odisha</option>
+              <option value="Punjab">Punjab</option>
+              <option value="Rajasthan">Rajasthan</option>
+              <option value="Tamil Nadu">Tamil Nadu</option>
+              <option value="Telangana">Telangana</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>State</label>
+            <select name="state">
+              <option value="state">Select State</option>
+              
+              <option value="Andhra Pradesh">Andhra Pradesh</option>
+              <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+              <option value="Assam">Assam</option>
+              <option value="Bihar">Bihar</option>
+              <option value="Chhattisgarh">Chhattisgarh</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Goa">Goa</option>
+              <option value="Gujarat">Gujarat</option>
+              <option value="Haryana">Haryana</option>
+              <option value="Himachal Pradesh">Himachal Pradesh</option>
+              <option value="Jharkhand">Jharkhand</option>
+              <option value="Karnataka">Karnataka</option>
+              <option value="Kerala">Kerala</option>
+              <option value="Madhya Pradesh">Madhya Pradesh</option>
+              <option value="Maharashtra">Maharashtra</option>
+              <option value="Odisha">Odisha</option>
+              <option value="Punjab">Punjab</option>
+              <option value="Rajasthan">Rajasthan</option>
+              <option value="Tamil Nadu">Tamil Nadu</option>
+              <option value="Telangana">Telangana</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Country</label>
+            <select name="country">
+              <option value="">Select Country</option>
+              <option value="India">India</option>
+              <option value="United States">United States</option>
+              <option value="United Kingdom">United Kingdom</option>
+              <option value="Canada">Canada</option>
+              <option value="Australia">Australia</option>
+              <option value="Germany">Germany</option>
+              <option value="France">France</option>
+              <option value="United Arab Emirates">United Arab Emirates</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Locality / Area</label>
+            <input type="text" name="locationArea" placeholder="Enter" />
+          </div>
+          <div class="form-group">
+            <label>Pin / Postal code</label>
+            <input type="text" name="zipCode" placeholder="Enter" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group full">
+            <label>Address</label>
+            <input
+              type="text"
+              class="equal-field"
+              name="address"
+              placeholder="Enter Full Address"
+            />
+          </div>
+          <div class="form-group full">
+            <label>Pin Location on Map</label>
+            <div class="map-picker">Map Picker</div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="next-btn">Next →</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>

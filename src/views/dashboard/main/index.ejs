@@ -1,0 +1,39 @@
+<%- include("../header/header") %>
+<div class="app-container">
+  <%- include("../sidebar/index") %>
+
+  <div class="main-content">
+    <main>
+      <% if (activePage === 'dashboard') { %> <%-
+      include("../layout/dashboard/dashboard.ejs") %> <% } else if (activePage
+      === 'properties') { %> <%-
+      include("../layout/myProperties/propertyScreen_1.ejs") %> <% } else
+      if (activePage === 'properties_detail') { %> <%-
+      include("../layout/myProperties/propertyDetailScreen_2.ejs") %> <% } else
+      if (activePage === 'properties_addProduct1') { %> <%-
+      include("../layout/myProperties/addBasicInfo/index.ejs") %> <% }else
+      if (activePage === 'properties_addProduct2') { %> <%-
+      include("../layout/myProperties/propertydetail/index.ejs") %> <% }else
+      if (activePage === 'properties_addProduct3') { %> <%-
+      include("../layout/myProperties/configartionsetup/index.ejs") %> <% }else
+      if (activePage === 'properties_addProduct4') { %> <%-
+      include("../layout/myProperties/uploadMedia/index.ejs") %> <% }else
+      if (activePage === 'properties_addProduct5') { %> <%-
+      include("../layout/myProperties/Documentss/index.ejs") %> <% }else
+      if (activePage === 'properties_addProduct6') { %> <%-
+      include("../layout/myProperties/reviewandsumit/index.ejs") %> <% } %>
+    </main>
+  </div>
+</div>
+<%- include("../footer/footer") %>
+
+
+
+
+
+
+
+
+
+
+
