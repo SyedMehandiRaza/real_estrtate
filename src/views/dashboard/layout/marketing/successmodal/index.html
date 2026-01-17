@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Success Modal</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f5f7fb;
+    }
+
+    /* Page overlay just to demonstrate modal */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .success-modal {
+      width: 320px;
+      max-width: 90%;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 32px 24px 24px;
+      text-align: center;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
+    }
+
+    .success-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      background: #e4f8eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .success-icon::before {
+      content: "";
+      width: 18px;
+      height: 32px;
+      border-right: 4px solid #18b261;
+      border-bottom: 4px solid #18b261;
+      transform: rotate(45deg) translateY(-2px);
+      display: block;
+    }
+
+    .success-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+
+    .success-text {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #6b7280;
+      margin-bottom: 24px;
+    }
+
+    .success-button {
+      display: inline-block;
+      min-width: 120px;
+      padding: 10px 24px;
+      border-radius: 999px;
+      border: none;
+      background: #16a34a;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .success-button:hover {
+      background: #15803d;
+    }
+  </style>
+</head>
+<body>
+
+<div class="overlay">
+  <div class="success-modal">
+    <div class="success-icon"></div>
+
+    <h2 class="success-title">Successfully Sent</h2>
+
+    <p class="success-text">
+      Your promotion request has been submitted. Our marketing team will review and design the post.
+    </p>
+
+    <button class="success-button">Done.</button>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,9 +1,4 @@
-const {
-  Property,
-  PropertyMedia,
-  PropertyConfiguration,
-  sequelize,
-} = require("../models");
+const { Property, PropertyMedia, PropertyConfiguration, sequelize} = require("../models");
 const { Op } = require("sequelize");
 const flash = require("connect-flash");
 

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit for Review</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .modal {
+            background: white;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 700px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .modal-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .close-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #d1d5db;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #6b7280;
+            transition: background 0.2s;
+        }
+
+        .close-btn:hover {
+            background: #9ca3af;
+        }
+
+        .progress-section {
+            padding: 24px 24px 32px;
+        }
+
+        .progress-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            position: relative;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-connector {
+            height: 2px;
+            flex: 1;
+            min-width: 80px;
+            background: #e5e7eb;
+            margin: 0 -1px;
+            position: relative;
+            top: -20px;
+        }
+
+        .step-connector.active {
+            background: #8b5cf6;
+        }
+
+        .step-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #d1d5db;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .step.completed .step-circle,
+        .step.active .step-circle {
+            background: #8b5cf6;
+        }
+
+        .step-label {
+            font-size: 13px;
+            color: #8b5cf6;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .step.inactive .step-label {
+            color: #9ca3af;
+        }
+
+        .modal-content {
+            padding: 28px 24px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 28px;
+        }
+
+        .section-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #6b7280;
+            margin-bottom: 12px;
+        }
+
+        .property-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+            background: #fafafa;
+        }
+
+        .property-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .property-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .property-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 4px;
+        }
+
+        .property-address {
+            font-size: 13px;
+            color: #6b7280;
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .property-phone {
+            font-size: 13px;
+            color: #6b7280;
+        }
+
+        .property-price {
+            font-size: 16px;
+            font-weight: 600;
+            color: #8b5cf6;
+            flex-shrink: 0;
+        }
+
+        .content-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .content-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .promotion-preview {
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+        }
+
+        .promotion-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .promotion-type {
+            padding: 14px;
+            text-align: center;
+            font-size: 14px;
+            color: #374151;
+            font-weight: 500;
+            background: white;
+        }
+
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .platform-box {
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            background: white;
+        }
+
+        .platform-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            border-radius: 10px;
+            background: #f9fafb;
+        }
+
+        .platform-name {
+            font-size: 14px;
+            color: #374151;
+            font-weight: 500;
+        }
+
+        .modal-footer {
+            padding: 20px 24px;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 12px 36px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #6b7280;
+            border: 2px solid #e5e7eb;
+        }
+
+        .btn-secondary:hover {
+            background: #f9fafb;
+            border-color: #d1d5db;
+        }
+
+        .btn-primary {
+            background: #8b5cf6;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #7c3aed;
+        }
+
+        @media (max-width: 768px) {
+            .content-row {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .step-connector {
+                min-width: 50px;
+            }
+
+            .step-label {
+                font-size: 11px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 12px;
+            }
+
+            .modal {
+                border-radius: 12px;
+                max-height: 95vh;
+            }
+
+            .modal-header {
+                padding: 18px 16px;
+            }
+
+            .modal-title {
+                font-size: 18px;
+            }
+
+            .progress-section {
+                padding: 20px 16px 28px;
+            }
+
+            .step-circle {
+                width: 36px;
+                height: 36px;
+                font-size: 14px;
+            }
+
+            .step-label {
+                font-size: 10px;
+            }
+
+            .step-connector {
+                min-width: 30px;
+            }
+
+            .modal-content {
+                padding: 24px 16px;
+            }
+
+            .section-title {
+                font-size: 16px;
+                margin-bottom: 20px;
+            }
+
+            .property-card {
+                padding: 12px;
+                gap: 12px;
+                margin-bottom: 24px;
+                flex-wrap: wrap;
+            }
+
+            .property-image {
+                width: 50px;
+                height: 50px;
+            }
+
+            .property-name {
+                font-size: 15px;
+            }
+
+            .property-address,
+            .property-phone {
+                font-size: 12px;
+            }
+
+            .property-price {
+                font-size: 15px;
+                width: 100%;
+                text-align: right;
+            }
+
+            .content-row {
+                gap: 16px;
+            }
+
+            .promotion-image {
+                height: 180px;
+            }
+
+            .modal-footer {
+                padding: 16px;
+                flex-direction: column-reverse;
+            }
+
+            .btn {
+                width: 100%;
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .step-label {
+                font-size: 9px;
+            }
+
+            .step-circle {
+                width: 32px;
+                height: 32px;
+                font-size: 13px;
+            }
+
+            .step-connector {
+                min-width: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="modal">
+        <div class="modal-header">
+            <h2 class="modal-title">Promote My Property</h2>
+            <button class="close-btn">✕</button>
+        </div>
+
+        <div class="progress-section">
+            <div class="progress-bar">
+                <div class="step completed">
+                    <div class="step-circle">1</div>
+                    <div class="step-label">Select Property</div>
+                </div>
+                <div class="step-connector active"></div>
+                <div class="step completed">
+                    <div class="step-circle">2</div>
+                    <div class="step-label">Post Request</div>
+                </div>
+                <div class="step-connector active"></div>
+                <div class="step active">
+                    <div class="step-circle">3</div>
+                    <div class="step-label">Submit for Review</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-content">
+            <h3 class="section-title">Submit for Review</h3>
+
+            <p class="section-label">Property</p>
+            
+            <div class="property-card">
+                <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=150&h=150&fit=crop" alt="Skyline Tower" class="property-image">
+                <div class="property-info">
+                    <div class="property-name">Skyline Tower</div>
+                    <div class="property-address">899 Reichel Ford, Lake Nathen</div>
+                    <div class="property-phone">48899-3782</div>
+                </div>
+                <div class="property-price">$840k - $1.6M</div>
+            </div>
+
+            <div class="content-row">
+                <div class="content-section">
+                    <p class="section-label">Promotion Type</p>
+                    <div class="promotion-preview">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=300&fit=crop" alt="Single Image Post" class="promotion-image">
+                        <div class="promotion-type">Single Image Post</div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <p class="section-label">Platforms</p>
+                    <div class="platforms-grid">
+                        <div class="platform-box">
+                            <div class="platform-icon">📷</div>
+                            <div class="platform-name">Instagram</div>
+                        </div>
+                        <div class="platform-box">
+                            <div class="platform-icon">▶️</div>
+                            <div class="platform-name">Youtube</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-secondary">Back</button>
+            <button class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.close-btn').addEventListener('click', () => {
+            document.querySelector('.modal').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

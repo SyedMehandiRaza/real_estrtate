@@ -40,7 +40,9 @@ app.use((req, res, next) => {
   res.locals.user = req.user || null;
   next();
 });
-
+app.get("/marketing", (rq, res) => {
+  res.render("dashboard/layout/marketing/index.js")
+})
 app.use(authRoutes);
 app.use(propertyRoute);
 app.use(propOwnerRoute)
