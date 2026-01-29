@@ -4,6 +4,7 @@
 
   <div class="main-content">
     <main>
+
       <% if (activePage === 'dashboard') { %> <%-
       include("../layout/dashboard/dashboard.ejs") %> <% } else if (activePage
       === 'properties') { %> <%-
@@ -21,7 +22,18 @@
       if (activePage === 'properties_addProduct5') { %> <%-
       include("../layout/myProperties/Documentss/index.ejs") %> <% }else
       if (activePage === 'properties_addProduct6') { %> <%-
-      include("../layout/myProperties/reviewandsumit/index.ejs") %> <% } %>
+      include("../layout/myProperties/reviewandsumit/index.ejs") %> <% }else
+      if (activePage === 'marketing') { %> <%-
+      include("../layout/marketing/index.ejs") %> <% }else
+      if (activePage === 'staff') { %> <%-
+      include("../layout/staffManagement/index.ejs") %> <% }else
+      if (activePage === 'facility') { %> <%-
+      include("../layout/facalityManagement/index.ejs") %> <% }else
+      if (activePage === 'addfacility') { %> <%-
+      include("../layout/facalityManagement/addfacility.ejs") %> <% }else
+      if (activePage === 'subscription') { %> <%-
+      include("../layout/subscriptionPage/index.ejs") %> <% }  %>
+      
     </main>
   </div>
 </div>

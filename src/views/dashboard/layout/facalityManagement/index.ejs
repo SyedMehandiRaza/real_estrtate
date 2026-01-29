@@ -1,0 +1,432 @@
+
+    <div class="main-content left-margin">
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1 class="page-title">Facility Management</h1>
+        <div class="header-icons">
+          <button class="icon-btn">🔔</button>
+          <div class="user-avatar">
+            <img src="https://i.pravatar.cc/150?img=8" alt="User" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Card -->
+      <div class="hero-card">
+        <div class="hero-content">
+          <h2>Facility Management</h2>
+          <p>
+            Assign and manage facility management companies for your properties.
+            Track contracts, performance, and property coverage.
+          </p>
+          <button
+            class="btn-primary"
+            onclick="window.location.href='/addfacility'"
+          >
+            <span>+</span>
+            Add New Facility Company
+          </button>
+        </div>
+        <div class="hero-illustration">
+          <img
+            src="https://cdn.discordapp.com/attachments/1441373063877890048/1446021376530972722/Frame_726.png"
+            alt="Illustration"
+          />
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Total Companies</div>
+          <div class="stat-value">6</div>
+          <div class="stat-description">1 new company this month</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Assigned Properties</div>
+          <div class="stat-value">14</div>
+          <div class="stat-description">3 properties added this week</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Active Contracts</div>
+          <div class="stat-value">9</div>
+          <div class="stat-description">2 contracts expiring soon</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Pending Renewals</div>
+          <div class="stat-value">2</div>
+          <div class="stat-description">Renewal reminders sent</div>
+        </div>
+      </div>
+
+      <!-- Table Section -->
+      <div class="table-section">
+        <div class="table-filters">
+          <div class="search-box">
+            <input type="text" placeholder="Search by company name" />
+            <span class="search-icon">🔍</span>
+          </div>
+          <div class="filter-dropdown">
+            <select class="filter-select">
+              <option>All Status</option>
+              <option>Active</option>
+              <option>Inactive</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Company Name</th>
+                <th>Contact Person</th>
+                <th>Email</th>
+                <th>Assigned Properties</th>
+                <th>Contract Period</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% companies.forEach(company => { %>
+              <tr>
+                <td><%= company.companyName %></td>
+                <td><%= company.contactPerson %></td>
+                <td><%= company.companyEmail %></td>
+
+                <!-- Assigned Properties -->
+                <td><%= company.propertyContracts.length %></td>
+
+                <!-- Contract Period -->
+                <td>
+                  <% if (company.propertyContracts.length) { %> <%=
+                  company.propertyContracts[0].startDate %> - <%=
+                  company.propertyContracts[company.propertyContracts.length -
+                  1].endDate %> <% } else { %> N/A <% } %>
+                </td>
+
+                <!-- Status -->
+                <td>
+                  <% if (company.isTerminated) { %>
+                  <span class="status-inactive">Inactive</span>
+                  <% } else { %>
+                  <span class="status-active">Active</span>
+                  <% } %>
+                </td>
+
+                <!-- Actions -->
+                <td>
+                  <div class="table-actions">
+                    <button
+                      class="action-link action-view"
+                      onclick="openModal(<%= company.id %>)"
+                    >
+                      View
+                    </button>
+                    <span class="action-divider">|</span>
+                    <button class="action-link action-edit">Edit</button>
+                    <span class="action-divider">|</span>
+                    <form
+                      action="/facility/<%= company.id %>/terminate"
+                      method="POST"
+                      style="display: inline"
+                    >
+                      <button
+                        type="submit"
+                        class="action-link action-terminate"
+                      >
+                        <% if (company.isTerminated) { %>
+                        <span
+                          class="status-active"
+                          onclick="return confirm('Are you sure you want to Re-Activate this company?')"
+                          >Re-Activate</span
+                        >
+                        <% } else { %>
+                        <span
+                          onclick="return confirm('Are you sure you want to terminate this company?')"
+                          >Terminate</span
+                        >
+                        <% } %>
+                      </button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- </div> -->
+
+    <!-- formodal -->
+
+    
+    <%- include("modal/assiagnProperty.ejs") %>
+
+    <!-- assignprpertymodal -->
+    <%- include("modal/propertyAssign.ejs") %>
+     
+    
+
+<script src="/js/facility_management.js"></script>
+
+
+
+
+
+<!-- 
+    <script>
+      function openModal() {
+        document.querySelector(".modal-overlay").style.display = "flex";
+      }
+
+      document.querySelector(".close-btn").addEventListener("click", () => {
+        document.querySelector(".modal-overlay").style.display = "none";
+      });
+    </script>
+
+    <script>
+      const tabs = document.querySelectorAll(".tabs .tab");
+      const panels = document.querySelectorAll(".tab-panel");
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          const target = tab.getAttribute("data-tab");
+
+          // Remove active class from all tabs
+          tabs.forEach((t) => t.classList.remove("active"));
+          tab.classList.add("active");
+
+          // Remove active class from all panels
+          panels.forEach((p) => p.classList.remove("active"));
+
+          // Add active class to target panel
+          const targetPanel = document.querySelector(".tab-panel-" + target);
+          if (targetPanel) {
+            targetPanel.classList.add("active");
+          }
+        });
+      });
+
+      // Close button functionality
+      document.querySelector(".close-btn").addEventListener("click", () => {
+        document.querySelector(".modal-overlay").style.display = "none";
+      });
+
+      // Add note functionality
+      const toggleBtn = document.getElementById("toggleNoteBtn");
+      const inputBox = document.querySelector(".input-box");
+      const noteMessage = document.getElementById("noteMessage");
+
+      let isOpen = false;
+
+      toggleBtn.addEventListener("click", () => {
+        isOpen = !isOpen;
+
+        if (isOpen) {
+          inputBox.style.display = "block";
+          toggleBtn.textContent = "×"; // change + to X
+          noteMessage.focus();
+        } else {
+          inputBox.style.display = "none";
+          toggleBtn.textContent = "+"; // back to +
+          noteMessage.value = ""; // clear input
+        }
+      });
+    </script>
+
+    <script>
+      function openAssignPropertyModal() {
+        const modal = document.getElementById("assignPropertyModal");
+        modal.style.display = "flex";
+      }
+
+      function closeAssignPropertyModal() {
+        const modal = document.getElementById("assignPropertyModal");
+        modal.style.display = "none";
+      }
+    </script>
+
+    <script>
+      const modal = document.getElementById("assignPropertyModal");
+      const panelstwo = document.querySelectorAll(".step-panel");
+      const steps = document.querySelectorAll(".step-wrap");
+      const btnNext = document.getElementById("btnNext");
+      const btnBack = document.getElementById("btnBack");
+      const propertyItems = document.querySelectorAll(".property-item");
+      const searchInput = document.getElementById("searchInput");
+
+      let currentStep = 0;
+      let selectedProperty = null;
+
+      // Initialize
+      updateUI();
+
+      // Open modal
+      function openAssignPropertyModal() {
+        modal.classList.add("active");
+        currentStep = 0;
+        selectedProperty = null;
+        propertyItems.forEach((p) => p.classList.remove("selected"));
+        document.getElementById("startDate").value = "";
+        document.getElementById("endDate").value = "";
+        document.getElementById("notes").value = "";
+        updateUI();
+      }
+
+      // Close modal
+      function closeAssignPropertyModal() {
+        if (
+          confirm(
+            "Are you sure you want to close? Any unsaved changes will be lost."
+          )
+        ) {
+          modal.classList.remove("active");
+        }
+      }
+
+      // Property selection
+      propertyItems.forEach((item) => {
+        const selectBtn = item.querySelector(".btn-select");
+
+        selectBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          selectProperty(item);
+        });
+
+        item.addEventListener("click", () => {
+          selectProperty(item);
+        });
+      });
+
+      function selectProperty(item) {
+        propertyItems.forEach((p) => p.classList.remove("selected"));
+        item.classList.add("selected");
+
+        selectedProperty = {
+          id: item.dataset.id,
+          name: item.querySelector(".property-name").textContent,
+          address: item.querySelector(".property-address").textContent,
+          price: item.querySelector(".property-price").textContent,
+        };
+      }
+
+      // Search
+      searchInput.addEventListener("input", (e) => {
+        const search = e.target.value.toLowerCase();
+        propertyItems.forEach((item) => {
+          const name = item
+            .querySelector(".property-name")
+            .textContent.toLowerCase();
+          const address = item
+            .querySelector(".property-address")
+            .textContent.toLowerCase();
+          item.style.display =
+            name.includes(search) || address.includes(search) ? "flex" : "none";
+        });
+      });
+
+      // Handle Done button - Redirect to index.html
+      function handleDone() {
+        // In a real application, this would redirect to index.html
+        // window.location.href = 'index.html';
+
+        // For demo purposes, we'll just close the success modal and reset
+        document.getElementById("successModal").classList.remove("active");
+        alert(
+          'Redirecting to index.html...\n\nIn production, this would navigate to: window.location.href = "index.html"'
+        );
+      }
+
+      // Back button
+      btnBack.addEventListener("click", () => {
+        if (currentStep > 0) {
+          currentStep--;
+          updateUI();
+        }
+      });
+
+      // Next button
+      btnNext.addEventListener("click", () => {
+        if (currentStep === 0 && !selectedProperty) {
+          alert("Please select a property");
+          return;
+        }
+
+        if (currentStep === 1) {
+          const startDate = document.getElementById("startDate").value;
+          const endDate = document.getElementById("endDate").value;
+          const notes = document.getElementById("notes").value;
+
+          if (!startDate || !endDate) {
+            alert("Please fill in contract dates");
+            return;
+          }
+
+          // Update confirmation
+          document.getElementById("confirmProperty").textContent =
+            selectedProperty.name;
+          document.getElementById("confirmDates").textContent =
+            formatDate(startDate) + " - " + formatDate(endDate);
+          document.getElementById("confirmNotes").textContent =
+            notes || "No notes provided";
+        }
+
+        if (currentStep < panelstwo.length - 1) {
+          currentStep++;
+          updateUI();
+        } else {
+          // Final confirmation
+          alert("Property assignment confirmed successfully!");
+          closeAssignPropertyModal();
+        }
+      });
+
+      // Back button
+      btnBack.addEventListener("click", () => {
+        if (currentStep > 0) {
+          currentStep--;
+          updateUI();
+        }
+      });
+
+      function updateUI() {
+        // Update panels
+        panelstwo.forEach((panel, i) => {
+          panel.classList.toggle("active", i === currentStep);
+        });
+
+        // Update steps
+        steps.forEach((step, i) => {
+          step.classList.remove("active", "completed");
+          if (i === currentStep) step.classList.add("active");
+          if (i < currentStep) step.classList.add("completed");
+        });
+
+        // Update buttons
+        btnBack.style.visibility = currentStep === 0 ? "hidden" : "visible";
+        btnNext.textContent =
+          currentStep === panelstwo.length - 1 ? "Confirm" : "Next";
+      }
+
+      function formatDate(dateStr) {
+        const date = new Date(dateStr);
+        return date.toLocaleDateString("en-GB", {
+          day: "2-digit",
+          month: "short",
+          year: "numeric",
+        });
+      }
+
+      // Close on overlay click
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          closeAssignPropertyModal();
+        }
+      });
+    </script>
+  </body>
+</html> -->

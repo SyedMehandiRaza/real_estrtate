@@ -4,6 +4,12 @@ const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Property extends Model {
     static associate(models) {
+      Property.hasOne(models.Marketing, {
+        foreignKey: "propertyId",
+        as: "marketing",
+        onDelete: "CASCADE",
+      });
+
       Property.belongsTo(models.User, {
         foreignKey: "ownerId",
         as: "owner",
@@ -18,6 +24,12 @@ module.exports = (sequelize, DataTypes) => {
       Property.hasMany(models.PropertyConfiguration, {
         foreignKey: "propertyId",
         as: "configurations",
+        onDelete: "CASCADE",
+      });
+
+      Property.hasMany(models.CompanyPropertyContract, {
+        foreignKey: "propertyId",
+        as: "companyContracts",
         onDelete: "CASCADE",
       });
     }

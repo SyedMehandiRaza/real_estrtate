@@ -1,0 +1,224 @@
+<link rel="stylesheet" href="/css/marketing/index.css">
+</head>
+<body>
+<div class="main-wrapper">
+  <!-- top bar -->
+  <div class="top-bar">
+    <div class="top-title">Marketing</div>
+    <div class="top-right">
+      <button class="icon-btn">
+        <span class="bell-icon">🔔</span>
+      </button>
+      <div class="avatar"></div>
+    </div>
+  </div>
+
+  <!-- hero -->
+  <section class="hero-card">
+    <div>
+      <div class="hero-left-title">Ready to Get Started?</div>
+      <p class="hero-left-text">
+        Let us handle the marketing. Click below to start your property
+        promotion and reach the potential buyers and tenant.
+      </p>
+
+      <button id="openModalBtn" class="btn btn-next">Promote My Property</button>
+      <!-- <button class="hero-btn">Promote My Property</button> -->
+    </div>
+    <!-- <div class="hero-right">
+      <img
+        src="https://via.placeholder.com/260x120"
+        alt="Marketing Illustration"
+        class="hero-illustration"
+      />
+    </div> -->
+  </section>
+
+  <!-- main grid -->
+  <section class="content-grid">
+    <!-- left: Social media post types -->
+    <div class="card">
+      <div class="section-title">Social Media Post Types</div>
+      <p class="section-sub">
+        The platform creates visually appealing promotional posts tailored for
+        each property. The following post formats are used during promotion.
+      </p>
+
+      <!-- <div class="post-list">
+<article class="post-card">
+  <div class="post-img"
+       style="background-image:url('img/property-1.jpg');"></div>
+  <div class="post-body">
+    <div class="post-title">Luxurious 3BHK in Bandra – Ready to Move In</div>
+    <div class="post-meta">
+      <span> Area Colony, Bhopal</span>
+    </div>
+    <div class="post-price">$840,000</div>
+  </div>
+</article>
+
+<article class="post-card">
+  <div class="post-media-wrap carousel" data-index="0">
+    <div class="post-img"
+         style="background-image:url('img/property-2a.jpg');"></div>
+    <div class="carousel-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+  <div class="post-body">
+    <div class="post-title">Luxurious 3BHK in Bandra – Ready to Move In</div>
+
+  </div>
+</article>
+
+<article class="post-card">
+  <div class="post-media-wrap">
+    <div class="post-img"
+         style="background-image:url('img/property-video-thumb.jpg');"></div>
+    <div class="play-btn">▶</div>
+  </div>
+</article>
+
+        </div> -->
+      <div class="post-list">
+        <% posts.forEach(post => { %>
+
+        <!-- IMAGE POST -->
+        <% if(post.type === 'image') { %>
+        <article class="post-card">
+          <div
+            class="post-img"
+            style="background-image: url('<%= post.url %>')"
+          ></div>
+          <div class="post-body">
+            <div class="post-title"><%= post.title %></div>
+            <div class="post-meta">
+              <span><%= post.location %></span>
+            </div>
+            <div class="post-price">
+              <%= post.price ? '$' + post.price : '-' %>
+            </div>
+          </div>
+        </article>
+        <% } %>
+
+        <!-- CAROUSEL POST -->
+        <% if(post.type === 'carousel') { %>
+        <article class="post-card">
+          <div class="post-media-wrap carousel" data-index="0">
+            <% post.urls.forEach((img, idx) => { %>
+            <div
+              class="post-img"
+              style="background-image:url('<%= img %>'); display: <%= idx === 0 ? 'block' : 'none' %>;"
+            ></div>
+            <% }) %>
+            <div class="carousel-dots">
+              <% post.urls.forEach((_, idx) => { %>
+              <span class="dot <%= idx === 0 ? 'active' : '' %>"></span>
+              <% }) %>
+            </div>
+          </div>
+          <div class="post-body">
+            <div class="post-title"><%= post.title %></div>
+            <div class="post-meta"><span><%= post.location %></span></div>
+            <div class="post-price">
+              <%= post.price ? '$' + post.price : '-' %>
+            </div>
+          </div>
+        </article>
+        <% } %>
+
+        <!-- VIDEO POST -->
+        <% if(post.type === 'video') { %>
+        <article class="post-card">
+          <div class="post-media-wrap">
+            <div
+              class="post-img"
+              style="background-image: url('<%= post.url %>')"
+            ></div>
+            <div class="play-btn">▶</div>
+          </div>
+          <div class="post-body">
+            <div class="post-title"><%= post.title %></div>
+            <div class="post-meta"><span><%= post.location %></span></div>
+            <div class="post-price">
+              <%= post.price ? '$' + post.price : '-' %>
+            </div>
+          </div>
+        </article>
+        <% } %> <% }) %>
+      </div>
+    </div>
+
+    <!-- right: How we promote -->
+    <aside class="card">
+      <div class="section-title">How We Promote Your Property</div>
+      <p class="promote-right-text">
+        We promote your property by creating professional social media posts and
+        sharing them across major platforms to increase visibility and attract
+        potential buyers.
+      </p>
+      <div class="social-row">
+        <div class="social-icon">📸</div>
+        <div class="social-icon">f</div>
+        <div class="social-icon">▶</div>
+        <div class="social-icon">in</div>
+      </div>
+    </aside>
+  </section>
+
+  <!-- promotion status table -->
+  <div class="card status-card">
+    <div class="table-title">Promotion Status</div>
+    <table class="status-table">
+      <thead>
+        <tr>
+          <th>Property Name</th>
+          <th>Promotion Status</th>
+          <th>Date of Posting</th>
+          <th>Platform Posted On</th>
+          <th>Platform</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% promotionStatus.forEach(status => { %>
+        <tr>
+          <td><%= status.propertyName %></td>
+          <td>
+            <span
+              class="status-pill <%= status.status === 'Promoted' ? 'status-promoted' : (status.status === 'In Progress' ? 'status-progress' : 'status-not') %>"
+            >
+              <%= status.status %>
+            </span>
+          </td>
+          <td><%= status.dateOfPosting %></td>
+          <td><%= status.platformPostedOn %></td>
+          <td><%= status.platform %></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+ <%- include('modals/prmotePropertyModal') %>
+
+ 
+ <%- include('modals/promoteTypeModal') %>
+ 
+ 
+ <%- include('modals/promoteReviewModal') %>
+
+ 
+ <%- include('modals/promoteSuccessModal') %>
+
+
+
+
+
+
+<script src="/js/marketing-modal.js"></script>

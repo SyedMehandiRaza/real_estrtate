@@ -40,10 +40,6 @@ exports.renderPropertyDetail = async (req, res) => {
       .filter((m) => m.type === "VIDEO")
       .map((m) => m.url);
 
-    console.log("property --------------->:", property);
-    console.log("images --------------->:", images);
-    console.log("videos --------------->:", videos);
-
     res.render("dashboard/main/index", {
       property,
       images,
@@ -198,7 +194,6 @@ exports.renderAddProduct_submit = (req, res) => {
 
 exports.submitStep1 = (req, res) => {
   try {
-    console.log(req.body);
     req.session.formData = {};
     req.session.formData = { ...req.session.formData, ...req.body };
     res.redirect("/add_detail");
@@ -390,6 +385,7 @@ exports.createProperty = async (req, res) => {
   } catch (error) {
     await t.rollback();
     console.error("CREATE PROPERTY ERROR:", error);
-    res.status(500).send("Property creation failed. Please try again.");
+    // res.status(500).send("Property creation failed. Please try again.");
+    return res.redirect(req.get("Referer"));
   }
 };

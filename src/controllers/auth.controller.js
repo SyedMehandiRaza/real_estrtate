@@ -21,7 +21,6 @@ function generateToken(user, res) {
   return token;
 }
 
-
 function generateOtp() {
     return Math.floor(100000 + Math.random() * 900000).toString();
 }
@@ -54,39 +53,6 @@ exports.selectCountry = ( req, res) => {
   res.render("buyerSignup/selectCountry.ejs", {email: req.session.otpEmail})
 }
 
-// checked by postman
-// exports.register = async (req, res) => {
-//   try {
-//     const { name, email, password, phone, role } = req.body;
-
-//     const exist = await User.findOne({ where: { email } });
-//     if (exist) {
-//       req.flash("error", "user already registered with this email");
-//       return res.redirect('/login');
-//       // return res.status(401).json("already registered");
-//     }
-//     const hashPass = await bcrypt.hash(password, 10);
-//     const userRole = role || "BUYER"
-//     const user = await User.create({
-//       name,
-//       email,
-//       password: hashPass,
-//       phone,
-//       role: userRole
-//     });
-//     const token = generateToken(user, res);
-
-//     req.flash("success", "User registered successfully");
-
-//     return res.redirect('/verify');
-//   } catch (error) {
-//     console.error("error in register controller -------->", error);
-//     req.flash("error", "something went wrong");
-//     // return res.redirect('/register')
-//     return res.status(500).json("something went wrong");
-//   }
-// };
-
 exports.register = async (req, res) => {
   try {
     const { name, email, password, phone, role } = req.body;
@@ -100,7 +66,6 @@ exports.register = async (req, res) => {
     const hashPass = await bcrypt.hash(password, 10);
     const userRole = role || "BUYER";
 
-    console.log("user create before")
     const user  = await User.create({
       name,
       email,
@@ -109,26 +74,17 @@ exports.register = async (req, res) => {
       role: userRole,
       isVerified: false
     });
-    console.log("user create")
     generateToken(user, res)
 
     const otp = generateOtp();
     
-    console.log("otp create", otp)
 
-    // Store OTP in session
     req.session.otp = otp;
     req.session.otpEmail = email;
 
-    console.log("SESSION SET:", req.session);
-
-
-    console.log("sending email")
     await sendOtpEmail(email, otp);
-
-    console.log("email send ")
     req.flash("success", "OTP sent to your email");
-    res.redirect("/verify");
+    return res.redirect("/verify");
 
   } catch (error) {
     console.error(error);
@@ -137,15 +93,14 @@ exports.register = async (req, res) => {
   }
 };
 
-// checked by postman
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    if (!email || !password) {
-      req.flash("error", "All fields are required");
-      return res.redirect("/login");
-    }
+    // if (!email || !password) {
+    //   req.flash("error", "All fields are required");
+    //   return res.redirect("/login");
+    // }
 
     const user = await User.findOne({
       where: {
@@ -154,12 +109,6 @@ exports.login = async (req, res) => {
     });
 
     if (!user) {
-      req.flash("error", "Invalid credentials");
-      return res.redirect("/login");
-    }
-
-    const match = await bcrypt.compare(password, user.password);
-    if (!match) {
       req.flash("error", "Invalid credentials");
       return res.redirect("/login");
     }
@@ -176,51 +125,6 @@ exports.login = async (req, res) => {
   }
 };
 
-// exports.login = async (req, res) => {
-//   try {
-//     const { email, phone, password } = req.body;
-//     const orCondition = [];
-//     if (email) orCondition.push({ email });
-//     if (phone) orCondition.push({ phone });
-
-//     if (orCondition.length === 0) {
-//       return res.status(400).json({
-//         success: false,
-//         message: "Email or phone is required",
-//       });
-//     }
-//     const user = await User.findOne({
-//       where: {
-//         [Op.or]: orCondition,
-//       },
-//     });
-//     if (!user) {
-//       req.flash("error", "Invalid Credentials");
-//     //   return res.redirect("/login");
-//         return res.status(400).json("Invalid credentials");
-//     }
-//     const match = await bcrypt.compare(password, user.password);
-//     if (!match) {
-//       req.flash("error", "Invalid Credentials");
-//     //   return res.redirect("/login");
-//       return res.status(400).json("Password do not match")
-//     }
-//     const token = generateToken(user, res);
-//     req.flash("success", "Login Successfully");
-//     // return res.redirect("/dashboard");
-//     return res.status(200).json({
-//         success: true,
-//         user,
-//         token
-//     })
-//   } catch (error) {
-//     console.error("Error in login controller -------->", error);
-//     req.flash("error", "Something went wrong");
-//     // return res.redirect("/login");
-//     return res.status(500).json("something wen wrong")
-//   }
-// };
-
 exports.logout = async (req, res) => {
   try {
     res.clearCookie("token");
@@ -235,8 +139,6 @@ exports.logout = async (req, res) => {
 
 exports.verifyOtp = async (req, res) => {
   try {
-    console.log("inside verifying.............. ");
-    
     const otp = 
       req.body.o1 +
       req.body.o2 +
@@ -245,7 +147,6 @@ exports.verifyOtp = async (req, res) => {
       req.body.o5 +
       req.body.o6;
 
-    console.log("matching otp's",otp, req.session.otp)
     if (otp !== req.session.otp) {
       req.flash("error", "Invalid OTP");
       return res.redirect("/verify");

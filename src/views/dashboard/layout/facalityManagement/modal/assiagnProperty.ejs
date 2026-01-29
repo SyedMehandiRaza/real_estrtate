@@ -1,0 +1,368 @@
+<div class="modal-overlay">
+  <div class="modal">
+    <!-- HEADER -->
+    <div class="modal-header">
+      <div class="header-left">
+        <div class="logo-circle">
+          <span>LOGO</span>
+        </div>
+      </div>
+      <div>
+        <button class="close-btn">&times;</button>
+      </div>
+    </div>
+
+    <div class="second-card">
+      <div class="company-text">
+        <h2 class="modal-company-name">Prestige Facility Services, LLC</h2>
+        <p>Contact Person: <span class="contactPerson">Shivam Gawali</span></p>
+      </div>
+      <div class="header-right">
+        <button class="assign-btn" onclick="openAssignPropertyModal()">
+          Assign Property
+        </button>
+      </div>
+    </div>
+    <!-- CONTACT STRIP -->
+    <div class="contact-strip">
+      <div class="contact-item">
+        <div class="contact-icon">&#9742;</div>
+        <div class="contact-text">
+          <strong class="phoneNumber">+91 7485961245</strong>
+          <span>Phone number</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">&#9993;</div>
+        <div class="contact-text">
+          <strong class="companyEmail">shivamgawali@gmail.com</strong>
+          <span>Email Address</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">&#128205;</div>
+        <div class="contact-text">
+          <strong class="numberOfProperty">4</strong>
+          <span>Assigned properties</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs">
+      <div class="tab active" data-tab="assigned">Assigned Properties</div>
+      <div class="tab" data-tab="tasks">Tasks / Work Orders</div>
+      <div class="tab" data-tab="performance">Performance</div>
+      <div class="tab" data-tab="documents">Documents</div>
+      <div class="tab" data-tab="notes">Notes</div>
+    </div>
+
+    <!-- CONTENT AREA -->
+    <div class="tab-content">
+      <!-- ASSIGNED PROPERTIES TAB -->
+      <div class="tab-panel tab-panel-assigned active">
+        <div class="section-title">Properties</div>
+        <div class="property-list">
+          <div class="property-card">
+            <div class="prop-thumb">
+              <span>IMG</span>
+            </div>
+            <div class="prop-main">
+              <h4>Skyline Tower</h4>
+              <p>689 Reichel Ford, Lake Nathen</p>
+            </div>
+            <div class="prop-type">2–3BHK Apartment</div>
+            <div class="status active">Active</div>
+            <button class="view-btn">View Property</button>
+          </div>
+
+          <div class="property-card">
+            <div class="prop-thumb">
+              <span>IMG</span>
+            </div>
+            <div class="prop-main">
+              <h4>Skyline Tower</h4>
+              <p>689 Reichel Ford, Lake Nathen</p>
+            </div>
+            <div class="prop-type">2–3BHK Apartment</div>
+            <div class="status inactive">Inactive</div>
+            <button class="view-btn">View Property</button>
+          </div>
+
+          <div class="property-card">
+            <div class="prop-thumb">
+              <span>IMG</span>
+            </div>
+            <div class="prop-main">
+              <h4>Skyline Tower</h4>
+              <p>689 Reichel Ford, Lake Nathen</p>
+            </div>
+            <div class="prop-type">2–3BHK Apartment</div>
+            <div class="status pending">Pending</div>
+            <button class="view-btn">View Property</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TASKS / WORK ORDERS TAB -->
+      <div class="tab-panel tab-panel-tasks">
+        <div class="search-filters">
+          <div class="search-box">
+            <input
+              type="text"
+              placeholder="Search tasks by property or type..."
+            />
+          </div>
+          <select class="filter-select">
+            <option>Status</option>
+            <option>Complete</option>
+            <option>Pending</option>
+            <option>In Progress</option>
+          </select>
+          <select class="filter-select">
+            <option>Task Type</option>
+            <option>Cleaning</option>
+            <option>AC Repair</option>
+            <option>Maintenance</option>
+          </select>
+          <select class="filter-select">
+            <option>Due Date</option>
+            <option>Today</option>
+            <option>This Week</option>
+            <option>This Month</option>
+          </select>
+          <select class="filter-select">
+            <option>Sort By</option>
+            <option>Date</option>
+            <option>Priority</option>
+            <option>Status</option>
+          </select>
+        </div>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Task Type</th>
+              <th>Property</th>
+              <th>Assigned Date</th>
+              <th>Due Date</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cleaning</td>
+              <td>Skyline Apartments</td>
+              <td>17 Nov 2025</td>
+              <td>19 Nov 2025</td>
+              <td><span class="status pending">Pending</span></td>
+              <td><button class="view-btn">View</button></td>
+            </tr>
+            <tr>
+              <td>AC Repair</td>
+              <td>Skyline Apartments</td>
+              <td>17 Nov 2025</td>
+              <td>19 Nov 2025</td>
+              <td><span class="status complete">Complete</span></td>
+              <td><button class="view-btn">View</button></td>
+            </tr>
+            <tr>
+              <td>Cleaning</td>
+              <td>Skyline Apartments</td>
+              <td>17 Nov 2025</td>
+              <td>19 Nov 2025</td>
+              <td><span class="status in-progress">In Progress</span></td>
+              <td><button class="view-btn">View</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- PERFORMANCE TAB -->
+      <div class="tab-panel tab-panel-performance">
+        <div class="section-title">Performance</div>
+
+        <div class="perf-stats">
+          <div class="stat-card">
+            <div class="stat-label">Total Tasks Completed</div>
+            <div class="stat-value">120</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Average Completion Time</div>
+            <div class="stat-value">3 days</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Active / Pending Tasks</div>
+            <div class="stat-value">5 / 8</div>
+          </div>
+        </div>
+
+        <div class="search-filters">
+          <div class="search-box">
+            <input
+              type="text"
+              placeholder="Search tasks by property or type..."
+            />
+          </div>
+          <select class="filter-select">
+            <option>Status</option>
+            <option>Complete</option>
+            <option>Overdue</option>
+          </select>
+          <select class="filter-select">
+            <option>Task Type</option>
+            <option>Cleaning</option>
+            <option>AC Repair</option>
+          </select>
+          <select class="filter-select">
+            <option>Date Range</option>
+            <option>Last 7 days</option>
+            <option>Last 30 days</option>
+          </select>
+          <select class="filter-select">
+            <option>Sort By</option>
+            <option>Date</option>
+            <option>Status</option>
+          </select>
+        </div>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Task Type</th>
+              <th>Property</th>
+              <th>Assigned Date</th>
+              <th>Complete Date</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cleaning</td>
+              <td>SkyView Apartments</td>
+              <td>12 Nov 2025</td>
+              <td>15 Nov 2025</td>
+              <td><span class="status complete">Complete</span></td>
+              <td><button class="view-btn">View</button></td>
+            </tr>
+            <tr>
+              <td>AC Repair</td>
+              <td>SkyView Apartments</td>
+              <td>12 Nov 2025</td>
+              <td>15 Nov 2025</td>
+              <td><span class="status overdue">Overdue</span></td>
+              <td><button class="view-btn">View</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- DOCUMENTS TAB -->
+      <div class="tab-panel tab-panel-documents">
+        <div class="section-title">Document</div>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Document Name</th>
+              <th>Type</th>
+              <th>Property</th>
+              <th>Validity</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Service Agreement.pdf</td>
+              <td>Contract</td>
+              <td>Skyline Tower</td>
+              <td>12 Nov 2025 - 11 Nov 2025</td>
+              <td><button class="view-btn">View</button></td>
+            </tr>
+            <tr>
+              <td>License.pdf</td>
+              <td>License</td>
+              <td>Skyline Tower</td>
+              <td>12 Nov 2025 - 11 Nov 2025</td>
+              <td><button class="view-btn">View</button></td>
+            </tr>
+            <tr>
+              <td>Service Agreement.pdf</td>
+              <td>Contract</td>
+              <td>Skyline Tower</td>
+              <td>12 Nov 2025 - 11 Nov 2025</td>
+              <td><button class="view-btn">View</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- NOTES TAB -->
+      <div class="tab-panel tab-panel-notes">
+        <div class="section-title">Note</div>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Author</th>
+                <th>Message / Note</th>
+              </tr>
+            </thead>
+            <!-- <tbody id="notesTableBody">
+                  <tr>
+                    <td>12 Nov 2025</td>
+                    <td>Property Owner</td>
+                    <td>Please ensure all AC units are serviced by Friday.</td>
+                  </tr>
+                  <tr>
+                    <td>10 Nov 2025</td>
+                    <td>Facility Company</td>
+                    <td>
+                      Cleaning completed for SkyView Apartments common areas.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>04 Nov 2025</td>
+                    <td>Property Owner</td>
+                    <td>
+                      Schedule security check for Green Meadows Villa this week.
+                    </td>
+                  </tr>
+                </tbody> -->
+          </table>
+        </div>
+
+        <div class="note-input-container">
+          <div class="note-input-wrapper">
+            <div class="input-box">
+              <input
+                type="text"
+                placeholder="Type message here..."
+                id="noteMessage"
+              />
+              <button class="send-btn" id="sendNote">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#7a3cff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </div>
+
+            <button class="toggle-btn" id="toggleNoteBtn">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,93 @@
+<div class="sm-layout">
+  <main class="sm-page">
+    <h1 class="sm-page-title">Staff Management</h1>
+
+    <section class="sm-staff-hero">
+      <div class="sm-hero-text">
+        <h2>Staff Management</h2>
+        <p>Add team members to help manage properties and leads.</p>
+
+        <button class="sm-btn-primary" id="smOpenModalBtn">+ Add Staff</button>
+      </div>
+
+      <div class="sm-illustration"></div>
+    </section>
+
+    <section class="sm-staff-card">
+      <div class="sm-card-header">
+        <h2>Staff List</h2>
+      </div>
+
+      <div class="sm-table-wrapper">
+        <table class="sm-staff-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Role</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if (staff && staff.length > 0) { %> <% staff.forEach(user => { %>
+            <tr>
+              <td><%= user.name %></td>
+              <td><%= user.role %></td>
+              <td><%= user.email %></td>
+              <td><%= user.phone %></td>
+              <td>
+                <% if (user.status === "ACTIVE") { %>
+                <span class="sm-status-active">Active</span>
+                <% } else { %>
+                <span class="sm-status-disable">Disable</span>
+                <% } %>
+              </td>
+              <td class="sm-actions">
+                <!-- <button class="sm-link" onclick="openStaffDetalModal()" data-id="<%= user.id %>">
+                  View
+                </button> -->
+                <button
+                  class="sm-link"
+                  onclick="openStaffDetalModal(this)"
+                  data-id="<%= user.id %>"
+                  data-name="<%= user.name %>"
+                  data-role="<%= user.role %>"
+                  data-email="<%= user.email %>"
+                  data-phone="<%= user.phone %>"
+                  data-status="<%= user.status %>"
+                  data-permissions="<%= JSON.stringify(user.permissions) %>"
+                >
+                  View
+                </button>
+
+                <button class="sm-link edit" data-id="<%= user.id %>">
+                  Edit
+                </button>
+                <button class="sm-link remove" data-id="<%= user.id %>">
+                  Remove
+                </button>
+              </td>
+            </tr>
+            <% }) %> <% } else { %>
+            <tr>
+              <td colspan="6" style="text-align: center">
+                No staff members found
+              </td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- Modal to add staff here  -->
+<%- include('modal/addStaff') %>
+
+<!-- Staff Detail page open on onclick -->
+<%- include('modal/viewDetail') %>
+
+<script src="/js/staff-modal.js"></script>

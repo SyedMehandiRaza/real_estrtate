@@ -1,0 +1,40 @@
+subscription model
+
+
+
+
+     basic         |    premium       |     pro  
+--------------------------------------|------------------------|
+1    dashboard     |    dashboard     |     dashboard          |
+2    my property   |    my property   |     my property        |
+3       -          |    crm           |     crm                |
+4       -          |    marketing     |     marketing          |     
+5       -          |       -          |     staff managment    |
+6       -          |       -          |     facility managment |
+---------------------------------------------------------------|
+
+
+
+
+model    subscription
+                        Plan - id
+                               name: "BASIC" | "PREMIUM" | "PRO"
+                               price
+                               maxPropertiesPerMonth
+                               features                   {dashboard, My Properties, CRM, Marketing, Staff Management, Facility Management}
+
+                        Subscription - id
+                                       userId
+                                       planId
+                                       startDate
+                                       endDate
+                                       status
+
+                        Razorpay -     id
+                                       userId
+                                       planId
+                                       razorpayPaymentId
+                                       razorpayOrderId
+                                       razorpaySignature
+                                       amount
+                                       status

@@ -40,7 +40,6 @@ router.get("/add_docs", propOwnerController.renderAddProduct5);
 
 router.get("/add_prop_submit", propOwnerController.renderAddProduct_submit);
 
-//  add product controller
 router.post("/add", auth, validate(createPropertyStep1Schema), propOwnerController.submitStep1);
 router.post("/add_detail", auth, validate(createPropertyStep2Schema), propOwnerController.submitStep2);
 router.post(

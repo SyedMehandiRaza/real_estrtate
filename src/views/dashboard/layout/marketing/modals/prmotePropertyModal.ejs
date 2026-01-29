@@ -1,0 +1,76 @@
+
+ <div id="marketingModal" class="marketing-modal-overlay" style="display:none;">
+  <div class="marketing-modal-box">
+
+    <div class="marketing-modal-header">
+      <h2 class="marketing-modal-title">Promote My Property</h2>
+      <button class="marketing-close-btn" onclick="closeModal()"></button>
+    </div>
+
+    <div class="marketing-stepper">
+      <div class="marketing-step active">
+        <div class="marketing-step-indicator">1</div>
+        <div class="marketing-step-label">Select Property</div>
+      </div>
+
+      <div class="marketing-step-line"></div>
+
+      <div class="marketing-step inactive">
+        <div class="marketing-step-indicator">2</div>
+        <div class="marketing-step-label">Confirm Post Request</div>
+      </div>
+
+      <div class="marketing-step-line"></div>
+
+      <div class="marketing-step inactive">
+        <div class="marketing-step-indicator">3</div>
+        <div class="marketing-step-label">Submit for Review</div>
+      </div>
+    </div>
+
+    <div class="marketing-modal-content">
+      <h3 class="marketing-section-title">Select Property</h3>
+
+      <div class="marketing-search-box">
+        <input type="text" class="marketing-search-input" placeholder="Search properties...">
+        <span class="marketing-search-icon">🔍</span>
+      </div>
+
+      <form method="POST" onsubmit="return false;">
+        <input type="hidden" name="propertyId" id="marketingSelectedProperty">
+
+        <div class="marketing-property-list">
+          <% properties.forEach(prop => { %>
+            <div class="marketing-property-card" onclick="selectMarketingProperty('<%= prop.id %>', this)">
+              
+              <img 
+                src="<%= prop.media[0]?.url || 'https://via.placeholder.com/300' %>" 
+                class="marketing-property-image"
+              />
+
+              <div class="marketing-property-details">
+                <div class="marketing-property-name"><%= prop.title %></div>
+                <div class="marketing-property-address"><%= prop.location %></div>
+              </div>
+
+              <div>
+                <span class="marketing-property-price">₹ <%= prop.price %></span>
+                <button type="button" class="marketing-select-btn" onclick="event.stopPropagation(); selectMarketingProperty('<%= prop.id %>', this.closest('.marketing-property-card'))">
+                  Select
+                </button>
+
+              </div>
+            </div>
+          <% }) %>
+        </div>
+
+        <div class="marketing-modal-footer">
+          <button type="button" class="marketing-btn-cancel" onclick="closeModal()">Cancel</button>
+          <!-- <button type="submit" class="marketing-btn-next" onclick="openMkPostModal()">Next</button> -->
+           <button type="button" class="marketing-btn-next" onclick="goToPostModal()">Next</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

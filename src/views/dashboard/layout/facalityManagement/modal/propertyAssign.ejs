@@ -1,0 +1,197 @@
+    <div class="modal-overlay" id="assignPropertyModal">
+      <div class="modal assign-modal">
+        <!-- Header -->
+        <div class="modal-header">
+          <div class="modal-title">Assign Property</div>
+          <button class="close-btn" onclick="closeAssignPropertyModal()">
+            &times;
+          </button>
+        </div>
+
+        <!-- Steps -->
+        <div class="steps-container">
+          <div class="steps-bar">
+            <div class="step-wrap active">
+              <div class="step-dot">1</div>
+              <div class="step-line"></div>
+              <div class="step-text">Select Property</div>
+            </div>
+            <div class="step-wrap">
+              <div class="step-dot">2</div>
+              <div class="step-line"></div>
+              <div class="step-text">Detail</div>
+            </div>
+            <div class="step-wrap">
+              <div class="step-dot">3</div>
+              <div class="step-text">Confirm Assignment</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="modal-content">
+          <!-- Step 1: Select Property -->
+          <div class="step-panel active" data-step="0">
+            <div class="section-title">Select Property</div>
+
+            <div class="search-box">
+              <span class="search-icon">🔍</span>
+              <input
+                type="text"
+                id="searchInput"
+                placeholder="Search properties..."
+              />
+            </div>
+
+            <div class="property-list">
+              <div class="property-item" data-id="1">
+                <div class="property-left">
+                  <img
+                    class="property-img"
+                    src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=200&h=200&fit=crop"
+                    alt="Skyline Tower"
+                  />
+                  <div class="property-info">
+                    <div class="property-name">Skyline Tower</div>
+                    <div class="property-address">
+                      699 Reichel Ford, Lake Nathen 49899-3782
+                    </div>
+                  </div>
+                </div>
+                <div class="property-price">$840k - $1.6M</div>
+                <button class="btn-select">Select</button>
+              </div>
+
+              <div class="property-item" data-id="2">
+                <div class="property-left">
+                  <img
+                    class="property-img"
+                    src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=200&h=200&fit=crop"
+                    alt="Skyline Tower"
+                  />
+                  <div class="property-info">
+                    <div class="property-name">Skyline Tower</div>
+                    <div class="property-address">
+                      699 Reichel Ford, Lake Nathen 49899-3782
+                    </div>
+                  </div>
+                </div>
+                <div class="property-price">$840k - $1.6M</div>
+                <button class="btn-select">Select</button>
+              </div>
+
+              <div class="property-item" data-id="3">
+                <div class="property-left">
+                  <img
+                    class="property-img"
+                    src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=200&h=200&fit=crop"
+                    alt="Skyline Tower"
+                  />
+                  <div class="property-info">
+                    <div class="property-name">Skyline Tower</div>
+                    <div class="property-address">
+                      699 Reichel Ford, Lake Nathen 49899-3782
+                    </div>
+                  </div>
+                </div>
+                <div class="property-price">$840k - $1.6M</div>
+                <button class="btn-select">Select</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Fill Detail -->
+          <div class="step-panel" data-step="1">
+            <div class="section-title">Fill Detail</div>
+
+            <div class="form-group">
+              <label class="form-label">Contract Start Date</label>
+              <input
+                type="date"
+                class="form-control"
+                id="startDate"
+                placeholder="Select"
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Contract End Date</label>
+              <input
+                type="date"
+                class="form-control"
+                id="endDate"
+                placeholder="Select"
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Notes / Scope of Work</label>
+              <textarea
+                class="form-control"
+                id="notes"
+                placeholder="Describe"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Upload Document</label>
+              <select class="form-control">
+                <option>Select Document</option>
+                <option>Contract Agreement</option>
+                <option>Invoice</option>
+              </select>
+              <div class="upload-area">
+                <div class="upload-text">Drag & drop OR click to browse</div>
+                <div class="upload-hint">
+                  Supported formats: PDF, JPG, PNG<br />Max size: 10 MB
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Confirm Assignment -->
+          <div class="step-panel" data-step="2">
+            <div class="section-title">Confirm Assignment</div>
+
+            <div class="confirm-row">
+              <div class="confirm-item">
+                <div class="confirm-label">Property Name</div>
+                <div class="confirm-value" id="confirmProperty">
+                  Skyline Villa
+                </div>
+              </div>
+              <div class="confirm-item">
+                <div class="confirm-label">Validity</div>
+                <div class="confirm-value" id="confirmDates">
+                  22 Nov 2025 - 11 Nov 2026
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Note</label>
+              <div class="confirm-value" id="confirmNotes">
+                Focus on Unit 101 first
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Contract</label>
+              <div class="document-preview">
+                <div class="doc-icon">📄</div>
+                <div class="doc-info">
+                  <div class="doc-name">Contract.pdf</div>
+                  <div class="doc-size">Size: 4.54 MB</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="modal-footer">
+          <button class="btn btn-back" id="btnBack">Back</button>
+          <button class="btn btn-next" id="btnNext">Next</button>
+        </div>
+      </div>
+    </div>

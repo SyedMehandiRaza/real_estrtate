@@ -42,16 +42,16 @@
         </li>
 
         <li class="menu-item">
-          <a href="#" class="menu-link <%= activePage === 'staff_management' ? 'active' : '' %>">
+          <a href="/staff" class="menu-link <%= activePage === 'staff' ? 'active' : '' %>">
             <svg viewBox="0 0 24 24">
               <path d="M4 9a3 3 0 116 0 3 3 0 01-6 0zm10-3h6v2h-6zm0 4h6v2h-6zm0 4h6v2h-6zM4 17a3 3 0 116 0 3 3 0 01-6 0z"/>
             </svg>
             <span>Staff Management</span>
           </a>
         </li>
-
+        
         <li class="menu-item">
-          <a href="#" class="menu-link <%= activePage === 'facility' ? 'active' : '' %>">
+          <a href="/facility" class="menu-link <%= ['addfacility','facility'].includes(activePage) ? 'active' : '' %>">
             <svg viewBox="0 0 24 24">
               <path d="M4 4h16v10H4zm2 12h12v2H6zm2 3h8v1H8z"/>
             </svg>
@@ -60,7 +60,7 @@
         </li>
 
         <li class="menu-item">
-          <a href="#" class="menu-link <%= activePage === 'subscription' ? 'active' : '' %>">
+          <a href="/subscription" class="menu-link <%= activePage === 'subscription' ? 'active' : '' %>">
             <svg viewBox="0 0 24 24">
               <path d="M12 2l3 7h7l-5.5 4.1L18 21l-6-4-6 4 1.5-7.9L2 9h7z"/>
             </svg>

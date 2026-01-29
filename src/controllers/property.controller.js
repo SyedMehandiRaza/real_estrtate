@@ -62,7 +62,8 @@ exports.renderPropertyDetail = async (req, res) => {
 
   } catch (error) {
     console.error("Property detail error", error);
-    return res.status(500).send("Internal Server Error");
+    // return res.status(500).send("Internal Server Error");
+    return res.redirect(req.get("Referer"))
   }
 };
 
@@ -84,12 +85,11 @@ exports.filterController = async (req, res) => {
       where: whereCondition,
       include: { model: PropertyMedia, as: "media" },
     });
-
-    console.log(properties)
     return res.json(properties);
 
   } catch (error) {
     console.error("Filter error:", error);
-    return res.status(500).json({ error: error.message });
+    // return res.status(500).json({ error: error.message });
+    return res.redirect(req.get("Referer"))
   }
 };

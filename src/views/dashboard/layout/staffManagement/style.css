@@ -1,0 +1,221 @@
+:root {
+  --sidebar-width: 240px;       /* match your existing sidebar width */
+  --bg-main: #f5f5fb;
+  --card-bg: #ffffff;
+  --primary: #6c4df6;
+  --primary-soft: #f2edff;
+  --text-main: #111827;
+  --text-muted: #6b7280;
+  --radius-xl: 18px;
+  --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.08);
+  --border-subtle: #f3f4f6;
+}
+
+/* general layout: leaves space for sidebar */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: var(--bg-main);
+}
+
+.layout {
+  min-height: 100vh;
+  background: var(--bg-main);
+}
+
+.page {
+  margin-left: var(--sidebar-width);
+  padding: 24px 32px;
+}
+
+/* page title */
+.page-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 18px;
+}
+
+/* top card */
+.staff-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 20px 24px;
+  border-radius: var(--radius-xl);
+  background: #ffffff;
+  border: 1px solid #e5e7ff;
+  box-shadow: 0 0 0 1px #ebe9ff inset;
+  margin-bottom: 24px;
+  background-image: radial-gradient(circle at 0 100%, #f4f3ff 0, transparent 60%);
+}
+
+.staff-hero-text h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--text-main);
+}
+
+.staff-hero-text p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.btn-primary {
+  gap: 6px;
+  width: 200px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: var(--primary);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.btn-primary span {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* right illustration placeholder */
+.staff-hero-illustration {
+  flex-shrink: 0;
+  width: 160px;
+  height: 96px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #edf2ff, #f7f0ff);
+}
+
+/* staff list card */
+.staff-card {
+  background: var(--card-bg);
+  border-radius: 22px;
+  box-shadow: var(--shadow-soft);
+  padding: 18px 0 10px;
+}
+
+.staff-card-header {
+  padding: 0 24px 12px;
+}
+
+.staff-card-header h2 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* table */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.staff-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 650px;
+  font-size: 0.85rem;
+}
+
+.staff-table thead {
+  background: #6c4df620;
+  border-radius: 10px;
+}
+
+.staff-table th,
+.staff-table td {
+  padding: 10px 24px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-subtle);
+  white-space: nowrap;
+}
+
+.staff-table th {
+  font-weight: 500;
+  color: #6a5172;
+  font-size: 0.8rem;
+}
+
+.staff-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* status labels */
+.status {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.status-active {
+  color: #16a34a;
+}
+
+.status-disable {
+  color: #ef4444;
+}
+
+/* actions */
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.link {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: #4b6bfb;
+}
+
+.link.edit {
+  color: #f59e0b;
+}
+
+.link.remove {
+  color: #ef4444;
+}
+
+/* responsiveness */
+@media (max-width: 1024px) {
+  .page {
+    margin-left: 0;             /* if sidebar collapses on tablet/mobile */
+    padding: 18px 16px;
+  }
+
+  .staff-hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .staff-hero-illustration {
+    width: 100%;
+    max-width: 260px;
+    align-self: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-title {
+    font-size: 1.05rem;
+  }
+
+  .staff-hero {
+    padding: 16px 16px;
+  }
+
+  .staff-card {
+    padding-top: 14px;
+  }
+
+  .staff-table th,
+  .staff-table td {
+    padding: 8px 16px;
+  }
+}

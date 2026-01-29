@@ -1,0 +1,74 @@
+<div id="mk-review-modal" class="mk-review-overlay" style="display:none;">
+  <div class="mk-review-modal">
+
+    <div class="mk-review-header">
+      <h2 class="mk-review-title">Promote My Property</h2>
+      <button class="mk-review-close" onclick="closeModal()">✕</button>
+    </div>
+
+    <div class="mk-review-progress">
+      <div class="mk-review-bar">
+        <div class="mk-review-step completed">
+          <div class="mk-review-circle">1</div>
+          <div class="mk-review-label">Select Property</div>
+        </div>
+        <div class="mk-review-connector active"></div>
+        <div class="mk-review-step completed">
+          <div class="mk-review-circle">2</div>
+          <div class="mk-review-label">Post Request</div>
+        </div>
+        <div class="mk-review-connector active"></div>
+        <div class="mk-review-step active">
+          <div class="mk-review-circle">3</div>
+          <div class="mk-review-label">Submit for Review</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mk-review-content">
+      <h3 class="mk-review-section-title">Submit for Review</h3>
+
+      <p class="mk-review-label-text">Property</p>
+
+      <div class="mk-review-property-card">
+        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=150&h=150&fit=crop" class="mk-review-property-img">
+        <div class="mk-review-property-info">
+          <div class="mk-review-property-name">Skyline Tower</div>
+          <div class="mk-review-property-address">899 Reichel Ford, Lake Nathen</div>
+          <div class="mk-review-property-phone">48899-3782</div>
+        </div>
+        <div class="mk-review-property-price">$840k - $1.6M</div>
+      </div>
+
+      <div class="mk-review-row">
+        <div class="mk-review-section">
+          <p class="mk-review-label-text">Promotion Type</p>
+          <div class="mk-review-promo-preview">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=300&fit=crop" class="mk-review-promo-img">
+            <div class="mk-review-promo-type">Single Image Post</div>
+          </div>
+        </div>
+
+        <div class="mk-review-section">
+          <p class="mk-review-label-text">Platforms</p>
+          <div class="mk-review-platform-grid">
+            <div class="mk-review-platform-box">
+              <div class="mk-review-platform-icon">📷</div>
+              <div class="mk-review-platform-name">Instagram</div>
+            </div>
+            <div class="mk-review-platform-box">
+              <div class="mk-review-platform-icon">▶️</div>
+              <div class="mk-review-platform-name">Youtube</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mk-review-footer">
+      <button class="mk-review-btn mk-review-secondary">Back</button>
+      <!-- <button class="mk-review-btn mk-review-primary">Submit</button> -->
+       <button class="mk-review-btn mk-review-primary" onclick="submitMarketing()">Submit</button>
+    </div>
+  </div>
+</div>

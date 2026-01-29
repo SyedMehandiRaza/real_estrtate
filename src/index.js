@@ -8,7 +8,10 @@ const authRoutes = require("../src/routes/auth.route");
 const propertyRoute = require("../src/routes/property.route");
 const propOwnerRoute = require("../src/routes/propertyOwner.route")
 const marketRoutes = require("../src/routes/marketing.route")
-
+const staffRoutes = require("../src/routes/staffManagement.route");
+const facalityRoutes = require("../src/routes/facilityCompany.route")
+const subscriptionRoute = require("../src/routes/subscription.route")
+const razorpayRoute = require("../src/routes/razorpay.route")
 dotenv.config();
 
 const app = express();
@@ -40,13 +43,18 @@ app.use((req, res, next) => {
   res.locals.user = req.user || null;
   next();
 });
-app.get("/marketing", (rq, res) => {
-  res.render("dashboard/layout/marketing/index.js")
-})
+
 app.use(authRoutes);
 app.use(propertyRoute);
-app.use(propOwnerRoute)
-app.use(marketRoutes)
+app.use(propOwnerRoute);
+app.use(marketRoutes);
+app.use(staffRoutes);
+app.use(facalityRoutes)
+app.use(subscriptionRoute);
+app.use(razorpayRoute);
+app.get("/upgrade-plan", (req, res) => {    // for temperory
+  res.render("dashboard/upgrade/upgradePlan.ejs")
+})
 
 app.listen(1000, () => {
     console.log(`Server running at PORT: ${1000} Successfully`);

@@ -1,0 +1,99 @@
+ <div id="mk-post-modal" class="mk-modal-overlay" style="display:none;">
+  <div class="mk-modal">
+
+    <div class="mk-modal-header">
+      <h2 class="mk-modal-title">Promote My Property</h2>
+      <button class="mk-close-btn" onclick="closeModal()">✕</button>
+    </div>
+
+    <div class="mk-progress-section">
+      <div class="mk-progress-bar">
+        <div class="mk-step completed">
+          <div class="mk-step-circle">1</div>
+          <div class="mk-step-label">Select Property</div>
+        </div>
+        <div class="mk-step-connector active"></div>
+        <div class="mk-step active">
+          <div class="mk-step-circle">2</div>
+          <div class="mk-step-label">Post Request</div>
+        </div>
+        <div class="mk-step-connector"></div>
+        <div class="mk-step inactive">
+          <div class="mk-step-circle">3</div>
+          <div class="mk-step-label">Submit for Review</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mk-modal-content">
+      <h3 class="mk-section-title">Post Request</h3>
+
+      <p class="mk-section-subtitle">Promotion Type</p>
+
+      <div style="position: relative;">
+        <div class="mk-promotion-types" id="mk-carousel">
+          <div class="mk-promotion-card selected">
+            <div class="mk-promotion-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=300&fit=crop">
+            </div>
+            <div class="mk-promotion-label">Single Image Post</div>
+          </div>
+
+          <div class="mk-promotion-card">
+            <div class="mk-promotion-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=400&h=300&fit=crop">
+            </div>
+            <div class="mk-promotion-label">Carousel Post</div>
+          </div>
+
+          <div class="mk-promotion-card">
+            <div class="mk-promotion-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=400&h=300&fit=crop">
+            </div>
+            <div class="mk-promotion-label">Story Post</div>
+          </div>
+
+          <div class="mk-promotion-card">
+            <div class="mk-promotion-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&h=300&fit=crop">
+            </div>
+            <div class="mk-promotion-label">Video Post</div>
+          </div>
+        </div>
+
+        <button class="mk-scroll-indicator">›</button>
+      </div>
+
+      <p class="mk-section-subtitle">Choose Platforms</p>
+
+      <div class="mk-platforms">
+        <div class="mk-platform-card selected">
+          <div class="mk-platform-icon">📷</div>
+          <div class="mk-platform-name">Instagram</div>
+        </div>
+
+        <div class="mk-platform-card">
+          <div class="mk-platform-icon">📘</div>
+          <div class="mk-platform-name">Facebook</div>
+        </div>
+
+        <div class="mk-platform-card">
+          <div class="mk-platform-icon">▶️</div>
+          <div class="mk-platform-name">Youtube</div>
+        </div>
+
+        <div class="mk-platform-card">
+          <div class="mk-platform-icon">💼</div>
+          <div class="mk-platform-name">Linkedin</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mk-modal-footer">
+      <button class="mk-btn mk-btn-secondary">Back</button>
+      <!-- <button class="mk-btn mk-btn-primary" onclick="openReviewModal()" >Next</button> -->
+       <button class="mk-btn mk-btn-primary" onclick="goToReviewModal()">Next</button>
+    </div>
+
+  </div>
+</div>

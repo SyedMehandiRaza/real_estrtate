@@ -1,0 +1,115 @@
+<div class="sm-modal-overlay" id="smAddStaffModal">
+  <div class="sm-modal">
+    <div class="sm-modal-header">
+      <h2 class="sm-modal-title">Add Staff</h2>
+      <button class="sm-close-btn" onclick="smCloseModal()">✕</button>
+    </div>
+
+    <form id="smStaffForm" method="POST" action="/add-staff">
+      <div class="sm-form-group">
+        <label class="sm-form-label">Full Name</label>
+        <input
+          type="text"
+          name="name"
+          class="sm-form-input"
+          placeholder="Enter Full Name"
+          required
+        />
+      </div>
+
+      <div class="sm-form-group">
+        <label class="sm-form-label">Email</label>
+        <input
+          type="email"
+          name="email"
+          class="sm-form-input"
+          placeholder="Enter Email"
+          required
+        />
+      </div>
+
+      <div class="sm-form-group">
+        <label class="sm-form-label">Phone Number</label>
+        <input
+          type="tel"
+          name="phone"
+          class="sm-form-input"
+          placeholder="Enter Phone Number"
+          required
+        />
+      </div>
+
+      <div class="sm-form-group">
+        <label class="sm-form-label">Role</label>
+        <div class="sm-select-wrapper">
+          <select
+            class="sm-custom-select placeholder"
+            name="role"
+            id="role"
+            data-select="role"
+          >
+            <option value="" disabled selected>Select</option>
+            <option value="AGENT">Agent</option>
+            <option value="ADMIN">Admin</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="sm-form-group">
+        <label class="sm-form-label">Permissions</label>
+
+        <div class="sm-checkbox-group">
+          <label class="sm-checkbox-item">
+            <input
+              type="checkbox"
+              name="permissions[]"
+              value="properties_management"
+            />
+            Properties Management
+          </label>
+
+          <label class="sm-checkbox-item">
+            <input type="checkbox" name="permissions[]" value="leads_crm" />
+            Leads & CRM
+          </label>
+
+          <label class="sm-checkbox-item">
+            <input
+              type="checkbox"
+              name="permissions[]"
+              value="payment_tracking"
+            />
+            Payment Tracking
+          </label>
+
+          <label class="sm-checkbox-item">
+            <input type="checkbox" name="permissions[]" value="marketing" />
+            Marketing
+          </label>
+
+          <label class="sm-checkbox-item">
+            <input
+              type="checkbox"
+              name="permissions[]"
+              value="facility_management"
+            />
+            Facility Management
+          </label>
+        </div>
+      </div>
+
+      <div class="sm-modal-footer">
+        <button
+          type="button"
+          class="sm-btn sm-btn-cancel"
+          onclick="smCloseModal()"
+        >
+          Cancel
+        </button>
+        <button type="submit" class="sm-btn sm-btn-primary">Add Staff</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
