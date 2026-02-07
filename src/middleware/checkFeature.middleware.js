@@ -4,7 +4,6 @@ const checkFeature = (feature) => async (req, res, next) => {
     where: { userId: req.user.id, status: "active" },
     include: Plan
   });
-
   if (!sub || !sub.Plan.features[feature]) {
     return res.redirect("/upgrade-plan");
   }
@@ -14,3 +13,4 @@ const checkFeature = (feature) => async (req, res, next) => {
 };
 
 module.exports  = checkFeature;
+

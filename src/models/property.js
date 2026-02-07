@@ -9,28 +9,40 @@ module.exports = (sequelize, DataTypes) => {
         as: "marketing",
         onDelete: "CASCADE",
       });
-
       Property.belongsTo(models.User, {
         foreignKey: "ownerId",
         as: "owner",
         onDelete: "CASCADE",
       });
-
       Property.hasMany(models.PropertyMedia, {
         foreignKey: "propertyId",
         as: "media",
       });
-
       Property.hasMany(models.PropertyConfiguration, {
         foreignKey: "propertyId",
         as: "configurations",
         onDelete: "CASCADE",
       });
-
       Property.hasMany(models.CompanyPropertyContract, {
         foreignKey: "propertyId",
         as: "companyContracts",
         onDelete: "CASCADE",
+      });
+      Property.hasMany(models.Enquiry, {
+        foreignKey: "propertyId",
+        as: "enquiries",
+      });
+      Property.hasMany(models.SiteVisit, {
+        foreignKey: "propertyId",
+        as: "siteVisits",
+      });
+      Property.hasOne(models.PropertyPaymentPlan, {
+        foreignKey: "propertyId",
+        as: "paymentPlan",
+      });
+      Property.hasMany(models.PropertyPayment, {
+        foreignKey: "propertyId",
+        as: "payments",
       });
     }
   }
@@ -131,8 +143,14 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
       },
       purpose: {
-        type: DataTypes.STRING,
-        allowNull: true,
+        type: DataTypes.ENUM("sale", "rent", "lease"),
+        allowNull: false,
+        defaultValue: "sale",
+      },
+      purposeType: {
+        type: DataTypes.ENUM("SALE", "RENT", "LEASE"),
+        allowNull: false,
+        defaultValue: "SALE",
       },
 
       noOfUnit: {
@@ -169,7 +187,7 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       modelName: "Property",
       timestamps: true,
-    }
+    },
   );
 
   return Property;

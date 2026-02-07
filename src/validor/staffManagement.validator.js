@@ -1,17 +1,18 @@
 const { z } = require("zod");
+const { ROLES, PERMISSIONS } = require("../constants/permissions")
 
-const ROLES = [
-  "ADMIN",
-  "AGENT",
-];
+// const ROLES = [
+//   "ADMIN",
+//   "AGENT",
+// ];
 
-const PERMISSIONS = [
-  "properties_management",
-  "leads_crm",
-  "payment_tracking",
-  "marketing",
-  "facility_management",
-];
+// const PERMISSIONS = [
+//   "properties_management",
+//   "leads_crm",
+//   "payment_tracking",
+//   "marketing",
+//   "facility_management",
+// ];
 
 exports.addStaffSchema = z.object({
   name: z

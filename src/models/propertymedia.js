@@ -1,13 +1,13 @@
-'use strict';
-const { Model } = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
   class PropertyMedia extends Model {
     static associate(models) {
       PropertyMedia.belongsTo(models.Property, {
-        foreignKey: 'propertyId',
-        as: 'property',
-        onDelete: 'CASCADE'
+        foreignKey: "propertyId",
+        as: "property",
+        onDelete: "CASCADE",
       });
     }
   }
@@ -17,30 +17,37 @@ module.exports = (sequelize, DataTypes) => {
       id: {
         type: DataTypes.INTEGER.UNSIGNED,
         autoIncrement: true,
-        primaryKey: true
+        primaryKey: true,
       },
 
       propertyId: {
         type: DataTypes.INTEGER.UNSIGNED,
-        allowNull: false
+        allowNull: false,
       },
 
       type: {
         type: DataTypes.ENUM("IMAGE", "VIDEO"),
-        allowNull: false
+        allowNull: false,
       },
 
       url: {
         type: DataTypes.STRING,
-        allowNull: false
-      }
+        allowNull: false,
+      },
+      thumbnail: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
     },
     {
       sequelize,
-      modelName: 'PropertyMedia',
-      timestamps: true
+      modelName: "PropertyMedia",
+      timestamps: true,
     }
   );
 
   return PropertyMedia;
 };
+
+
+

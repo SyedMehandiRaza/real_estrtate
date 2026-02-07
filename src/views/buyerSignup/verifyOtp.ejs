@@ -10,13 +10,13 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/buyerVerifyOtp.css">
+    <link rel="stylesheet" href="css/buyerVerifyOtp.css" />
   </head>
   <body>
     <div class="page">
-        <div class="back-button">
-              <a href="" class="">Go Back</a>
-        </div>
+      <div class="back-button">
+        <a href="" class="">Go Back</a>
+      </div>
       <div class="left">
         <div class="brand">Real Estate</div>
         <p class="tagline">
@@ -27,35 +27,59 @@
       </div>
 
       <div class="right">
-           <a href="#" class="back-link">Go Back</a>
+        <a href="#" class="back-link">Go Back</a>
         <div class="card">
           <div class="card-body">
             <h1 class="card-title">Verify Your Account</h1>
             <p class="card-subtitle">
-              We’ve sent a 6-digit code to <%= email %>
-              Please enter it below to continue.
+              We’ve sent a 6-digit code to <%= email %> Please enter it below to
+              continue.
             </p>
 
             <form class="otp-form" action="/verify-otp" method="post">
-              <div class="otp-inputs">
+              <!-- <div class="otp-inputs">
                 <input name="o1" maxlength="1" />
                 <input name="o2" maxlength="1" />
                 <input name="o3" maxlength="1" />
                 <input name="o4" maxlength="1" />
                 <input name="o5" maxlength="1" />
                 <input name="o6" maxlength="1" />
-
+              </div> -->
+              <div class="otp-inputs">
+                <input maxlength="1" />
+                <input maxlength="1" />
+                <input maxlength="1" />
+                <input maxlength="1" />
+                <input maxlength="1" />
+                <input maxlength="1" />
               </div>
+
+              <input type="hidden" name="otp" id="otp" />
+
               <button type="submit" class="verify-btn">Verify</button>
             </form>
 
             <p class="resend-text">
-              Don’t receive the code?
+              Don't receive the code?
               <button type="button" class="resend-link">Resend</button>
             </p>
           </div>
         </div>
       </div>
     </div>
+
+    <script>
+      const form = document.querySelector(".otp-form");
+      const inputs = document.querySelectorAll(".otp-inputs input");
+      const otpField = document.getElementById("otp");
+
+      form.addEventListener("submit", () => {
+        let otp = "";
+        inputs.forEach((input) => {
+          otp += input.value;
+        });
+        otpField.value = otp;
+      });
+    </script>
   </body>
 </html>

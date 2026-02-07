@@ -63,9 +63,6 @@
         </div>
     </header>
   
-  <!-- <div class="pr-de-breadcrumb">
-    Home › Property › <span>Luxury 3BHK Apartment</span>
-  </div> -->
   <div class="pr-de-breadcrumb">
     Home › Property › <span><%= property.title %></span>
   </div>
@@ -320,13 +317,20 @@
         <div class="pr-de-title-divider"></div>
         
         <div class="pr-de-video-wrapper">
-            <% const firstVideo = media.find(m => m.type === "VIDEO"); %>
+            <% if (property.media.some(m => m.type === "VIDEO")) { %>
+            <% const video = property.media.find(m => m.type === "VIDEO"); %>
+            <video controls>
+                <source src="<%= video.url %>" type="video/mp4">
+            </video>
+            <% } %>
+
+            <!-- <% const firstVideo = media.find(m => m.type === "VIDEO"); %>
 
             <% if (firstVideo) { %>
             <video controls class="pr-de-video-thumbnail">
                 <source src="<%= firstVideo.url %>" type="video/mp4">
             </video>
-            <% } %>
+            <% } %> -->
 
 
             <!-- <img 
@@ -777,44 +781,39 @@
             </div>
         </div>
     </footer>
-
-
-
-
 <script>
-/* ================= API ================= */
 
-// async function fetchImages(){
-//   return [
-//     "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9",
-//     "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
-//     "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
-//     "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4",
-//     "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3",
-//     "https://images.unsplash.com/photo-1600210492493-0946911123ea",
-//     "https://images.unsplash.com/photo-1600573472550-8090b5e0745e",
-//     ...Array(15).fill("https://images.unsplash.com/photo-1600596542815-ffad4c1539a9")
-//   ];
-// }
-
-/* ================= LOGIC ================= */
 
 let index = 0;
 let offset = 0;
-const media = <%- JSON.stringify(media) %>;
-// const propert = <%= property %>
-// console.log("property ki detail",property)
 
+const media = <%- JSON.stringify(property.media) %>;
 const slideBox = document.getElementById("slides");
 const thumbBox = document.getElementById("thumbs");
 
 
-// async function initCarousel(){
+
+// async function initCarousel() {
 
 //   slideBox.innerHTML = `
-//     ${images.map((img,i)=>`
-//       <div class="pr-de-slide ${i===0?'pr-de-active':''}">
-//         <img src="${img}" alt="Property image ${i+1}">
+//     ${media.map((item, i) => `
+//       <div class="pr-de-slide ${i === 0 ? 'pr-de-active' : ''}">
+//         ${
+//           item.type === "VIDEO"
+//             ? `
+//               <video 
+//                 src="${item.url}" 
+//                 controls 
+//                 class="pr-de-video-slide"
+//               ></video>
+//             `
+//             : `
+//               <img 
+//                 src="${item.url}" 
+//                 alt="Property media ${i + 1}"
+//               >
+//             `
+//         }
 //       </div>
 //     `).join("")}
 
@@ -822,37 +821,38 @@ const thumbBox = document.getElementById("thumbs");
 //     <button class="pr-de-arrow pr-de-right" onclick="next()">›</button>
 
 //     <div class="pr-de-counter">
-//       <span id="cur">1</span> / ${images.length}
+//       <span id="cur">1</span> / ${media.length}
 //     </div>
 //   `;
 
-//   thumbBox.innerHTML = images.map((img,i)=>`
-//     <div class="pr-de-thumb ${i===0?'pr-de-active':''}" onclick="go(${i})">
-//       <img src="${img}" alt="Thumbnail ${i+1}">
+//   thumbBox.innerHTML = media.map((item, i) => `
+//     <div class="pr-de-thumb ${i === 0 ? 'pr-de-active' : ''}" onclick="go(${i})">
+//       ${
+//         item.type === "VIDEO"
+//           ? `
+//             <div class="pr-de-video-thumb">
+//               <video src="${item.url}" muted></video>
+//               <span class="pr-de-play-icon">▶</span>
+//             </div>
+//           `
+//           : `
+//             <img src="${item.url}" alt="Thumbnail ${i + 1}">
+//           `
+//       }
 //     </div>
 //   `).join("");
 // }
 
-async function initCarousel() {
+function initCarousel() {
+  if (!media || media.length === 0) return;
 
   slideBox.innerHTML = `
     ${media.map((item, i) => `
       <div class="pr-de-slide ${i === 0 ? 'pr-de-active' : ''}">
         ${
           item.type === "VIDEO"
-            ? `
-              <video 
-                src="${item.url}" 
-                controls 
-                class="pr-de-video-slide"
-              ></video>
-            `
-            : `
-              <img 
-                src="${item.url}" 
-                alt="Property media ${i + 1}"
-              >
-            `
+            ? `<video src="${item.url}" controls></video>`
+            : `<img src="${item.url}" alt="Property media ${i+1}">`
         }
       </div>
     `).join("")}
@@ -869,15 +869,11 @@ async function initCarousel() {
     <div class="pr-de-thumb ${i === 0 ? 'pr-de-active' : ''}" onclick="go(${i})">
       ${
         item.type === "VIDEO"
-          ? `
-            <div class="pr-de-video-thumb">
-              <video src="${item.url}" muted></video>
-              <span class="pr-de-play-icon">▶</span>
-            </div>
-          `
-          : `
-            <img src="${item.url}" alt="Thumbnail ${i + 1}">
-          `
+          ? `<div class="pr-de-video-thumb">
+               <video src="${item.url}" muted></video>
+               <span>▶</span>
+             </div>`
+          : `<img src="${item.url}">`
       }
     </div>
   `).join("");
@@ -905,13 +901,6 @@ function update() {
 
   document.getElementById("cur").textContent = index + 1;
 
-//   document.querySelectorAll(".pr-de-slide").forEach(s=>s.classList.remove("pr-de-active"));
-//   document.querySelectorAll(".pr-de-thumb").forEach(t=>t.classList.remove("pr-de-active"));
-
-//   document.querySelectorAll(".pr-de-slide")[index].classList.add("pr-de-active");
-//   document.querySelectorAll(".pr-de-thumb")[index].classList.add("pr-de-active");
-
-//   document.getElementById("cur").textContent = index + 1;
   scrollActiveThumb();
 }
 
@@ -923,27 +912,25 @@ if (activeVideo) {
 }
 
 
-
-// function update(){
-//   document.querySelectorAll(".pr-de-slide").forEach(s=>s.classList.remove("pr-de-active"));
-//   document.querySelectorAll(".pr-de-thumb").forEach(t=>t.classList.remove("pr-de-active"));
-
-//   document.querySelectorAll(".pr-de-slide")[index].classList.add("pr-de-active");
-//   document.querySelectorAll(".pr-de-thumb")[index].classList.add("pr-de-active");
-
-//   document.getElementById("cur").textContent = index + 1;
-//   scrollActiveThumb();
-// }
-
 function next(){
-  index = (index + 1) % images.length;
+  index = (index + 1) % media.length;
   update();
 }
 
 function prev(){
-  index = (index - 1 + images.length) % images.length;
+  index = (index - 1 + media.length) % media.length;
   update();
 }
+
+// function next(){
+//   index = (index + 1) % images.length;
+//   update();
+// }
+
+// function prev(){
+//   index = (index - 1 + images.length) % images.length;
+//   update();
+// }
 
 function go(i){
   index = i;

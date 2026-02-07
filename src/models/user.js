@@ -9,17 +9,24 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-
+      
       User.hasOne(models.Subscription, { foreignKey: "userId" });
-
       User.hasOne(models.OwnerProfile, {
         foreignKey: "id",
         as: "profile",
       });
-
       User.hasMany(models.Property, {
         foreignKey: "ownerId",
         as: "properties",
+      });
+      User.hasMany(models.Enquiry, { foreignKey: "userId", as: "enquiries" });
+      User.hasMany(models.SiteVisit, {
+        foreignKey: "userId",
+        as: "siteVisits",
+      });
+      User.hasMany(models.PropertyPayment, {
+        foreignKey: "userId",
+        as: "payments",
       });
     }
   }
@@ -52,7 +59,7 @@ module.exports = (sequelize, DataTypes) => {
           "TENANT",
           "FACILITY_ADMIN",
           "TECHNICIAN",
-          "AGENT"
+          "AGENT",
         ),
         defaultValue: "BUYER",
       },
@@ -83,7 +90,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "User",
-    }
+    },
   );
   return User;
 };

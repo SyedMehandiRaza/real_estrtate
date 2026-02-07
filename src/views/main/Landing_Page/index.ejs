@@ -136,11 +136,13 @@
 
       <div class="property-card">
         <div class="card-image-container">
-          <img 
+          <!-- <img 
             src="<%= property.thumbnail || '/assets/house-placeholder.webp' %>" 
             alt="<%= property.title %>" 
             class="card-image"
-          >
+          > -->
+          <img src="<%= property.media[0]?.url || '/images/no-image.png' %>" class="card-image"/>
+
 
           <div class="card-badges">
             <span class="badge featured">Featured</span>
